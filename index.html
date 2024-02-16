@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulário</title>
+  </head>
+  <body>
+    <div>
+      <h1>Formulário</h1>
+    </div>
+    <form action="">
+      <div>
+        <h5>IDENTIFICAÇÃO</h5>
+        <div>
+          <label for="">Nome Completo</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label for="">Data de Nascimento</label>
+          <input type="date" />
+        </div>
+        <div>
+          <label for="">CPF</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label for="">Gênero</label>
+          <select name="" id="">
+            <option>Selecione uma opção</option>
+            <option value="">Feminino</option>
+            <option value="">Masculino</option>
+            <option value="">Prefiro não responder</option>
+            <option value="">Outro</option>
+          </select>
+        </div>
+        <div>
+          <label>Estado Civil:</label>
+          <div>
+            <input type="radio" name="estadoCivil" id="solteiro" /><label
+              for="solteiro"
+              >Solteiro</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="estadoCivil" id="casado" /><label
+              for="casado"
+              >Casado</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="estadoCivil" id="divorciado" /><label
+              for="divorciado"
+              >Divorciado</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="estadoCivil" id="uniaoEstavel" /><label
+              for="uniaoEstavel"
+              >União Estável</label
+            >
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="estadoCivil"
+              id="outro"
+              onclick="mostrarCampoOutro()"
+            /><label for="outro">Outro</label>
+          </div>
+        </div>
+        <div id="campoOutro" style="display: none">
+          <input
+            type="text"
+            id="outroEstadoCivil"
+            name="outroEstadoCivil"
+            placeholder="Digite aqui"
+          />
+        </div>
+
+        <script>
+          function mostrarCampoOutro() {
+            var campoOutro = document.getElementById("campoOutro");
+            var outroCheckbox = document.getElementById("outro");
+
+            if (outroCheckbox.checked) {
+              campoOutro.style.display = "block";
+            } else {
+              campoOutro.style.display = "none";
+            }
+          }
+        </script>
+        <div>
+          <label>Cor/Raça:</label>
+          <div>
+            <input type="radio" name="cor" id="branca" /><label for="branca"
+              >Branca</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="cor" id="preta" /><label for="preta"
+              >Preta</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="cor" id="parda" /><label for="parda"
+              >Parda</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="cor" id="indigena" /><label for="indigena"
+              >Indigena</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="cor" id="naoDeclarado" /><label
+              for="naoDeclarado"
+              >Não Declarado</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="cor" id="outra" /><label for="outra"
+              >Outra</label
+            >
+          </div>
+        </div>
+        <div>
+          <label for="">Nacionalidade</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label for="">Naturalidade</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label for="">Escolaridade</label>
+          <select name="" id="">
+            <option>Selecione uma opção</option>
+            <option value="">Analfabeto</option>
+            <option value="">Fundamental Incompleto</option>
+            <option value="">Fundamental Completo</option>
+            <option value="">Médio Incompleto</option>
+            <option value="">Médio Completo</option>
+            <option value="">Superior Incompleto</option>
+            <option value="">Superior Completo</option>
+            <option value="">Pós Graduação</option>
+          </select>
+        </div>
+        <div>
+          <label for=""> Profissão </label>
+          <input type="text" />
+        </div>
+        <div>
+          <label for="">Renda </label>
+          <input type="text" />
+        </div>
+        <div>
+          <label>Ocupação Profissional:</label>
+          <div>
+            <input type="radio" name="ocupacao" id="clt" /><label for="clt"
+              >CLT</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="ocupacao" id="contrato" /><label for="contrato"
+              >Contrato</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="ocupacao" id="autonomo" /><label for="autonomo"
+              >Autonômo</label
+            >
+          </div>
+          <div>
+            <input type="radio" name="ocupacao" id="desempregado" /><label for="desempregado"
+              >Desempregado</label
+            >
+          </div>
+          <div>
+            <label for="clt"
+              >Outra:</label>
+            <input type="text" name="ocupacao" id="outra:" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
