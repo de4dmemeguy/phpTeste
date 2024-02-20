@@ -3,31 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
+
     <link rel="stylesheet" href="styles.css" />
-    <title>Formulário</title>
+    <title>Cidadania e Segurança</title>
   </head>
   <body>
     <div class="title">
-      <h1>Formulário</h1>
+      <h3>Formulário - Cidadania e Segurança</h3>
     </div>
-    <form action="#" id="myForm">
+
+    <form action="#" id="myForm">    
+      <div class="container">
       <div>
-        <h5 class="sub-title">IDENTIFICAÇÃO</h5>
-        <div>
-          <label for="nomeCompleto">Nome Completo</label>
-          <input type="text" id="nomeCompleto" name="nomeCompleto" />
+        <br>
+        <h5 class="sub-title">Identificação</h5>
+        <div class="mb-3">
+          <label for="nomeCompleto" class="form-label">Nome Completo:</label>
+          <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-control"/>
         </div>
-        <div>
-          <label for="dataNascimento">Data de Nascimento</label>
-          <input type="date" id="dataNascimento" name="dataNascimento" />
+        <div class="mb-3">
+          <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
+          <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" />
         </div>
-        <div>
-          <label for="cpf">CPF</label>
-          <input type="text" id="cpf" name="cpf" />
+        <div class="mb-3">
+          <label for="cpf" class="form-label">CPF:</label>
+          <input type="text" id="cpf" name="cpf"  class="form-control"/>
         </div>
-        <div>
-          <label for="genero">Gênero</label>
-          <select name="genero" id="genero">
+        <div class="mb-3">
+          <label for="genero" class="form-label">Gênero:</label>
+          <select name="genero" id="genero" class="form-select">
             <option value="">Selecione uma opção</option>
             <option value="feminino">Feminino</option>
             <option value="masculino">Masculino</option>
@@ -35,60 +41,59 @@
             <option value="outro">Outro</option>
           </select>
         </div>
-        <div>
-          <label>Estado Civil:</label>
-          <div>
-            <input type="radio" name="estadoCivil" id="solteiro" value="solteiro" /><label for="solteiro">Solteiro</label>
+        <div class="mb-3">
+          <label class="form-label">Estado Civil:</label>
+          <br>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="estadoCivil" id="solteiro" value="solteiro"  class="form-check-input"/><label for="solteiro" class="form-check-label">Solteiro</label>
           </div>
-          <div>
-            <input type="radio" name="estadoCivil" id="casado" value="casado" /><label for="casado">Casado</label>
+          <div  class="form-check form-check-inline ">
+            <input type="radio" name="estadoCivil" id="casado" value="casado" class="form-check-input" /><label for="casado">Casado</label>
           </div>
-          <div>
-            <input type="radio" name="estadoCivil" id="divorciado" value="divorciado" /><label for="divorciado">Divorciado</label>
+          <div  class="form-check form-check-inline ">
+            <input type="radio" name="estadoCivil" id="divorciado" value="divorciado" class="form-check-input" /><label for="divorciado">Divorciado</label>
+          </div  >
+          <div  class="form-check  form-check-inline">
+            <input type="radio" name="estadoCivil" id="uniaoEstavel" value="uniaoEstavel"class="form-check-input" /><label for="uniaoEstavel">União Estável</label>
           </div>
-          <div>
-            <input type="radio" name="estadoCivil" id="uniaoEstavel" value="uniaoEstavel" /><label for="uniaoEstavel">União Estável</label>
+          <div  class="">
+            <label for="outro" class="form-label">Outro: </label> <input type="text" name="estadoCivil" id="outro"  class="form-control" />
           </div>
-          <div>
-            <input type="radio" name="estadoCivil" id="outro" value="outro" onclick="mostrarCampoOutro()" /><label for="outro">Outro</label>
+        </div>     
+        
+        <div class="mb-3">
+          <label class="form-label">Cor/Raça:</label>
+          <br>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="cor" id="branca" value="branca" class="form-check-input" /><label for="branca">Branca</label>
+          </div>
+          <div  class="form-check form-check-inline">
+          <input type="radio" name="cor" id="preta" value="preta"  class="form-check-input"/><label for="preta">Preta</label>
+          </div>
+          <div  class="form-check  form-check-inline">
+            <input type="radio" name="cor" id="parda" value="parda" class="form-check-input" /><label for="parda">Parda</label>
+          </div>
+          <div  class="form-check  form-check-inline">
+            <input type="radio" name="cor" id="indigena" value="indigena" class="form-check-input" /><label for="indigena">Indígena</label>
+          </div>
+          <div  class="form-check form-check-inline ">
+            <input type="radio" name="cor" id="naoDeclarado" value="naoDeclarado" class="form-check-input" /><label for="naoDeclarado">Não Declarado</label>
+          </div>
+          <div  class="form-check  form-check-inline"> 
+            <input type="radio" name="cor" id="outra" value="outra" class="form-check-input"/><label for="outra">Outra</label>
           </div>
         </div>
-        <div id="campoOutro" style="display: none">
-          <input type="text" id="outroEstadoCivil" name="outroEstadoCivil" placeholder="Digite aqui" />
+        <div  class="mb-3">
+          <label for="nacionalidade" class="form-label">Nacionalidade:</label>
+          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control" />
         </div>
-  
-        <div>
-          <label>Cor/Raça:</label>
-          <div>
-            <input type="radio" name="cor" id="branca" value="branca" /><label for="branca">Branca</label>
-          </div>
-          <div>
-            <input type="radio" name="cor" id="preta" value="preta" /><label for="preta">Preta</label>
-          </div>
-          <div>
-            <input type="radio" name="cor" id="parda" value="parda" /><label for="parda">Parda</label>
-          </div>
-          <div>
-            <input type="radio" name="cor" id="indigena" value="indigena" /><label for="indigena">Indígena</label>
-          </div>
-          <div>
-            <input type="radio" name="cor" id="naoDeclarado" value="naoDeclarado" /><label for="naoDeclarado">Não Declarado</label>
-          </div>
-          <div>
-            <input type="radio" name="cor" id="outra" value="outra" /><label for="outra">Outra</label>
-          </div>
+        <div class="mb-3">
+          <label for="naturalidade" class="form-label">Naturalidade:</label>
+          <input type="text" id="naturalidade" name="naturalidade"  class="form-control"/>
         </div>
-        <div>
-          <label for="nacionalidade">Nacionalidade</label>
-          <input type="text" id="nacionalidade" name="nacionalidade" />
-        </div>
-        <div>
-          <label for="naturalidade">Naturalidade</label>
-          <input type="text" id="naturalidade" name="naturalidade" />
-        </div>
-        <div>
-          <label for="escolaridade">Escolaridade</label>
-          <select name="escolaridade" id="escolaridade">
+        <div class="mb-3">
+          <label for="escolaridade"  class="form-label">Escolaridade</label>
+          <select name="escolaridade" id="escolaridade" class="form-select">
             <option value="">Selecione uma opção</option>
             <option value="analfabeto">Analfabeto</option>
             <option value="fundamentalIncompleto">Fundamental Incompleto</option>
@@ -100,294 +105,274 @@
             <option value="posGraduacao">Pós Graduação</option>
           </select>
         </div>
-        <div>
-          <label for="profissao">Profissão</label>
-          <input type="text" id="profissao" name="profissao" />
+        <div class="mb-3">
+          <label for="profissao" class="form-label">Profissão</label>
+          <input type="text" id="profissao" name="profissao"  class="form-control"/>
         </div>
         <div>
-          <label for="renda">Renda</label>
-          <input type="text" id="renda" name="renda" />
+          <label for="renda" class="form-label">Renda</label>
+          <input type="text" id="renda" name="renda" class="form-control" />
         </div>
-        <div>
-          <label>Ocupação Profissional:</label>
-          <div>
-            <input type="radio" name="ocupacao" id="clt" value="clt" /><label for="clt">CLT</label>
+        <div class="mb-3">
+          <label class="form-label">Ocupação Profissional:</label>
+          <br>
+          <div class="form-check form-check-inline">  
+            <input type="radio" name="ocupacao" id="clt" value="clt"class="form-check-input" /><label for="clt">CLT</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="ocupacao" id="contrato" value="contrato" class="form-check-input" /><label for="contrato">Contrato</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="ocupacao" id="autonomo" value="autonomo" class="form-check-input" /><label for="autonomo">Autônomo</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="ocupacao" id="desempregado" value="desempregado"  class="form-check-input"/><label for="desempregado">Desempregado</label>
           </div>
           <div>
-            <input type="radio" name="ocupacao" id="contrato" value="contrato" /><label for="contrato">Contrato</label>
-          </div>
-          <div>
-            <input type="radio" name="ocupacao" id="autonomo" value="autonomo" /><label for="autonomo">Autônomo</label>
-          </div>
-          <div>
-            <input type="radio" name="ocupacao" id="desempregado" value="desempregado" /><label for="desempregado">Desempregado</label>
-          </div>
-          <div>
-            <label for="outraOcupacao">Outra:</label>
-            <input type="text" id="outraOcupacao" name="outraOcupacao" />
+            <label for="outraOcupacao" class="form-label">Outra:</label>
+            <input type="text" id="outraOcupacao" name="outraOcupacao"  class="form-control"/>
           </div>
         </div>
       </div>
-      <div>
-        <h5>Necessidades de Documentação Civil</h5>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cni" /><label
+      <div class="mb-3">
+        <h5 class="sub-title">Necessidades de Documentação Civil</h5>
+        <div class="form-check">
+          <input type="radio" name="documentacaocivil" id="cni"class="form-check-input" /><label
             for="cni"
             >CNI</label
           >
         </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cpf" /><label
+        <div class="form-check">
+          <input type="radio" name="documentacaocivil" id="cpf" class="form-check-input" /><label
             for="cpf"
             >CPF</label
           >
         </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="rcn" /><label
+        <div class="form-check">
+          <input type="radio" name="documentacaocivil" id="rcn"  class="form-check-input"/><label
             for="rcn"
             >RCN</label
           >
         </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cpcd" /><label
+        <div class="form-check">
+          <input type="radio" name="documentacaocivil" id="cpcd" class="form-check-input" /><label
             for="cpcd"
             >CARTEIRA PCD</label
           >
         </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cptea" /><label
+        <div class="form-check">
+          <input type="radio" name="documentacaocivil" id="cptea" class="form-check-input" /><label
             for="cptea"
             >CARTEIRA CIPTEA</label
           >
         </div>
       </div>
-      <div>
-        <h5>ENDEREÇO/CONTATO</h5>
+      <!---->
+      <div class="mb-3">
+        <h5 class="sub-title">Endereço/Contato</h5>
         <div>
-          <div class="">
-            <label for="" class="">Rua / Avenida</label>
-            <input type="" class="" id="" />
+          <div class="mb-3">
+            <label for="" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="">
           </div>
-          <div class="">
-            <label for="" class="">Bairro</label>
-            <input type="" class="" id="" />
+          <div class="row">
+            <div class="col">
+              <label for="" class="form-label">Rua/Avenida</label>
+              <input type="text" class="form-control" style="width: 25rem;" >
+            </div>
+            <div class="col">
+              <label for="" class="form-label">Número:</label>
+              <input type="text" class="form-control" >
+            </div>
           </div>
-          <div class="">
-            <label for="" class="">CEP</label>
-            <input type="text" class=""" id="">
+     
+          <div class="mb-3">
+            <label for="" class="form-label">Bairro</label>
+            <input type="" class="form-control" id="" />
           </div>
-          <div class="">
-            <label for="" class="">Telefone para contato</label>
-            <input type="text" class="" id="" placeholder="(DDD) 0000-0000" />
-          </div>
-        </div>
-      </div>
-      <div>
-        <h5>Necessidades de Documentação Civil</h5>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cni" />
-          <label for="cni">CNI</label>
-        </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cpf" />
-          <label for="cpf">CPF</label>
-        </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="rcn" />
-          <label for="rcn">RCN</label>
-        </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cpcd" />
-          <label for="cpcd">CARTEIRA PCD</label>
-        </div>
-        <div>
-          <input type="radio" name="documentacaocivil" id="cptea" />
-          <label for="cptea">CARTEIRA CIPTEA</label>
-        </div>
-      </div>
-      <div>
-        <h5>ENDEREÇO/CONTATO</h5>
-        <div>
-          <div>
-            <label for="ruaAvenida">Rua / Avenida</label>
-            <input type="text" id="ruaAvenida" name="ruaAvenida" />
-          </div>
-          <div>
-            <label for="bairro">Bairro</label>
-            <input type="text" id="bairro" name="bairro" />
-          </div>
-          <div>
-            <label for="cep">CEP</label>
-            <input type="text" id="cep" name="cep" />
-          </div>
-          <div>
-            <label for="telefoneContato">Telefone para contato</label>
-            <input type="text" id="telefoneContato" name="telefoneContato" placeholder="(DDD) 0000-0000" />
+         
+          <div class="mb-3">
+            <label for="" class="form-label">Telefone para contato</label>
+            <input type="text" class="form-control" id="" placeholder="(DDD) 0000-0000" />
           </div>
         </div>
       </div>
-      <div>
-        <h5>CONDIÇÕES DE MORADIA</h5>
-        <label for="">Tipo de Residência:</label>
-        <div>
-          <input type="radio" name="tipoResidencia" id="propria" />
-          <label for="propria">Própria</label>
+     
+      <div class="mb-3">
+        <h5 class="sub-title">Condições de Moradia</h5>
+        <label for="" class="form-label">Tipo de Residência:</label>
+        <br>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoResidencia" id="propria" class="form-check-input" />
+          <label for="propria" class="form-check-label">Própria</label>
         </div>
-        <div>
-          <input type="radio" name="tipoResidencia" id="alugada" />
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoResidencia" id="alugada"  class="form-check-input" />
           <label for="alugada">Alugada</label>
         </div>
-        <div>
-          <input type="radio" name="tipoResidencia" id="cedida" />
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoResidencia" id="cedida"   class="form-check-input"/>
           <label for="cedida">Cedida</label>
         </div>
-        <div>
-          <input type="radio" name="tipoResidencia" id="ocupada" />
-          <label for="ocupada">Ocupada</label>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoResidencia" id="ocupada"  class="form-check-input" />
+          <label for="ocupada" class="form-check-label">Ocupada</label>
         </div>
-        <label for="">Tipo de Estrutura</label>
-        <div>
-          <input type="radio" name="tipoEstrutura" id="alvenaria" />
+        <br>
+        <label for="" class="form-label">Tipo de Estrutura:</label>
+        <br>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoEstrutura" id="alvenaria"  class="form-check-input" />
           <label for="alvenaria">Alvenaria</label>
         </div>
-        <div>
-          <input type="radio" name="tipoEstrutura" id="madeira" />
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoEstrutura" id="madeira"  class="form-check-input" />
           <label for="madeira">Madeira</label>
         </div>
-        <div>
-          <input type="radio" name="tipoEstrutura" id="mista" />
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipoEstrutura" id="mista"  class="form-check-input" />
           <label for="mista">Mista</label>
         </div>
-        <div>
+        <br>
+        <div class="">
           <label for="outrosMateriais">Outros Materiais:</label>
-          <input type="text" id="outrosMateriais" name="outrosMateriais" />
-        </div>
-        <label for="">Energia Elétrica</label>
-        <div>
-          <input type="radio" name="energiaEletrica" id="comMedidorProprio" />
+          <input type="text" id="outrosMateriais" name="outrosMateriais"  class="form-control" />
+        </div >
+        
+        <label for="" class="form-label">Energia Elétrica:</label>
+        <br>
+        <div class="form-check">
+          <input type="radio" name="energiaEletrica" id="comMedidorProprio"  class="form-check-input" />
           <label for="comMedidorProprio">Sim, com medidor próprio</label>
         </div>
-        <div>
-          <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado" />
+        <div class="form-check">
+          <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado"  class="form-check-input" />
           <label for="comMedidorCompartilhado">Sim, com medidor compartilhado</label>
         </div>
-        <div>
-          <input type="radio" name="energiaEletrica" id="semMedidor" />
+        <div class="form-check">
+          <input type="radio" name="energiaEletrica" id="semMedidor"  class="form-check-input" />
           <label for="semMedidor">Sim, sem medidor</label>
         </div>
-        <div>
-          <input type="radio" name="energiaEletrica" id="semEnergiaEletrica" />
+        <div class="form-check">
+          <input type="radio" name="energiaEletrica" id="semEnergiaEletrica"   class="form-check-input"/>
           <label for="semEnergiaEletrica">Não possui energia elétrica</label>
         </div>
-        <label for="">Abastecimento de Água</label>
-        <div>
-          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" />
+        <label for="" class="form-label">Abastecimento de Água:</label>
+        <div class="form-check">
+          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao"  class="form-check-input" />
           <label for="redeGeralDistribuicao">Rede geral de distribuição</label>
         </div>
-        <div>
-          <input type="radio" name="abastecimentoAgua" id="pocoArtesiano" />
+        <div class="form-check">
+          <input type="radio" name="abastecimentoAgua" id="pocoArtesiano"  class="form-check-input" />
           <label for="pocoArtesiano">Poço artesiano</label>
         </div>
-        <div>
-          <input type="radio" name="abastecimentoAgua" id="semAguaEncanada" />
+        <div class="form-check">
+          <input type="radio" name="abastecimentoAgua" id="semAguaEncanada"   class="form-check-input"/>
           <label for="semAguaEncanada">Não possui água encanada</label>
         </div>
         <div>
           <label for="outraFormaAgua">Outra forma:</label>
-          <input type="text" id="outraFormaAgua" name="outraFormaAgua" />
+          <input type="text" id="outraFormaAgua" name="outraFormaAgua"   class="form-control"/>
         </div>
-        <label for="">Escoamento Sanitário</label>
+        <label for="" class="form-label">Escoamento Sanitário:</label>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" />
+          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario"  class="form-check-input" />
           <label for="redeGeralDistribuicaoSanitario">Rede geral de distribuição</label>
         </div>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario" />
+          <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario"  class="form-check-input" />
           <label for="pocoArtesianoSanitario">Poço artesiano</label>
         </div>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="semEsgoto" />
+          <input type="radio" name="escoamentoSanitario" id="semEsgoto"  class="form-check-input" />
           <label for="semEsgoto">Não possui esgoto</label>
         </div>
         <div>
           <label for="outraFormaEsgoto">Outra forma:</label>
-          <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto" />
+          <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto"  class="form-control" />
         </div>
         <div>
-          <h5>Benefícios Sociais</h5>
-          <div>
-            <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais" />
+          <h5 class="sub-title">Benefícios Sociais</h5>
+          <div class="form-check">
+            <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais"  class="form-check-input" />
             <label for="naoBeneficiosSociais">Não</label>
           </div>
-          <div>
-            <input type="radio" name="beneficiosSociais" id="bolsaFamilia" />
+          <div >
+            <input type="radio" name="beneficiosSociais" id="bolsaFamilia"  class="form-check-input" />
             <label for="bolsaFamilia">Bolsa Família</label>
           </div>
           <div>
-            <input type="radio" name="beneficiosSociais" id="auxilioEstadual" />
+            <input type="radio" name="beneficiosSociais" id="auxilioEstadual"  class="form-check-input" />
             <label for="auxilioEstadual">Auxílio Estadual</label>
           </div>
           <div>
-            <input type="radio" name="beneficiosSociais" id="bpc" />
+            <input type="radio" name="beneficiosSociais" id="bpc"   class="form-check-input"/>
             <label for="bpc">Benefício de Prestação Continuada (BPC)</label>
           </div>
           <div>
             <label for="outroBeneficio">Outro:</label>
-            <input type="text" id="outroBeneficio" name="outroBeneficio" />
+            <input type="text" id="outroBeneficio" name="outroBeneficio"   class="form-control"/>
           </div>
         </div>
+        <br>
         <div>
-          <label for="">Situação do Cadastro Único</label>
-          <div>
-            <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico" />
+          <label for="" class="form-label"> Situação do Cadastro Único:</label>
+          <br>
+          <div class="form-check form-check-inline">
+            <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico"  class="form-check-input" />
             <label for="naoPossuiCadastroUnico">Não Possui</label>
           </div>
-          <div>
-            <input type="radio" name="situacaoCadastroUnico" id="atualizadoCadastroUnico" />
+          <div class="form-check form-check-inline">
+            <input type="radio" name="situacaoCadastroUnico" id="atualizadoCadastroUnico"  class="form-check-input" />
             <label for="atualizadoCadastroUnico">Atualizado</label>
           </div>
-          <div>
-            <input type="radio" name="situacaoCadastroUnico" id="desatualizadoCadastroUnico" />
+          <div class="form-check form-check-inline">
+            <input type="radio" name="situacaoCadastroUnico" id="desatualizadoCadastroUnico"  class="form-check-input" />
             <label for="desatualizadoCadastroUnico">Desatualizado</label>
           </div>
         </div>
-        <div>
-          <h5>Encaminhamentos Agendados</h5>
+        <br>
+        <div class="mb-3"> 
+          <h5 class="sub-title">Encaminhamentos Agendados</h5>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI"   class="form-check-input"/>
             <label for="encaminhamentoCNI">CNI</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCPF" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCPF"  class="form-check-input" />
             <label for="encaminhamentoCPF">CPF</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN"  class="form-check-input" />
             <label for="encaminhamentoRCN">RCN</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA"  class="form-check-input" />
             <label for="encaminhamentoCarteiraCIPTEA">Carteira CIPTEA</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD"  class="form-check-input"/>
             <label for="encaminhamentoCarteiraPCD">Carteira PCD</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" />
+            <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" class="form-check-input" />
             <label for="insercaoAtualizacaoCADUNICO">Inserção/Atualização CADÚNICO</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" />
+            <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" class="form-check-input" />
             <label for="projetoPermanecerSEDUC">Projeto Permanecer - SEDUC (em casos de evasão escolar)</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" />
+            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" class="form-check-input" />
             <label for="cursosCapacitacaoProfissional">Cursos de Capacitação Profissional</label>
           </div>
         </div>
-      </div>      
+      </div>     
+      <button><a href="/docCivil.html">Avançar</a></button> 
       </div>
+      
+    </div>
     </form>
+  
   </body>
 </html>
