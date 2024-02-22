@@ -4,35 +4,76 @@
 
 <div class="container">
     <h5 class="sub-title">Tabela socioeconomico</h5>
-    <table id="dynamic-table" class="">
+    <div class="table-responsive">
+    <table id="dynamic-table" class="table">
         <thead>
             <tr>
                 <th>Ord.</th>
-                <th>Nome completo</th>
+                <th style="width: 12%;">Nome completo</th>
                 <th>Idade</th>
-                <th>Vinculo Familiar (*)</th>
+                <th style="width: 14%;">Vinculo Familiar (*)</th>
                 <th>Escolaridade(**)</th>
-                <th>Identificar PCD conforme o código(***)</th>
+                <th style="width: 10%; font-size: 15px;" >Identificar PCD conforme o código(***)</th>
                 <th>Necessidade de Documentação(****)</th>
             </tr>
         </thead>
+
         <tbody>
+
            
                 <td>1</td>
+                <td><input type="text" class="" style="width: 100%;"></td>
                 <td><input type="text" class=""></td>
                 <td><input type="text" class=""></td>
                 <td><input type="text" class=""></td>
                 <td><input type="text" class=""></td>
-                <td><input type="text" class=""></td>
-                <td><input type="text" class=""></td>
+                <td style="width: 56%;"> 
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CIN/RG</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CPF</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA PCD</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">RCN</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA CIPTEA</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA IDOSO</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">RNM</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">OUTRA</label>
+                  </div>
+
+
+                </td>
             
         </tbody>
     </table>
 </div>
+</div>
+<!--
 <div class="mb-3">
     <h5 class="sub-title">Legenda</h5>
     <p>Aqui você pode adicionar uma legenda para explicar o conteúdo da tabela ou qualquer informação adicional que seja relevante.</p>
 </div>
+-->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const tableBody = document.querySelector("#dynamic-table tbody");
@@ -49,7 +90,42 @@
                     <td><input type="text" class=""></td>
                     <td><input type="text" class=""></td>
                     <td><input type="text" class=""></td>
-                    <td><input type="text" class=""></td>
+                    <td style="width: 56%;"> 
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CIN/RG</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CPF</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA PCD</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">RCN</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA CIPTEA</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">CARTEIRA IDOSO</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">RNM</label>
+                  </div>
+                    <div class="form-check form-check-inline">
+                    <input type="radio" name="" id=""  class="form-check-input" />
+                    <label for="">OUTRA</label>
+                  </div>
+
+
+                </td>
                 `;
                 tableBody.appendChild(newRow);
             }
