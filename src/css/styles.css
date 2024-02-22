@@ -6,7 +6,7 @@ body {
   background-color: #f0f8ff;
   font-family: sans-serif;
   font-size: 1em;
-  color: #59429d;
+  color: #0f3d46;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,12 +16,12 @@ body {
 
 .title h3 {
   font-family: sans-serif;
-  color: #380b61;
+  color: #135763;
   font-weight: bolder;
 }
 h5 {
   font-family: sans-serif;
-  color: #380b61;
+  color: #113e46;
   text-align: center;
 }
 .form-label {
@@ -31,7 +31,7 @@ input {
   margin-bottom: 10px;
 }
 .container {
-  background-color: #d1e4f7;
+  background-color: #13576349;
   border-radius: 10px;
   max-width: 100%;
   width: 90%;
@@ -58,7 +58,7 @@ input {
   }
 }
 button {
-  background-color: #59429d;
+  background-color: #37808d;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -74,6 +74,6 @@ button a {
   text-decoration: none; 
 }
 button:hover {
-  background-color: #4995e0; 
+  background-color: #55a2af; 
   transition: 0.5s;
 }
