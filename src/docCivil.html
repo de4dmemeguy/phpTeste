@@ -78,7 +78,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const tableBody = document.querySelector("#dynamic-table tbody");
 
-        // Adiciona uma nova linha quando a última célula da última linha é preenchida
+      
         tableBody.addEventListener("input", function(event) {
             const target = event.target;
             if (target.tagName === "INPUT" && target.closest("tr") === tableBody.lastElementChild) {

@@ -53,11 +53,11 @@ label{
 }
 #dynamic-table input[type="text"] {
     width: 100%;
-    padding: 0; /* Removendo o preenchimento */
+    padding: 0;
     margin: 0;
-    border: none; /* Removendo as bordas */
-    border-bottom: 1px solid #ccc; /* Adicionando apenas a borda inferior */
-    outline: none; /* Removendo o contorno ao focar */
-    background-color: transparent; /* Fundo transparente */
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    outline: none; 
+    background-color: transparent; 
     box-sizing: border-box;
 }
