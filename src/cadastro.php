@@ -8,44 +8,44 @@
     <h3>Formulário - Cidadania e Segurança</h3>
   </div>
 
-<form action="#" id="myForm">
+<form action="processa.php" method="post" id="myForm">
 <div class="container-enc">
 <div class="mb-3"> 
     <h5 class="sub-title">Encaminhamentos</h5>
     <div class="">
-      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI"   class="form-check-input"/>
+      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI" value="CPF"  class="form-check-input"/>
       <label for="encaminhamentoCNI">CPF</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN"  class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN" value="RCN" class="form-check-input" />
       <label for="encaminhamentoRCN">RCN</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA"  class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA" value="Carteira CIPTEA" class="form-check-input" />
       <label for="encaminhamentoCarteiraCIPTEA">Carteira CIPTEA</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD"  class="form-check-input"/>
+      <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD" value="Carteira do Idoso" class="form-check-input"/>
       <label for="encaminhamentoCarteiraPCD">Carteira Do Idoso</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" value="Inserção/Atualização CADÚNICO" class="form-check-input" />
       <label for="insercaoAtualizacaoCADUNICO">Inserção/Atualização CADÚNICO</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" value="Projeto Permanecer - SEDUC (em casos de evasão escolar)" class="form-check-input" />
       <label for="projetoPermanecerSEDUC">Projeto Permanecer - SEDUC (em casos de evasão escolar)</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Cursos de Defesa Pessoal Para Mulheres" class="form-check-input" />
       <label for="cursosCapacitacaoProfissional">Cursos de Defesa Pessoal Para Mulheres</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Programa Empreender no Envelhecer (em casos de microcrédito para idoso)" class="form-check-input" />
       <label for="cursosCapacitacaoProfissional">Programa Empreender no Envelhecer (em casos de microcrédito para idoso)</label>
     </div>
     <div>
-      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" class="form-check-input" />
+      <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Idoso em Movimento(em caso de atividade físicas em grupos de idosos)" class="form-check-input" />
       <label for="cursosCapacitacaoProfissional">Idoso em Movimento(em caso de atividade físicas em grupos de idosos)</label>
     </div>
     <br>

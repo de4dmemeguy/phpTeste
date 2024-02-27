@@ -1,3 +1,4 @@
+
 <?php
  
 
@@ -49,24 +50,27 @@
       $outros_beneficios = $_POST['outroBeneficio'];
       $cad_unico = $_POST['situacaoCadastroUnico'];
       $doc_civil = $_POST['documentacaocivil'];
+      $encaminhamentos = $_POST['encaminhamentosAgendados'];
+      $tecnico_responsavel = $_POST['nomeCompletoTec'];
 
       $result = mysqli_query($conexao, "INSERT INTO pessoa(nome, data_nasc, cpf, numero_nis, genero, 
       estado_civil, outro_estado_civil, cor_raca, nacionalidade, naturalidade, escolaridade, profissao, 
       renda, ocupacao_profissional, outra_ocupacao, end_cep, end_rua, end_num, end_bairro, end_p_referencia, 
       telefone, oferta_whatsapp, tipo_residencia, estrutura_residencia, outros_materiais, energia_eletrica, 
       abast_agua, outra_forma_agua, escoa_sanitario, outra_forma_esgoto, beneficios_sociais, 
-      outros_beneficios, sit_cad_unico, docum_civil)
+      outros_beneficios, sit_cad_unico, docum_civil, encaminhamentos, tecnico_responsavel)
       VALUES ('$nome', '$data_nasc','$cpf', '$nis', '$genero', '$estado_civil', '$outro_Estado_civil', 
       '$cor_raca', '$nacionalidade', '$naturalidade', '$escolaridade', '$profissao', '$renda', '$ocupacao_profissional', 
       '$outra_ocupacao', '$cep', '$rua', '$numero', '$bairro', '$referencia', '$telefone', '$whatsapp', 
       '$tipo_reside', '$tipo_estrut', '$outras_estrut', '$energia_eletrica', '$abastece_agua', '$outro_abastecimento', 
-      '$escoa_sanitario', '$outra_sanitario', '$benef_sociais', '$outros_beneficios', '$cad_unico', '$doc_civil')");
+      '$escoa_sanitario', '$outra_sanitario', '$benef_sociais', '$outros_beneficios', '$cad_unico', '$doc_civil', 
+      '$encaminhamentos', '$tecnico_responsavel')");
 
-      
+      header("Location: formulario_enviado.php");
+      exit;      
+
   }
-?>
-
-
+?> 
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -415,6 +419,10 @@
         <div class="mb-3">
           <h5 class="sub-title">Necessidades de Documentação Civil</h5>
           <div class="form-check">
+            <input type="radio" name="documentacaocivil" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" />
+            <label for="cni">SEM NECESSIDADE</label>
+          </div>
+          <div class="form-check">
             <input type="radio" name="documentacaocivil" id="cni" value="CNI/RG" class="form-check-input" />
             <label for="cni">CNI/RG</label>
           </div>
@@ -443,50 +451,60 @@
             <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
           </div>
         </div>
-
-        <!--
         <div class="mb-3"> 
-          <h5 class="sub-title">Encaminhamentos Agendados</h5>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI"   class="form-check-input"/>
-            <label for="encaminhamentoCNI">CNI</label>
+            <h5 class="sub-title">Encaminhamentos</h5>
+          <div class="form-check">
+            <input type="radio" name="encaminhamentosAgendados" id="semNecessidade" value="SEM NECESSIDADE DE ENCAMINHAMENTO" class="form-check-input" />
+            <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
+          </div>
+          <div class="">
+          <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI" value="CPF"  class="form-check-input"/>
+          <label for="encaminhamentoCNI">CPF</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCPF"  class="form-check-input" />
-            <label for="encaminhamentoCPF">CPF</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN"  class="form-check-input" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN" value="RCN" class="form-check-input" />
             <label for="encaminhamentoRCN">RCN</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA"  class="form-check-input" />
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA" value="Carteira CIPTEA" class="form-check-input" />
             <label for="encaminhamentoCarteiraCIPTEA">Carteira CIPTEA</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD"  class="form-check-input"/>
-            <label for="encaminhamentoCarteiraPCD">Carteira PCD</label>
+            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD" value="Carteira do Idoso" class="form-check-input"/>
+            <label for="encaminhamentoCarteiraPCD">Carteira Do Idoso</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" class="form-check-input" />
+            <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" value="Inserção/Atualização CADÚNICO" class="form-check-input" />
             <label for="insercaoAtualizacaoCADUNICO">Inserção/Atualização CADÚNICO</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" class="form-check-input" />
+            <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" value="Projeto Permanecer - SEDUC (em casos de evasão escolar)" class="form-check-input" />
             <label for="projetoPermanecerSEDUC">Projeto Permanecer - SEDUC (em casos de evasão escolar)</label>
           </div>
           <div>
-            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" class="form-check-input" />
-            <label for="cursosCapacitacaoProfissional">Cursos de Capacitação Profissional</label>
+            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Cursos de Defesa Pessoal Para Mulheres" class="form-check-input" />
+            <label for="cursosCapacitacaoProfissional">Cursos de Defesa Pessoal Para Mulheres</label>
           </div>
+          <div>
+            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Programa Empreender no Envelhecer (em casos de microcrédito para idoso)" class="form-check-input" />
+            <label for="cursosCapacitacaoProfissional">Programa Empreender no Envelhecer (em casos de microcrédito para idoso)</label>
+          </div>
+          <div>
+            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Idoso em Movimento(em caso de atividade físicas em grupos de idosos)" class="form-check-input" />
+            <label for="cursosCapacitacaoProfissional">Idoso em Movimento(em caso de atividade físicas em grupos de idosos)</label>
+          </div>
+          <br>
+          <div class="mb-3">
+                <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
+                <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
+            </div>
         </div>
-      </div> 
-      -->
-
-      <button><a href="tabelasocio.php">Avançar</a></button>
+        <button type="submit" name="submit" id="submit">Enviar</button>
+        <!-- <input type="submit" name="submit" id="submit"> -->
+      <!-- <button><a href="cadastro.php">Avançar</a></button> -->
       
       </div>
-      <!--<input type="submit" name="submit" id="submit"> -->
+      <!-- <input type="submit" name="submit" id="submit"> -->
     </div>
   </form>
 

@@ -75,8 +75,8 @@
                     </tbody>
                 </table>
             </div>
-            <input type="submit" name="submit" id="submit">
-            <!-- <button><a href="cadastro.php">Avançar</a></button> -->
+            <!-- <input type="submit" name="submit" id="submit"> -->
+            <button><a href="cadastro.php">Avançar</a></button>
         </div>
     </form>
     <div class="legenda">
