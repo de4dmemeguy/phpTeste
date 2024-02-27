@@ -451,6 +451,144 @@
             <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
           </div>
         </div>
+
+        <div class="mb-3"  id="dynamic-content">
+          <h5>Socioêconomico</h5>
+          <label for="nomeCompletoSocio" class="form-label">Nome Completo:</label>
+          <input type="text" id="nomesocio" name="nomesocio" class="form-control" required />
+          <label for="nomeCompletoSocio" class="form-label">Digite sua Idade:</label>
+          <input type="text" id="nomesocio" name="nomesocio" class="form-control" required/>
+
+          <label for="" class="form-label">Vinculo Familiar:</label>        
+          <select id="relacao" name="relacao" class="form-select" required>
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="Pessoa de referência">Pessoa de referência</option>
+           <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+         <option value="Filho(a)">Filho(a)</option>
+           <option value="Enteado(a)">Enteado(a)</option>
+          <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
+           <option value="Pai/Mãe">Pai/Mãe</option>
+            <option value="Sogro(a)">Sogro(a)</option>
+           <option value="Irmão/Irmã">Irmão/Irmã</option>
+            <option value="Genro/Nora">Genro/Nora</option>
+              <option value="Outro Parente">Outro Parente</option>
+          <option value="Não Parente">Não Parente</option>
+            </select>
+
+
+            <label for="" class="form-label">Escolaridade:</label>        
+<select id="escolaridade" name="escolaridade" class="form-select" required>
+<option value="" selected disabled>Selecione uma opção</option>
+    <option value="Não Alfabetizado">Não Alfabetizado</option>
+    <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+    <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+    <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+    <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+    <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+    <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+</select>
+
+
+<label for="" class="form-label">Tipo de PCD:</label>        
+<select id="deficiencia" name="deficiencia" class="form-select" required>
+<option value="" selected disabled>Selecione uma opção</option>
+    <option value="Visual">Visual</option>
+    <option value="Auditiva">Auditiva</option>
+    <option value="Mental">Mental</option>
+    <option value="Física">Física</option>
+    <option value="Múltipla">Múltipla</option>
+</select>
+
+<label for="" class="form-label">Necessidade de Documentação:</label>        
+<select id="documentacao" name="documentacao" class="form-select" required>
+<option value="" selected disabled>Selecione uma opção</option>
+    <option value="CIN/RG">CIN/RG</option>
+    <option value="CPF">CPF</option>
+    <option value="CARTEIRA PCD">CARTEIRA PCD</option>
+    <option value="RCN">RCN</option>
+    <option value="CARTEIRA CIPTEA">CARTEIRA CIPTEA</option>
+    <option value="CARTEIRA IDOSO">CARTEIRA IDOSO</option>
+    <option value="RNM">RNM</option>
+    <option value="OUTRA">OUTRA</option>
+</select>
+<br>       
+
+  </div>
+  <button class="btn-cad" type="button" onclick="adicionarLinha()" style="font-size:15px;  ">Adicionar Novo Cadastro</button>
+
+
+<script>
+  function adicionarLinha() {
+    const dynamicContent = document.querySelector("#dynamic-content");
+    const newRow = document.createElement("div");
+    newRow.classList.add("mb-3");
+    newRow.innerHTML = `
+      <h5>Socioêconomico</h5>
+      <label for="nomeCompletoSocio" class="form-label">Nome Completo:</label>
+      <input type="text" id="nomesocio" name="nomesocio" class="form-control" required />
+      <label for="idadeSocio" class="form-label">Digite sua Idade:</label>
+      <input type="text" id="idadeSocio" name="idadeSocio" class="form-control" required />
+      <label for="relacao" class="form-label">Vínculo Familiar:</label>
+      <select id="relacao" name="relacao" class="form-select" required>
+        <option value="" selected disabled>Selecione uma opção</option>
+        <option value="Pessoa de referência">Pessoa de referência</option>
+        <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+        <option value="Filho(a)">Filho(a)</option>
+        <option value="Enteado(a)">Enteado(a)</option>
+        <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
+        <option value="Pai/Mãe">Pai/Mãe</option>
+        <option value="Sogro(a)">Sogro(a)</option>
+        <option value="Irmão/Irmã">Irmão/Irmã</option>
+        <option value="Genro/Nora">Genro/Nora</option>
+        <option value="Outro Parente">Outro Parente</option>
+        <option value="Não Parente">Não Parente</option>
+      </select>
+      <label for="escolaridade" class="form-label">Escolaridade:</label>
+      <select id="escolaridade" name="escolaridade" class="form-select" required>
+        <option value="" selected disabled>Selecione uma opção</option>
+        <option value="Não Alfabetizado">Não Alfabetizado</option>
+        <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+        <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+        <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+        <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+        <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+        <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+      </select>
+      <label for="deficiencia" class="form-label">Tipo de PCD:</label>
+      <select id="deficiencia" name="deficiencia" class="form-select" required>
+        <option value="" selected disabled>Selecione uma opção</option>
+        <option value="Visual">Visual</option>
+        <option value="Auditiva">Auditiva</option>
+        <option value="Mental">Mental</option>
+        <option value="Física">Física</option>
+        <option value="Múltipla">Múltipla</option>
+      </select>
+      <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
+      <select id="documentacao" name="documentacao" class="form-select" required>
+        <option value="" selected disabled>Selecione uma opção</option>
+        <option value="CIN/RG">CIN/RG</option>
+        <option value="CPF">CPF</option>
+        <option value="CARTEIRA PCD">CARTEIRA PCD</option>
+        <option value="RCN">RCN</option>
+        <option value="CARTEIRA CIPTEA">CARTEIRA CIPTEA</option>
+        <option value="CARTEIRA IDOSO">CARTEIRA IDOSO</option>
+        <option value="RNM">RNM</option>
+        <option value="OUTRA">OUTRA</option>
+      </select>
+      <br>
+      <button type="button" onclick="removerLinha(this)" style="font-size:15px;" >Remover Cadastro</button>
+    `;
+    dynamicContent.appendChild(newRow);
+  }
+  function removerLinha(button) {
+    const rowToRemove = button.parentNode;
+    rowToRemove.parentNode.removeChild(rowToRemove);
+  }
+</script>
+
+        
+    
+  
         <div class="mb-3"> 
             <h5 class="sub-title">Encaminhamentos</h5>
           <div class="form-check">
@@ -499,6 +637,8 @@
                 <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
             </div>
         </div>
+
+
         <button type="submit" name="submit" id="submit">Enviar</button>
         <!-- <input type="submit" name="submit" id="submit"> -->
       <!-- <button><a href="cadastro.php">Avançar</a></button> -->
@@ -507,7 +647,7 @@
       <!-- <input type="submit" name="submit" id="submit"> -->
     </div>
   </form>
-
+ 
 </body>
 
 </html>
