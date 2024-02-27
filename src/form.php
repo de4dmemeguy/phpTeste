@@ -1,76 +1,102 @@
 
 <?php
- 
 
-  if(isset($_POST['submit']))
-  {
-      
-      
-      // print_r('Nome: '. $_POST['nome']);
-      // print_r('</br>');
-      // print_r('Data Nasc: '. $_POST['dataNascimento']);
-      // print_r('</br>');
-      // print_r('CPF: '. $_POST['cpf']);
-      // print_r('</br>');
-      
+if(isset($_POST['submit']))
+{
+    // Inclua o arquivo de configuração do banco de dados
+    include_once('config.php');
 
-      include_once('config.php');
+    // Prepare a query SQL para inserção de dados
+    $sql = "INSERT INTO pessoa (nome, data_nasc, cpf, numero_nis, genero, estado_civil, outro_estado_civil, 
+cor_raca, nacionalidade, naturalidade, escolaridade, profissao, renda, ocupacao_profissional, outra_ocupacao, 
+end_cep, end_rua, end_num, end_bairro, end_p_referencia, telefone, oferta_whatsapp, tipo_residencia, 
+estrutura_residencia, outros_materiais, energia_eletrica, abast_agua, outra_forma_agua, escoa_sanitario, 
+outra_forma_esgoto, beneficios_sociais, outros_beneficios, sit_cad_unico, docum_civil, 
+nome_familiar, idade_familiar, vinculo_familiar, escolaridade_familiar, tipo_pcd, 
+neces_doc_familiar, encaminhamentos, tecnico_responsavel) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-      $nome = $_POST['nome'];
-      $data_nasc = $_POST['dataNascimento'];
-      $cpf = $_POST['cpf'];
-      $nis = $_POST['numNIS'];
-      $genero = $_POST['genero'];
-      $estado_civil = $_POST['estadoCivil'];
-      $outro_Estado_civil = $_POST['outroEstadoCivil'];
-      $cor_raca = $_POST['cor'];
-      $nacionalidade = $_POST['nacionalidade'];
-      $naturalidade = $_POST['naturalidade'];
-      $escolaridade = $_POST['escolaridade'];
-      $profissao = $_POST['profissao'];
-      $renda = $_POST['renda'];
-      $ocupacao_profissional = $_POST['ocupacao'];
-      $outra_ocupacao = $_POST['outraOcupacao'];
-      $cep = $_POST['cep'];
-      $rua = $_POST['rua'];
-      $numero = $_POST['numero'];
-      $bairro = $_POST['bairro'];
-      $referencia = $_POST['referencia'];
-      $telefone = $_POST['telefone'];
-      $whatsapp = $_POST['aceitaWhatsapp'];
-      $tipo_reside = $_POST['tipoResidencia'];
-      $tipo_estrut = $_POST['tipoEstrutura'];
-      $outras_estrut = $_POST['outrosMateriais'];
-      $energia_eletrica = $_POST['energiaEletrica'];
-      $abastece_agua = $_POST['abastecimentoAgua'];
-      $outro_abastecimento = $_POST['outraFormaAgua'];
-      $escoa_sanitario = $_POST['escoamentoSanitario'];
-      $outra_sanitario = $_POST['outraFormaEsgoto'];
-      $benef_sociais = $_POST['beneficiosSociais'];
-      $outros_beneficios = $_POST['outroBeneficio'];
-      $cad_unico = $_POST['situacaoCadastroUnico'];
-      $doc_civil = $_POST['documentacaocivil'];
-      $encaminhamentos = $_POST['encaminhamentosAgendados'];
-      $tecnico_responsavel = $_POST['nomeCompletoTec'];
+    // Preparar a instrução SQL
+    $stmt = $conexao->prepare($sql);
 
-      $result = mysqli_query($conexao, "INSERT INTO pessoa(nome, data_nasc, cpf, numero_nis, genero, 
-      estado_civil, outro_estado_civil, cor_raca, nacionalidade, naturalidade, escolaridade, profissao, 
-      renda, ocupacao_profissional, outra_ocupacao, end_cep, end_rua, end_num, end_bairro, end_p_referencia, 
-      telefone, oferta_whatsapp, tipo_residencia, estrutura_residencia, outros_materiais, energia_eletrica, 
-      abast_agua, outra_forma_agua, escoa_sanitario, outra_forma_esgoto, beneficios_sociais, 
-      outros_beneficios, sit_cad_unico, docum_civil, encaminhamentos, tecnico_responsavel)
-      VALUES ('$nome', '$data_nasc','$cpf', '$nis', '$genero', '$estado_civil', '$outro_Estado_civil', 
-      '$cor_raca', '$nacionalidade', '$naturalidade', '$escolaridade', '$profissao', '$renda', '$ocupacao_profissional', 
-      '$outra_ocupacao', '$cep', '$rua', '$numero', '$bairro', '$referencia', '$telefone', '$whatsapp', 
-      '$tipo_reside', '$tipo_estrut', '$outras_estrut', '$energia_eletrica', '$abastece_agua', '$outro_abastecimento', 
-      '$escoa_sanitario', '$outra_sanitario', '$benef_sociais', '$outros_beneficios', '$cad_unico', '$doc_civil', 
-      '$encaminhamentos', '$tecnico_responsavel')");
+    // Verifica se a preparação da instrução SQL foi bem-sucedida
+    if ($stmt) {
+    // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
+    $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
+    $estado_civil, $outro_Estado_civil, $cor_raca, $nacionalidade, $naturalidade, $escolaridade, $profissao, 
+    $renda, $ocupacao_profissional, $outra_ocupacao, $cep, $rua, $numero, $bairro, $referencia, $telefone, 
+    $whatsapp, $tipo_reside, $tipo_estrut, $outras_estrut, $energia_eletrica, $abastece_agua, 
+    $outro_abastecimento, $escoa_sanitario, $outra_sanitario, $benef_sociais, $outros_beneficios, 
+    $cad_unico, $doc_civil, $nome_familiar, $idade_familiar, $vinculo_familiar, $escolaridade_familiar, 
+    $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel);
 
-      header("Location: formulario_enviado.php");
-      exit;      
+        // Itera sobre os valores recebidos dos campos do formulário
+        for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
+            // Atribui os valores dos campos do formulário às variáveis correspondentes
+            $nome = $_POST['nome'];
+            $data_nasc = $_POST['dataNascimento'];
+            $cpf = $_POST['cpf'];
+            $nis = $_POST['numNIS'];
+            $genero = $_POST['genero'];
+            $estado_civil = $_POST['estadoCivil'];
+            $outro_Estado_civil = $_POST['outroEstadoCivil'];
+            $cor_raca = $_POST['cor'];
+            $nacionalidade = $_POST['nacionalidade'];
+            $naturalidade = $_POST['naturalidade'];
+            $escolaridade = $_POST['escolaridade'];
+            $profissao = $_POST['profissao'];
+            $renda = $_POST['renda'];
+            $ocupacao_profissional = $_POST['ocupacao'];
+            $outra_ocupacao = $_POST['outraOcupacao'];
+            $cep = $_POST['cep'];
+            $rua = $_POST['rua'];
+            $numero = $_POST['numero'];
+            $bairro = $_POST['bairro'];
+            $referencia = $_POST['referencia'];
+            $telefone = $_POST['telefone'];
+            $whatsapp = $_POST['aceitaWhatsapp'];
+            $tipo_reside = $_POST['tipoResidencia'];
+            $tipo_estrut = $_POST['tipoEstrutura'];
+            $outras_estrut = $_POST['outrosMateriais'];
+            $energia_eletrica = $_POST['energiaEletrica'];
+            $abastece_agua = $_POST['abastecimentoAgua'];
+            $outro_abastecimento = $_POST['outraFormaAgua'];
+            $escoa_sanitario = $_POST['escoamentoSanitario'];
+            $outra_sanitario = $_POST['outraFormaEsgoto'];
+            $benef_sociais = $_POST['beneficiosSociais'];
+            $outros_beneficios = $_POST['outroBeneficio'];
+            $cad_unico = $_POST['situacaoCadastroUnico'];
+            $doc_civil = $_POST['documentacaocivil'];
 
-  }
-?> 
+            // Campos relacionados ao familiar
+            $nome_familiar = $_POST['nomesocio'][$i];
+            $idade_familiar = $_POST['idadesocio'][$i];
+            $vinculo_familiar = $_POST['relacao'][$i];
+            $escolaridade_familiar = $_POST['escolaridade'][$i];
+            $tipo_pcd = $_POST['deficiencia'][$i];
+            $neces_docum_familiar = $_POST['documentacao'][$i];
+            $encaminhamentos = $_POST['encaminhamentosAgendados'][$i];
+            $tecnico_responsavel = $_POST['nomeCompletoTec'][$i];
+
+            // Executa a instrução SQL
+            $stmt->execute();
+        }
+
+        // Fecha a instrução SQL
+        $stmt->close();
+    } else {
+        echo "Erro na preparação da instrução SQL: " . $conexao->error;
+    }
+
+    // Fecha a conexão com o banco de dados
+    $conexao->close();
+
+    // Redireciona para a página de confirmação após o envio do formulário
+    header("Location: formulario_enviado.php");
+    exit;      
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -454,30 +480,29 @@
 
         <div class="mb-3"  id="dynamic-content">
           <h5>Socioêconomico</h5>
-          <label for="nomeCompletoSocio" class="form-label">Nome Completo:</label>
-          <input type="text" id="nomesocio" name="nomesocio" class="form-control" required />
-          <label for="nomeCompletoSocio" class="form-label">Digite sua Idade:</label>
-          <input type="text" id="nomesocio" name="nomesocio" class="form-control" required/>
-
-          <label for="" class="form-label">Vinculo Familiar:</label>        
-          <select id="relacao" name="relacao" class="form-select" required>
+          <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
+          <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control" />
+          <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
+          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control" />
+          <label for="" class="form-label">Vinculo Familiar:</label>
+          <select id="relacao1" name="relacao[]" class="form-select" required>
           <option value="" selected disabled>Selecione uma opção</option>
-          <option value="Pessoa de referência">Pessoa de referência</option>
-           <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
-         <option value="Filho(a)">Filho(a)</option>
-           <option value="Enteado(a)">Enteado(a)</option>
+          <option value="Pessoa de referência">Pessoa de referência</option>  
+          <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+          <option value="Filho(a)">Filho(a)</option>
+          <option value="Enteado(a)">Enteado(a)</option>
           <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
-           <option value="Pai/Mãe">Pai/Mãe</option>
-            <option value="Sogro(a)">Sogro(a)</option>
-           <option value="Irmão/Irmã">Irmão/Irmã</option>
-            <option value="Genro/Nora">Genro/Nora</option>
-              <option value="Outro Parente">Outro Parente</option>
+          <option value="Pai/Mãe">Pai/Mãe</option>
+          <option value="Sogro(a)">Sogro(a)</option>
+          <option value="Irmão/Irmã">Irmão/Irmã</option>
+          <option value="Genro/Nora">Genro/Nora</option>
+          <option value="Outro Parente">Outro Parente</option>
           <option value="Não Parente">Não Parente</option>
             </select>
 
 
             <label for="" class="form-label">Escolaridade:</label>        
-<select id="escolaridade" name="escolaridade" class="form-select" required>
+<select id="escolaridade1" name="escolaridade[]" class="form-select" required>
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="Não Alfabetizado">Não Alfabetizado</option>
     <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -490,8 +515,9 @@
 
 
 <label for="" class="form-label">Tipo de PCD:</label>        
-<select id="deficiencia" name="deficiencia" class="form-select" required>
+<select id="deficiencia1" name="deficiencia[]" class="form-select" required>
 <option value="" selected disabled>Selecione uma opção</option>
+    <option value="Sem Deficiência">Sem Deficiência</option>
     <option value="Visual">Visual</option>
     <option value="Auditiva">Auditiva</option>
     <option value="Mental">Mental</option>
@@ -500,8 +526,9 @@
 </select>
 
 <label for="" class="form-label">Necessidade de Documentação:</label>        
-<select id="documentacao" name="documentacao" class="form-select" required>
+<select id="documentacao1" name="documentacao[]" class="form-select" required>
 <option value="" selected disabled>Selecione uma opção</option>
+    <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
     <option value="CIN/RG">CIN/RG</option>
     <option value="CPF">CPF</option>
     <option value="CARTEIRA PCD">CARTEIRA PCD</option>
@@ -518,18 +545,23 @@
 
 
 <script>
+  let contador = 1;
+
   function adicionarLinha() {
+
+    contador++;
+
     const dynamicContent = document.querySelector("#dynamic-content");
     const newRow = document.createElement("div");
     newRow.classList.add("mb-3");
     newRow.innerHTML = `
       <h5>Socioêconomico</h5>
       <label for="nomeCompletoSocio" class="form-label">Nome Completo:</label>
-      <input type="text" id="nomesocio" name="nomesocio" class="form-control" required />
-      <label for="idadeSocio" class="form-label">Digite sua Idade:</label>
-      <input type="text" id="idadeSocio" name="idadeSocio" class="form-control" required />
-      <label for="relacao" class="form-label">Vínculo Familiar:</label>
-      <select id="relacao" name="relacao" class="form-select" required>
+      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control" required />
+        <label for="idadeSocio" class="form-label">Digite sua Idade:</label>
+        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control" required />
+        <label for="relacao" class="form-label">Vínculo Familiar:</label>
+        <select id="relacao${contador}" name="relacao[]" class="form-select" required>
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Pessoa de referência">Pessoa de referência</option>
         <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
@@ -544,7 +576,7 @@
         <option value="Não Parente">Não Parente</option>
       </select>
       <label for="escolaridade" class="form-label">Escolaridade:</label>
-      <select id="escolaridade" name="escolaridade" class="form-select" required>
+      <select id="escolaridade${contador}" name="escolaridade[]" class="form-select" required>
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Não Alfabetizado">Não Alfabetizado</option>
         <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -555,8 +587,9 @@
         <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
       </select>
       <label for="deficiencia" class="form-label">Tipo de PCD:</label>
-      <select id="deficiencia" name="deficiencia" class="form-select" required>
+      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select" required>
         <option value="" selected disabled>Selecione uma opção</option>
+        <option value="Sem Deficiência">Sem Deficiência</option>
         <option value="Visual">Visual</option>
         <option value="Auditiva">Auditiva</option>
         <option value="Mental">Mental</option>
@@ -564,8 +597,9 @@
         <option value="Múltipla">Múltipla</option>
       </select>
       <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
-      <select id="documentacao" name="documentacao" class="form-select" required>
+      <select id="documentacao${contador}" name="documentacao[]" class="form-select" required>
         <option value="" selected disabled>Selecione uma opção</option>
+        <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
         <option value="CIN/RG">CIN/RG</option>
         <option value="CPF">CPF</option>
         <option value="CARTEIRA PCD">CARTEIRA PCD</option>
