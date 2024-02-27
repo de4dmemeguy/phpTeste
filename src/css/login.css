@@ -7,18 +7,29 @@
     font-weight: 400;
   }
   body {
-    background-color: #f0f8ff;
     font-family: sans-serif; 
-    
-   
-    
- 
-  }
-  .login{
-    height: 100vh;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+
+  }
+  .logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  
+  }
+  .login{
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+   
+    max-width: 500px; 
+    width: 100%; 
   }
   .container-login{     
     display: flex;
@@ -29,6 +40,8 @@
     padding: 100px;
     border-radius: 16px;
     box-shadow: 0 4px 10px 0 #00000020;
+    max-width: 500px;
+    margin: 0 auto;
   
   }
   .login-title{
@@ -79,7 +92,7 @@
 
      }
 
-     .button{
+     .inputSubmit{
       width: 256px;
         border-radius: 4px ;
         font-weight: 600;

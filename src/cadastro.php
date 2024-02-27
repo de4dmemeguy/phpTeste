@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="css/cadastro.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-
+<a href="home.php">Sair</a>
 <div class="title">
     <h3>Formulário - Cidadania e Segurança</h3>
   </div>
@@ -54,6 +54,8 @@
           <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
       </div>
   </div>
-  <button><a href="">Enviar</a></button>
+  <input type="submit" name="submit" id="submit">
+  <!-- <button type="submit">Enviar</button> -->
+  <!-- <button><a href="">Enviar</a></button> -->
 </div> 
 </form>
