@@ -5,6 +5,11 @@
     $dbPassword = '@itamarati30';
     $dbName = 'cidadania_seguranca';
 
+    // $dbHost = 'Localhost';
+    // $dbUsername = 'ssp';
+    // $dbPassword = '@SSP2019ra';
+    // $dbName = 'cidadania_seguranca';
+
 
     $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 

@@ -44,7 +44,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             $cor_raca = $_POST['cor'];
             $nacionalidade = $_POST['nacionalidade'];
             $naturalidade = $_POST['naturalidade'];
-            $escolaridade = $_POST['escolaridade'];
+            $escolaridade = $_POST['escolaridadepessoa'];
             $profissao = $_POST['profissao'];
             $renda = $_POST['renda'];
             $ocupacao_profissional = $_POST['ocupacao'];
@@ -73,11 +73,11 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             $nome_familiar = $_POST['nomesocio'][$i];
             $idade_familiar = $_POST['idadesocio'][$i];
             $vinculo_familiar = $_POST['relacao'][$i];
-            $escolaridade_familiar = $_POST['escolaridade'][$i];
+            $escolaridade_familiar = $_POST['escolaridadeFam'][$i];
             $tipo_pcd = $_POST['deficiencia'][$i];
             $neces_docum_familiar = $_POST['documentacao'][$i];
-            $encaminhamentos = $_POST['encaminhamentosAgendados'][$i];
-            $tecnico_responsavel = $_POST['nomeCompletoTec'][$i];
+            $encaminhamentos = $_POST['encaminhamentosAgendados'];
+            $tecnico_responsavel = $_POST['nomeCompletoTec'];
 
             // Executa a instrução SQL
             $stmt->execute();
@@ -112,6 +112,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   <link rel="stylesheet" href="css/styles.css" />
   <script src="./services/form.js" defer></script>
   <title>Cidadania e Segurança</title>
+
 </head>
 
 <body>
@@ -126,15 +127,15 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <h5 class="sub-title">Identificação</h5>
         <div class="mb-3">
           <label for="nomeCompleto" class="form-label">Nome Completo:</label>
-          <input type="text" id="nome" name="nome" class="form-control" />
+          <input type="text" id="nome" name="nome" class="form-control" required/>
         </div>
         <div class="mb-3">
           <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
-          <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" />
+          <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" required/>
         </div>
         <div class="mb-3">
           <label for="cpf" class="form-label">CPF:</label>
-          <input type="text" id="cpf" name="cpf" class="form-control" />
+          <input type="text" id="cpf" name="cpf" class="form-control" required/>
         </div>
         <div class="mb-3">
           <label for="numNIS" class="form-label">NÚMERO DO NIS:</label>
@@ -214,7 +215,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-3">
           <label for="escolaridade" class="form-label">Escolaridade</label>
-          <select name="escolaridade" id="escolaridade" class="form-select">
+          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select">
             <option value="">Selecione uma opção</option>
             <option value="analfabeto">Analfabeto</option>
             <option value="fundamentalIncompleto">Fundamental Incompleto</option>
@@ -386,12 +387,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <label for="" class="form-label">Escoamento Sanitário:</label>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Distribuição" class="form-check-input" />
-          <label for="redeGeralDistribuicaoSanitario">Rede geral de distribuição</label>
+          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Tratamento de Esgoto" class="form-check-input" />
+          <label for="redeGeralDistribuicaoSanitario">Rede Geral de Tratamento de Esgoto</label>
         </div>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario" value="Poço artesiano" class="form-check-input" />
-          <label for="pocoArtesianoSanitario">Poço artesiano</label>
+          <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario" value="Esgoto Sanitário" class="form-check-input" />
+          <label for="pocoArtesianoSanitario">Esgoto Sanitário</label>
         </div>
         <div>
           <input type="radio" name="escoamentoSanitario" id="semEsgoto" value="Não Possui Esgoto" class="form-check-input" />
@@ -502,7 +503,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
             <label for="" class="form-label">Escolaridade:</label>        
-<select id="escolaridade1" name="escolaridade[]" class="form-select" required>
+<select id="escolaridade1" name="escolaridadeFam[]" class="form-select" required>
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="Não Alfabetizado">Não Alfabetizado</option>
     <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -556,9 +557,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
     newRow.classList.add("mb-3");
     newRow.innerHTML = `
       <h5>Socioêconomico</h5>
-      <label for="nomeCompletoSocio" class="form-label">Nome Completo:</label>
+      <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
       <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control" required />
-        <label for="idadeSocio" class="form-label">Digite sua Idade:</label>
+        <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
         <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control" required />
         <label for="relacao" class="form-label">Vínculo Familiar:</label>
         <select id="relacao${contador}" name="relacao[]" class="form-select" required>
