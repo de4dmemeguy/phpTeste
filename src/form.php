@@ -22,70 +22,72 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
     // Verifica se a preparação da instrução SQL foi bem-sucedida
     if ($stmt) {
-    // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
-    $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
-    $estado_civil, $outro_Estado_civil, $cor_raca, $nacionalidade, $naturalidade, $escolaridade, $profissao, 
-    $renda, $ocupacao_profissional, $outra_ocupacao, $cep, $rua, $numero, $bairro, $referencia, $telefone, 
-    $whatsapp, $tipo_reside, $tipo_estrut, $outras_estrut, $energia_eletrica, $abastece_agua, 
-    $outro_abastecimento, $escoa_sanitario, $outra_sanitario, $benef_sociais, $outros_beneficios, 
-    $cad_unico, $doc_civil, $nome_familiar, $idade_familiar, $vinculo_familiar, $escolaridade_familiar, 
-    $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel);
+            // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
+            $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
+            $estado_civil, $outro_Estado_civil, $cor_raca, $nacionalidade, $naturalidade, $escolaridade, $profissao, 
+            $renda, $ocupacao_profissional, $outra_ocupacao, $cep, $rua, $numero, $bairro, $referencia, $telefone, 
+            $whatsapp, $tipo_reside, $tipo_estrut, $outras_estrut, $energia_eletrica, $abastece_agua, 
+            $outro_abastecimento, $escoa_sanitario, $outra_sanitario, $benef_sociais, $outros_beneficios, 
+            $cad_unico, $doc_civil, $nome_familiar, $idade_familiar, $vinculo_familiar, $escolaridade_familiar, 
+            $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel);
 
-        // Itera sobre os valores recebidos dos campos do formulário
-        for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
-            // Atribui os valores dos campos do formulário às variáveis correspondentes
-            $nome = $_POST['nome'];
-            $data_nasc = $_POST['dataNascimento'];
-            $cpf = $_POST['cpf'];
-            $nis = $_POST['numNIS'];
-            $genero = $_POST['genero'];
-            $estado_civil = $_POST['estadoCivil'];
-            $outro_Estado_civil = $_POST['outroEstadoCivil'];
-            $cor_raca = $_POST['cor'];
-            $nacionalidade = $_POST['nacionalidade'];
-            $naturalidade = $_POST['naturalidade'];
-            $escolaridade = $_POST['escolaridadepessoa'];
-            $profissao = $_POST['profissao'];
-            $renda = $_POST['renda'];
-            $ocupacao_profissional = $_POST['ocupacao'];
-            $outra_ocupacao = $_POST['outraOcupacao'];
-            $cep = $_POST['cep'];
-            $rua = $_POST['rua'];
-            $numero = $_POST['numero'];
-            $bairro = $_POST['bairro'];
-            $referencia = $_POST['referencia'];
-            $telefone = $_POST['telefone'];
-            $whatsapp = $_POST['aceitaWhatsapp'];
-            $tipo_reside = $_POST['tipoResidencia'];
-            $tipo_estrut = $_POST['tipoEstrutura'];
-            $outras_estrut = $_POST['outrosMateriais'];
-            $energia_eletrica = $_POST['energiaEletrica'];
-            $abastece_agua = $_POST['abastecimentoAgua'];
-            $outro_abastecimento = $_POST['outraFormaAgua'];
-            $escoa_sanitario = $_POST['escoamentoSanitario'];
-            $outra_sanitario = $_POST['outraFormaEsgoto'];
-            $benef_sociais = $_POST['beneficiosSociais'];
-            $outros_beneficios = $_POST['outroBeneficio'];
-            $cad_unico = $_POST['situacaoCadastroUnico'];
-            $doc_civil = $_POST['documentacaocivil'];
+                  // Itera sobre os valores recebidos dos campos do formulário
+                  for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
+                      // Atribui os valores dos campos do formulário às variáveis correspondentes
+                      $nome = $_POST['nome'];
+                      $data_nasc = $_POST['dataNascimento'];
+                      $cpf = $_POST['cpf'];
+                      $nis = $_POST['numNIS'];
+                      $genero = $_POST['genero'];
+                      $estado_civil = $_POST['estadoCivil'];
+                      $outro_Estado_civil = $_POST['outroEstadoCivil'];
+                      $cor_raca = $_POST['cor'];
+                      $nacionalidade = $_POST['nacionalidade'];
+                      $naturalidade = $_POST['naturalidade'];
+                      $escolaridade = $_POST['escolaridadepessoa'];
+                      $profissao = $_POST['profissao'];
+                      $renda = $_POST['renda'];
+                      $ocupacao_profissional = $_POST['ocupacao'];
+                      $outra_ocupacao = $_POST['outraOcupacao'];
+                      $cep = $_POST['cep'];
+                      $rua = $_POST['rua'];
+                      $numero = $_POST['numero'];
+                      $bairro = $_POST['bairro'];
+                      $referencia = $_POST['referencia'];
+                      $telefone = $_POST['telefone'];
+                      $whatsapp = $_POST['aceitaWhatsapp'];
+                      $tipo_reside = $_POST['tipoResidencia'];
+                      $tipo_estrut = $_POST['tipoEstrutura'];
+                      $outras_estrut = $_POST['outrosMateriais'];
+                      $energia_eletrica = $_POST['energiaEletrica'];
+                      $abastece_agua = $_POST['abastecimentoAgua'];
+                      $outro_abastecimento = $_POST['outraFormaAgua'];
+                      $escoa_sanitario = $_POST['escoamentoSanitario'];
+                      $outra_sanitario = $_POST['outraFormaEsgoto'];
+                      $benef_sociais = $_POST['beneficiosSociais'];
+                      $outros_beneficios = $_POST['outroBeneficio'];
+                      $cad_unico = $_POST['situacaoCadastroUnico'];
+                      $doc_civil = $_POST['documentacaocivil'];
 
-            // Campos relacionados ao familiar
-            $nome_familiar = $_POST['nomesocio'][$i];
-            $idade_familiar = $_POST['idadesocio'][$i];
-            $vinculo_familiar = $_POST['relacao'][$i];
-            $escolaridade_familiar = $_POST['escolaridadeFam'][$i];
-            $tipo_pcd = $_POST['deficiencia'][$i];
-            $neces_docum_familiar = $_POST['documentacao'][$i];
-            $encaminhamentos = $_POST['encaminhamentosAgendados'];
-            $tecnico_responsavel = $_POST['nomeCompletoTec'];
+                      // Campos relacionados ao familiar
+                      $nome_familiar = $_POST['nomesocio'][$i];
+                      $idade_familiar = $_POST['idadesocio'][$i];
+                      $vinculo_familiar = $_POST['relacao'][$i];
+                      $escolaridade_familiar = $_POST['escolaridadeFam'][$i];
+                      $tipo_pcd = $_POST['deficiencia'][$i];
+                      $neces_docum_familiar = $_POST['documentacao'][$i];
+                      
+                      // Campos relacionados aos Encaminhamentos
+                      $encaminhamentos = $_POST['encaminhamentosAgendados'];
+                      $tecnico_responsavel = $_POST['nomeCompletoTec'];
 
             // Executa a instrução SQL
             $stmt->execute();
         }
 
         // Fecha a instrução SQL
-        $stmt->close();
-    } else {
+            $stmt->close();
+          } else {
         echo "Erro na preparação da instrução SQL: " . $conexao->error;
     }
 
@@ -143,7 +145,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-3">
           <label for="genero" class="form-label">Gênero:</label>
-          <select name="genero" id="genero" class="form-select">
+          <select name="genero" id="genero" class="form-select" required>
             <option value="">Selecione uma opção</option>
             <option value="feminino">Mulher Cisgênero</option>
             <option value="masculino">Homem Cisgênero</option>
@@ -156,7 +158,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label class="form-label">Estado Civil:</label>
           <br>
           <div class="form-check form-check-inline">
-            <input type="radio" name="estadoCivil" id="solteiro" value="solteiro" class="form-check-input" /><label
+            <input type="radio" name="estadoCivil" id="solteiro" value="solteiro" class="form-check-input" required/><label
               for="solteiro" class="form-check-label">Solteiro</label>
           </div>
           <div class="form-check form-check-inline ">
@@ -181,7 +183,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label class="form-label">Cor/Raça:</label>
           <br>
           <div class="form-check form-check-inline">
-            <input type="radio" name="cor" id="branca" value="branca" class="form-check-input" /><label
+            <input type="radio" name="cor" id="branca" value="branca" class="form-check-input" required/><label
               for="branca">Branca</label>
           </div>
           <div class="form-check form-check-inline">
@@ -207,15 +209,15 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-3">
           <label for="nacionalidade" class="form-label">Nacionalidade:</label>
-          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control" />
+          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control" required/>
         </div>
         <div class="mb-3">
           <label for="naturalidade" class="form-label">Naturalidade:</label>
-          <input type="text" id="naturalidade" name="naturalidade" class="form-control" />
+          <input type="text" id="naturalidade" name="naturalidade" class="form-control" required/>
         </div>
         <div class="mb-3">
           <label for="escolaridade" class="form-label">Escolaridade</label>
-          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select">
+          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select" required>
             <option value="">Selecione uma opção</option>
             <option value="analfabeto">Analfabeto</option>
             <option value="fundamentalIncompleto">Fundamental Incompleto</option>
@@ -239,7 +241,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label class="form-label">Ocupação Profissional:</label>
           <br>
           <div class="form-check form-check-inline">
-            <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" /><label
+            <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" required/><label
               for="clt">CLT</label>
           </div>
           <div class="form-check form-check-inline">
@@ -261,27 +263,27 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
       </div>
 
-      <!---->
+      
       <div class="mb-3">
         <h5 class="sub-title">Endereço/Contato</h5>
         <div>
           <div class="mb-3">
             <label for="cep" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="cep" name="cep">
+            <input type="text" class="form-control" id="cep" name="cep" >
           </div>
           <div class="row">
             <div class="col">
               <label for="rua" class="form-label">Rua/Avenida</label>
-              <input type="text" class="form-control" style="width: 25rem;" id="rua" name="rua">
+              <input type="text" class="form-control" style="width: 25rem;" id="rua" name="rua" required>
             </div>
             <div class="col">
               <label for="numero" class="form-label">Número:</label>
-              <input type="text" class="form-control" id="numero" name="numero">
+              <input type="text" class="form-control" id="numero" name="numero" required>
             </div>
           </div>
           <div class="mb-3">
             <label for="bairro" class="form-label">Bairro</label>
-            <input type="text" class="form-control" id="bairro" name="bairro">
+            <input type="text" class="form-control" id="bairro" name="bairro" required>
           </div>
           <div class="mb-3">
             <label for="referencia" class="form-label">Ponto de Referência</label>
@@ -289,13 +291,13 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone para contato</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DDD) 0000-0000">
+            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DDD) 0000-0000" required>
           </div>
 
           <div class="mb-3">
             <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
             <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="sim" value="sim" class="form-check-input" />
+              <input type="radio" name="aceitaWhatsapp" id="sim" value="sim" class="form-check-input" required/>
               <label for="sim">Sim</label>
             </div>
                    
@@ -314,7 +316,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="" class="form-label">Tipo de Residência:</label>
         <br>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="propria" value="própria" class="form-check-input" />
+          <input type="radio" name="tipoResidencia" id="propria" value="própria" class="form-check-input" required/>
           <label for="propria" class="form-check-label">Própria</label>
         </div>
         <div class="form-check form-check-inline">
@@ -333,7 +335,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="" class="form-label">Tipo de Estrutura:</label>
         <br>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoEstrutura" id="alvenaria" value="alvenaria" class="form-check-input" />
+          <input type="radio" name="tipoEstrutura" id="alvenaria" value="alvenaria" class="form-check-input" required/>
           <label for="alvenaria">Alvenaria</label>
         </div>
         <div class="form-check form-check-inline">
@@ -353,7 +355,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="" class="form-label">Energia Elétrica:</label>
         <br>
         <div class="form-check">
-          <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="COM MEDIDOR PRÓPRIO" class="form-check-input" />
+          <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="COM MEDIDOR PRÓPRIO" class="form-check-input" required/>
           <label for="comMedidorProprio">Sim, com medidor próprio</label>
         </div>
         <div class="form-check">
@@ -370,7 +372,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <label for="" class="form-label">Abastecimento de Água:</label>
         <div class="form-check">
-          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" />
+          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" required/>
           <label for="redeGeralDistribuicao">Rede geral de distribuição</label>
         </div>
         <div class="form-check">
@@ -387,7 +389,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <label for="" class="form-label">Escoamento Sanitário:</label>
         <div>
-          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Tratamento de Esgoto" class="form-check-input" />
+          <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Tratamento de Esgoto" class="form-check-input" required/>
           <label for="redeGeralDistribuicaoSanitario">Rede Geral de Tratamento de Esgoto</label>
         </div>
         <div>
@@ -405,7 +407,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <div>
           <h5 class="sub-title">Benefícios Sociais</h5>
           <div class="form-check">
-            <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais" value="Não" class="form-check-input" />
+            <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais" value="Não" class="form-check-input" required/>
             <label for="naoBeneficiosSociais">Não</label>
           </div>
           <div>
@@ -430,7 +432,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="" class="form-label"> Situação do Cadastro Único:</label>
           <br>
           <div class="form-check form-check-inline">
-            <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico" value="Não Possui CAD Único" class="form-check-input" />
+            <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico" value="Não Possui CAD Único" class="form-check-input" required/>
             <label for="naoPossuiCadastroUnico">Não Possui</label>
           </div>
           <div class="form-check form-check-inline">
@@ -446,7 +448,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <div class="mb-3">
           <h5 class="sub-title">Necessidades de Documentação Civil</h5>
           <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" />
+            <input type="radio" name="documentacaocivil" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" required/>
             <label for="cni">SEM NECESSIDADE</label>
           </div>
           <div class="form-check">
@@ -486,7 +488,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
           <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control" />
           <label for="" class="form-label">Vinculo Familiar:</label>
-          <select id="relacao1" name="relacao[]" class="form-select" required>
+          <select id="relacao1" name="relacao[]" class="form-select">
           <option value="" selected disabled>Selecione uma opção</option>
           <option value="Pessoa de referência">Pessoa de referência</option>  
           <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
@@ -503,7 +505,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
             <label for="" class="form-label">Escolaridade:</label>        
-<select id="escolaridade1" name="escolaridadeFam[]" class="form-select" required>
+<select id="escolaridade1" name="escolaridadeFam[]" class="form-select">
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="Não Alfabetizado">Não Alfabetizado</option>
     <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -516,7 +518,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
 <label for="" class="form-label">Tipo de PCD:</label>        
-<select id="deficiencia1" name="deficiencia[]" class="form-select" required>
+<select id="deficiencia1" name="deficiencia[]" class="form-select">
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="Sem Deficiência">Sem Deficiência</option>
     <option value="Visual">Visual</option>
@@ -527,7 +529,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 </select>
 
 <label for="" class="form-label">Necessidade de Documentação:</label>        
-<select id="documentacao1" name="documentacao[]" class="form-select" required>
+<select id="documentacao1" name="documentacao[]" class="form-select">
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
     <option value="CIN/RG">CIN/RG</option>
@@ -558,11 +560,11 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
     newRow.innerHTML = `
       <h5>Socioêconomico</h5>
       <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control" required />
+      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control"/>
         <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
-        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control" required />
+        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control"/>
         <label for="relacao" class="form-label">Vínculo Familiar:</label>
-        <select id="relacao${contador}" name="relacao[]" class="form-select" required>
+        <select id="relacao${contador}" name="relacao[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Pessoa de referência">Pessoa de referência</option>
         <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
@@ -577,7 +579,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <option value="Não Parente">Não Parente</option>
       </select>
       <label for="escolaridade" class="form-label">Escolaridade:</label>
-      <select id="escolaridade${contador}" name="escolaridade[]" class="form-select" required>
+      <select id="escolaridade${contador}" name="escolaridade[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Não Alfabetizado">Não Alfabetizado</option>
         <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -588,7 +590,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
       </select>
       <label for="deficiencia" class="form-label">Tipo de PCD:</label>
-      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select" required>
+      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Sem Deficiência">Sem Deficiência</option>
         <option value="Visual">Visual</option>
@@ -598,7 +600,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <option value="Múltipla">Múltipla</option>
       </select>
       <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
-      <select id="documentacao${contador}" name="documentacao[]" class="form-select" required>
+      <select id="documentacao${contador}" name="documentacao[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
         <option value="CIN/RG">CIN/RG</option>
@@ -627,7 +629,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <div class="mb-3"> 
             <h5 class="sub-title">Encaminhamentos</h5>
           <div class="form-check">
-            <input type="radio" name="encaminhamentosAgendados" id="semNecessidade" value="SEM NECESSIDADE DE ENCAMINHAMENTO" class="form-check-input" />
+            <input type="radio" name="encaminhamentosAgendados" id="semNecessidade" value="SEM NECESSIDADE DE ENCAMINHAMENTO" class="form-check-input" required/>
             <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
           </div>
           <div class="">
