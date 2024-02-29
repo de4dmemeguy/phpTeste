@@ -514,7 +514,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
             <label for="" class="form-label">Escolaridade:</label>        
-<select id="escolaridade1" name="escolaridadeFam[]" class="form-select">
+<select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select">
 <option value="" selected disabled>Selecione uma opção</option>
     <option value="Não Alfabetizado">Não Alfabetizado</option>
     <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -588,7 +588,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <option value="Não Parente">Não Parente</option>
       </select>
       <label for="escolaridade" class="form-label">Escolaridade:</label>
-      <select id="escolaridade${contador}" name="escolaridade[]" class="form-select">
+      <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Não Alfabetizado">Não Alfabetizado</option>
         <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
