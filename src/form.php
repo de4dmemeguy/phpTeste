@@ -6,6 +6,11 @@ if(isset($_POST['submit']))
     // Inclua o arquivo de configuração do banco de dados
     include_once('config.php');
 
+    //Definir o fuso horário para o de Manaus
+
+    date_default_timezone_set('America/Manaus');
+
+
     // Prepare a query SQL para inserção de dados
     $sql = "INSERT INTO pessoa (nome, data_nasc, cpf, numero_nis, genero, estado_civil, outro_estado_civil, 
 cor_raca, nacionalidade, naturalidade, escolaridade, profissao, renda, ocupacao_profissional, outra_ocupacao, 
@@ -13,23 +18,27 @@ end_cep, end_rua, end_num, end_bairro, end_p_referencia, telefone, oferta_whatsa
 estrutura_residencia, outros_materiais, energia_eletrica, abast_agua, outra_forma_agua, escoa_sanitario, 
 outra_forma_esgoto, beneficios_sociais, outros_beneficios, sit_cad_unico, docum_civil, 
 nome_familiar, idade_familiar, vinculo_familiar, escolaridade_familiar, tipo_pcd, 
-neces_doc_familiar, encaminhamentos, tecnico_responsavel) 
+neces_doc_familiar, encaminhamentos, tecnico_responsavel, data_hora_cadastro) 
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-?, ?, ?, ?, ?, ?, ?, ?, ?)";
+?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar a instrução SQL
     $stmt = $conexao->prepare($sql);
 
     // Verifica se a preparação da instrução SQL foi bem-sucedida
     if ($stmt) {
+
+            // Obtém a data e hora atual
+            $data_hora_cadastro = date('Y-m-d H:i:s');
+
             // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
-            $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
+            $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
             $estado_civil, $outro_Estado_civil, $cor_raca, $nacionalidade, $naturalidade, $escolaridade, $profissao, 
             $renda, $ocupacao_profissional, $outra_ocupacao, $cep, $rua, $numero, $bairro, $referencia, $telefone, 
             $whatsapp, $tipo_reside, $tipo_estrut, $outras_estrut, $energia_eletrica, $abastece_agua, 
             $outro_abastecimento, $escoa_sanitario, $outra_sanitario, $benef_sociais, $outros_beneficios, 
             $cad_unico, $doc_civil, $nome_familiar, $idade_familiar, $vinculo_familiar, $escolaridade_familiar, 
-            $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel);
+            $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel, $data_hora_cadastro);
 
                   // Itera sobre os valores recebidos dos campos do formulário
                   for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
@@ -137,11 +146,11 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-3">
           <label for="cpf" class="form-label">CPF:</label>
-          <input type="text" id="cpf" name="cpf" class="form-control" required/>
+          <input type="text" id="cpf" name="cpf" class="form-control " placeholder="000.000.000-00" required/>
         </div>
         <div class="mb-3">
           <label for="numNIS" class="form-label">NÚMERO DO NIS:</label>
-          <input type="text" id="numNIS" name="numNIS" class="form-control" />
+          <input type="text" id="numNIS" name="numNIS" class="form-control" placeholder="Digite Somente Números"/>
         </div>
         <div class="mb-3">
           <label for="genero" class="form-label">Gênero:</label>
@@ -235,7 +244,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div>
           <label for="renda" class="form-label">Renda</label>
-          <input type="text" id="renda" name="renda" class="form-control" />
+          <input type="text" id="renda" name="renda" class="form-control" placeholder="000.000.000.000,00"/>
         </div>
         <div class="mb-3">
           <label class="form-label">Ocupação Profissional:</label>
@@ -269,7 +278,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <div>
           <div class="mb-3">
             <label for="cep" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="cep" name="cep" >
+            <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" >
           </div>
           <div class="row">
             <div class="col">
@@ -291,7 +300,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone para contato</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DDD) 0000-0000" required>
+            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DD) 0000-0000" required>
           </div>
 
           <div class="mb-3">
@@ -486,7 +495,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
           <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control" />
           <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
-          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control" />
+          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control" placeholder="Digite Apenas Números"/>
           <label for="" class="form-label">Vinculo Familiar:</label>
           <select id="relacao1" name="relacao[]" class="form-select">
           <option value="" selected disabled>Selecione uma opção</option>
@@ -562,7 +571,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
       <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control"/>
         <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
-        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control"/>
+        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control" placeholder="Digite Apenas Números"/>
         <label for="relacao" class="form-label">Vínculo Familiar:</label>
         <select id="relacao${contador}" name="relacao[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
@@ -614,6 +623,8 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </select>
       <br>
       <button type="button" onclick="removerLinha(this)" style="font-size:15px;" >Remover Cadastro</button>
+
+      
     `;
     dynamicContent.appendChild(newRow);
   }
@@ -683,6 +694,37 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
       <!-- <input type="submit" name="submit" id="submit"> -->
     </div>
+    <!-- Bibliteca de máscaras -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <!-- Mascara do CPF e NIS -->
+              <script>
+            $(document).ready(function() {
+              // Máscara para CPF
+              $('#cpf').mask('000.000.000-00', {reverse: true});
+              
+              // Máscara para NIS
+              $('#numNIS').mask('00000000000');
+
+              // Máscara para a Renda
+              $('#renda').mask('000.000.000.000,00', {reverse: true});
+
+              // Máscara para o CEP
+              $('#cep').mask('00000-000');
+
+              // Máscara para o Telefone
+              $('#telefone').mask('(00) 00000-0009');
+
+              // Máscara para Idade Familiar
+              $('#idadesocio1').mask('000');
+
+              
+
+            });
+</script>
+
+
   </form>
  
 </body>
