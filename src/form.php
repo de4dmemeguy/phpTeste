@@ -77,7 +77,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                       $outros_beneficios = $_POST['outroBeneficio'];
                       $cad_unico = $_POST['situacaoCadastroUnico'];
                       $doc_civil = $_POST['documentacaocivil'];
-
+                      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
+                      if (is_array($doc_civil)) {
+                        // Se for uma matriz, use implode() para concatenar os valores
+                        $doc_civil = implode(',', $doc_civil);
+                      }
+                      
                       // Campos relacionados ao familiar
                       $nome_familiar = $_POST['nomesocio'][$i];
                       $idade_familiar = $_POST['idadesocio'][$i];
@@ -88,6 +93,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                       
                       // Campos relacionados aos Encaminhamentos
                       $encaminhamentos = $_POST['encaminhamentosAgendados'];
+                      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
+                      if (is_array($encaminhamentos)) {
+                        // Se for uma matriz, use implode() para concatenar os valores
+                        $encaminhamentos = implode(',', $encaminhamentos);
+                      }
+
                       $tecnico_responsavel = $_POST['nomeCompletoTec'];
 
             // Executa a instrução SQL
@@ -300,7 +311,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone para contato</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DD) 0000-0000" required>
+            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(DD) 00000-0000" required>
           </div>
 
           <div class="mb-3">
@@ -454,7 +465,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
         </div>
         <br>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <h5 class="sub-title">Necessidades de Documentação Civil</h5>
           <div class="form-check">
             <input type="radio" name="documentacaocivil" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" required/>
@@ -486,6 +497,42 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="form-check">
             <input type="radio" name="documentacaocivil" id="carteiraIdoso" value="CARTEIRA DO IDOSO" class="form-check-input" />
+            <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
+          </div>
+        </div> -->
+
+        <div class="mb-3">
+          <h5 class="sub-title">Necessidades de Documentação Civil</h5>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" />
+            <label for="cni">SEM NECESSIDADE</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cni" value="CNI/RG" class="form-check-input" />
+            <label for="cni">CNI/RG</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cpf" value="CPF" class="form-check-input" />
+            <label for="cpf">CPF</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="rcn" value="RCN" class="form-check-input" />
+            <label for="rcn">RCN</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cpcd" value="CARTEIRA PCD" class="form-check-input" />
+            <label for="cpcd">CARTEIRA PCD</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cptea" value="CARTEIRA CPTEA" class="form-check-input" />
+            <label for="cptea">CARTEIRA CIPTEA</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="rnm" value="REGISTRO NACIONAL DOS MIGRANTES" class="form-check-input" />
+            <label for="rnm">REGISTRO NACIONAL DOS MIGRANTES (RNM)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="carteiraIdoso" value="CARTEIRA DO IDOSO" class="form-check-input" />
             <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
           </div>
         </div>
@@ -636,7 +683,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
         
     
-  
+  <!--
         <div class="mb-3"> 
             <h5 class="sub-title">Encaminhamentos</h5>
           <div class="form-check">
@@ -680,12 +727,42 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <label for="cursosCapacitacaoProfissional">Idoso em Movimento(em caso de atividade físicas em grupos de idosos)</label>
           </div>
           <br>
-          <div class="mb-3">
+        -->
+          
+        </div> 
+
+        <div class="mb-3"> 
+    <h5 class="sub-title">Encaminhamentos/Agendamentos</h5>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC CIDADANIA (CPF,RCN)" class="form-check-input" />
+        <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input"/>
+        <label for="encaminhamento2">SEJUSC PCD</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC" class="form-check-input" />
+        <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL" class="form-check-input" />
+        <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="ESCRITÓRIO SOCIAL - SEAP" class="form-check-input"/>
+        <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="CURSO DE CAPACITAÇÃO PROFISSIONAL" class="form-check-input" />
+        <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
+    </div>
+            <div class="mb-3">
                 <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
                 <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
-            </div>
-        </div>
+            </div>   
 
+    </div>
 
         <button type="submit" name="submit" id="submit">Enviar</button>
         <!-- <input type="submit" name="submit" id="submit"> -->
