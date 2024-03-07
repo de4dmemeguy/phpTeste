@@ -17,17 +17,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
+            background-color: rgba(0, 0, 0, 40);
+            padding: 20px;
             border-radius: 10px;
         }
 
         a{
             text-decoration: none;
             color: white;
-            border: 1px solid dodgerblue;
-            border-radius: 1%;
-            padding: 10;
+            border: 3px solid dodgerblue;
+            border-radius: 10px;
+            padding: 10px;
 
         }
         a:hover{
@@ -39,10 +39,13 @@
 <body>
     <h1>Sistema - Cidadania e Segurança</h1>
     <h2>Bem Vindo !!</h2>
-    <div class="box">
-            <a href="login.php">Login</a>
+    
 
+    <div class="box">
+            <a href="form.php">Cadastrar</a>
+            <a href="login.php">Listar</a>
     </div>
+    
 </body>
 
 </html>

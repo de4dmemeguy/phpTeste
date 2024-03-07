@@ -39,7 +39,7 @@
       
       
       <div class="login-form">
-        <form action="">
+        <form action="" method="post">
           <i class="bx bxs-user"></i>
           <label for="" class="label-form">CPF:</label>
           <input type="text" name="cpf" class="input-form" placeholder="Digite seu CPF" />

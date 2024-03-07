@@ -1,5 +1,17 @@
 
 <?php
+    session_start();
+    //print_r($_SESSION);
+    // if((!isset($_SESSION['cpf']) == true) and (!isset($_SESSION['senha']) == true))
+    // {
+    //       unset($_SESSION['cpf']);
+    //       unset($_SESSION['senha']);
+    //       header('Location: login.php');
+
+    // }
+
+    // $logado = $_SESSION['cpf'];
+
 
 if(isset($_POST['submit']))
 {
@@ -138,10 +150,16 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 </head>
 
 <body>
+<br>
+<div class="d-flex">
+      <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 20px; right: 20px;">Sair</a>
+  </div>
+  <br>
   <div class="title">
     <h3>Formulário - Cidadania e Segurança</h3>
   </div>
-
+  
+  <br>
   <form action="form.php" method="post" id="myForm">
     <div class="container">
       <div>
