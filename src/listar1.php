@@ -12,7 +12,7 @@
     $logado = $_SESSION['cpf'];
 
     // Contar o total de pessoas
-    $total_geral_query = "SELECT COUNT(*) AS total_geral FROM pessoa";
+    $total_geral_query = "SELECT COUNT(distinct nome) AS total_geral FROM pessoa";
     $total_geral_result = mysqli_query($conexao, $total_geral_query);
     $total_geral_row = mysqli_fetch_assoc($total_geral_result);
     $total_geral = $total_geral_row['total_geral'];
@@ -25,30 +25,40 @@
         // Ajuste o formato da data, se necessário
         $data_formatada = date('Y-m-d', strtotime($data));
         
-        $total_pessoas_query = "SELECT COUNT(*) AS total_pessoas FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
+        $total_pessoas_query = "SELECT COUNT(DISTINCT NOME) AS total_geral FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
         $total_pessoas_result = mysqli_query($conexao, $total_pessoas_query);
         $total_pessoas_row = mysqli_fetch_assoc($total_pessoas_result);
-        $total_pessoas = $total_pessoas_row['total_pessoas'];
+        $total_pessoas = $total_pessoas_row['total_geral'];
     }
     
       
     // Paginação para os resultados da busca
     $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
     $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-    $qnt_result_pg = 5;
+    $qnt_result_pg = 30;
     $inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
     
-    // Consulta SQL para os resultados da busca com paginação
-    $result_pessoa = "";
-    if (!empty($_GET['data'])) {
-        $data = mysqli_real_escape_string($conexao, $_GET['data']);
-        // Ajuste o formato da data, se necessário
-        $data_formatada = date('Y-m-d', strtotime($data));
+    
 
-        $result_pessoa = "SELECT DISTINCT * FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada' LIMIT $inicio, $qnt_result_pg";
-    } else {
-        $result_pessoa = "SELECT DISTINCT * FROM pessoa LIMIT $inicio, $qnt_result_pg";
-    }
+    // Consulta SQL para os resultados da busca com paginação
+$result_pessoa = "";
+if (!empty($_GET['data'])) {
+    $data = mysqli_real_escape_string($conexao, $_GET['data']);
+    // Ajuste o formato da data, se necessário
+    $data_formatada = date('Y-m-d', strtotime($data));
+
+    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATE_FORMAT(DATA_NASC, '%d/%m/%Y')) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+                      FROM pessoa 
+                      WHERE DATE(data_hora_cadastro) = '$data_formatada' 
+                      GROUP BY NOME 
+                      LIMIT $inicio, $qnt_result_pg";
+} else {
+    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATE_FORMAT(DATA_NASC, '%d/%m/%Y')) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+                      FROM pessoa 
+                      GROUP BY NOME 
+                      LIMIT $inicio, $qnt_result_pg";
+}
+
     
     $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 
@@ -60,13 +70,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Listar</title>
   </head>
 
   <body>
-  
+  <div class="d-flex">
+      <a href="tiposConsultas.html" class="btn btn-primary" style="position: absolute; top: 20px; left: 20px; background-color: #218838;"><i class="bi bi-arrow-left"></i>Tipos de Listagens</a>
+  </div>
   <div class="d-flex">
       <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 20px; right: 20px;">Sair</a>
   </div>
@@ -76,7 +89,7 @@
     <h4 class="" style="position: absolute; left: 20px;">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
             <div>
                 <!-- Adicione o formulário de pesquisa por data -->
-                <form method="GET" action="listar.php">
+                <form method="GET" action="listar1.php">
                     <label for="data"; style="position: absolute; right:265px;">Pesquisar por Data:</label>
                     <input type="date" id="data" name="data" style="position: absolute; right:120px;">
                     <button type="submit" class="btn btn-outline-primary" style="position: absolute; top: 100px; right: 20px;">Pesquisar</button>
@@ -98,14 +111,12 @@
             
             echo "<th scope='col'>NOME</th>";
             echo "<th scope='col'>CPF</th>";
-            echo "<th scope='col'>CEP</th>";
+            echo "<th scope='col'>DATA NASCIMENTO</th>";
             echo "<th scope='col'>NOME RUA</th>";
-            echo "<th scope='col'>NÚMERO</th>";
+            echo "<th scope='col'>NUM</th>";
             echo "<th scope='col'>BAIRRO</th>";
-            echo "<th scope='col'>PONTO REFERÊNCIA</th>";
-            echo "<th scope='col'>TELEFONE CONTATO</th>";
-            echo "<th scope='col'>FAMILIAR</th>";
-            echo "<th scope='col'>DATA / HORA</th>";
+            echo "<th scope='col'>TELEFONE</th>";
+            echo "<th scope='col'>ESCOLARIDADE</th>";
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -115,14 +126,12 @@
             
             echo "<td>" . $row_pessoa['NOME'] . "</td>";
             echo "<td>" . $row_pessoa['CPF'] . "</td>";
-            echo "<td>" . $row_pessoa['END_CEP'] . "</td>";
+            echo "<td>" . $row_pessoa['DATA_NASC'] . "</td>";
             echo "<td>" . $row_pessoa['END_RUA'] . "</td>";
             echo "<td>" . $row_pessoa['END_NUM'] . "</td>";
             echo "<td>" . $row_pessoa['END_BAIRRO'] . "</td>";
-            echo "<td>" . $row_pessoa['END_P_REFERENCIA'] . "</td>";
             echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
-            echo "<td>" . $row_pessoa['NOME_FAMILIAR'] . "</td>";
-            echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
+            echo "<td>" . $row_pessoa['ESCOLARIDADE'] . "</td>";
             echo "</tr>";
         }
 
@@ -144,14 +153,14 @@
 
     ?>
         <div class="d-flex justify-content-center">
-        <a href='listar.php?<?php echo (!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=1"; ?>' class='btn btn-outline-primary'>Primeira </a>
+        <a href='listar1.php?<?php echo (!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=1"; ?>' class='btn btn-outline-primary'>Primeira </a>
     <?php
 
         for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina -1; $pag_ant ++)
         {
             if($pag_ant >= 1 )
             {
-                echo "<a href='listar.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$pag_ant'>$pag_ant </a>";
+                echo "<a href='listar1.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$pag_ant'>$pag_ant </a>";
             }
             
 
@@ -162,15 +171,15 @@
         {
             if($pag_dep <= $quantidade_pg)
             {
-                echo "<a href='listar.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$pag_dep'>$pag_dep </a>";
+                echo "<a href='listar1.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$pag_dep'>$pag_dep </a>";
             }
         }
-        echo "<a href='listar.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$quantidade_pg' class='btn btn-outline-primary'> Ultima</a>";
+        echo "<a href='listar1.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$quantidade_pg' class='btn btn-outline-primary'> Ultima</a>";
 
     ?>
     
     <!-- Adicionar botão para gerar PDF -->
-    <form method="post" action="gerar_pdf.php">
+    <form method="post" action="pdf_listar1.php">
         <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
         <button type="submit" class="btn btn-primary" style="position: absolute; top: 20px; right: 80px;">Gerar PDF</button>
     </form>

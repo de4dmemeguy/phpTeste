@@ -43,7 +43,7 @@ $html = '<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de Pessoas</title>
+    <title>Lista de Pessoas</title>
     <style>
         body {
             font-size: 10pt; /* Definindo o tamanho da fonte para 10pt */
@@ -63,20 +63,26 @@ $html = '<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Listagem de Pessoas</h1>
-    <p>Total de Registros: ' . $total_pessoas . '</p>
+    <h1 style="text-align: center;">Listagem de Pessoas</h1>';
+
+// Verificar se a pesquisa foi feita por data e adicionar o texto informativo
+if ($data) {
+    $html .= '<strong style="font-size: 12; color: blue;">Dados Cadastrados em: ' . date('d/m/Y', strtotime($data)) . '</strong>';
+}
+
+$html .= '<div>
+       <strong style="font-size: 12; color: blue;">Total Registros: ' . $total_pessoas. ' </strong>
+    </div>
+    <br><br>
     <table>
         <thead>
             <tr>
-                <th>Nome</th>
+                <th>NOME</th>
                 <th>CPF</th>
-                <th>CEP</th>
-                <th>Rua</th>
-                <th>Num</th>
-                <th>Bairro</th>
-                <th>Ponto de Referência</th>
-                <th>Telefone</th>
-                <th>Data / Hora</th>
+                <th>TELEFONE</th>
+                <th>NOME FAMILIAR</th>
+                <th>VINCULO</th>
+                <th>DOCUMENTACAO FAMILIAR</th>
             </tr>
         </thead>
         
@@ -86,13 +92,10 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     $html .= '<tr>';
     $html .= '<td>' . $row['NOME'] . '</td>';
     $html .= '<td>' . $row['CPF'] . '</td>';
-    $html .= '<td>' . $row['END_CEP'] . '</td>';
-    $html .= '<td>' . $row['END_RUA'] . '</td>';
-    $html .= '<td>' . $row['END_NUM'] . '</td>';
-    $html .= '<td>' . $row['END_BAIRRO'] . '</td>';
-    $html .= '<td>' . $row['END_P_REFERENCIA'] . '</td>';
     $html .= '<td>' . $row['TELEFONE'] . '</td>';
-    $html .= '<td>' . $row['data_hora_cadastro'] . '</td>';
+    $html .= '<td>' . $row['NOME_FAMILIAR'] . '</td>';
+    $html .= '<td>' . $row['VINCULO_FAMILIAR'] . '</td>';
+    $html .= '<td>' . $row['NECES_DOC_FAMILIAR'] . '</td>';
     $html .= '</tr>';
 }
 
@@ -108,7 +111,7 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Gerar o nome do arquivo PDF
-$pdf_nome = 'listagem_pessoas.pdf';
+$pdf_nome = 'lista_Familiar.pdf';
 
 // Baixar o PDF
 $dompdf->stream($pdf_nome, array('Attachment' => 0));

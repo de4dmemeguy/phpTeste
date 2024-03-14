@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Consulta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        .btn-custom {
+            background-color: #007bff;
+            /* Cor azul para consulta geral */
+            border-color: #007bff;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            /* Cor azul mais escura no hover */
+            border-color: #0056b3;
+        }
+
+        .btn-custom-alt {
+            background-color: #28a745;
+            /* Cor verde para consulta diária */
+            border-color: #28a745;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .btn-custom-alt:hover {
+            background-color: #218838;
+            /* Cor verde mais escura no hover */
+            border-color: #218838;
+        }
+
+        .btn-custom-3 {
+            background-color: #f1c43bfe;
+            /* Cor verde para consulta diária */
+            border-color: #f1c43bfe;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .btn-custom-3:hover {
+            background-color: #69520ffe;
+            /* Cor verde mais escura no hover */
+            border-color: #69520ffe;
+        }
+
+        /* Estilo para o título */
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            /* Cor do texto */
+            margin-bottom: 30px;
+            /* Espaçamento inferior */
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+            /* Sombra do texto */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex">
+            <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 20px; right: 20px;">Sair</a>
+        </div>
+        <br><br><br><br><br>
+        <h1 class="text-center title">Selecionar Tipos de Listagens </h1>
+        <div class="text-center mt-5">
+            <a href="listar1.php" class="btn btn-custom btn-lg mb-3">Listagem NOME, CPF, ENDEREÇO,
+                ESCOLARIDADE, CONTATO</a><br>
+            <a href="listar2.php" class="btn btn-custom-alt btn-lg mb-3">Listagem NOME, CPF, CONTATO, DOC. CIVIL,
+                ENCAMINHAMENTOS</a><br>
+            <a href="listar3.php" class="btn btn-custom-3 btn-lg">Listagem NOME, CPF, CONTATO, FAMILIAR, VINCULO,
+                DOCUMENTAÇÃO FAMILIAR</a>
+        </div>
+    </div>
+</body>
+
+</html>

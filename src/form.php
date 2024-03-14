@@ -143,7 +143,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   <link rel="shortcut icon" href="/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
   <link rel="import" href="cadastro.html">
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/styles.css" />
   <script src="./services/form.js" defer></script>
   <title>Cidadania e Segurança</title>
 
@@ -160,7 +160,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   </div>
   
   <br>
-  <form action="form.php" method="post" id="myForm">
+  <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()">
     <div class="container">
       <div>
         <br>
@@ -185,10 +185,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="genero" class="form-label">Gênero:</label>
           <select name="genero" id="genero" class="form-select" required>
             <option value="">Selecione uma opção</option>
-            <option value="feminino">Mulher Cisgênero</option>
-            <option value="masculino">Homem Cisgênero</option>
-            <option value="naoResponder">Transexual</option>
-            <option value="outro">Outro</option>
+            <option value="Feminino">Mulher Cisgênero</option>
+            <option value="Masculino">Homem Cisgênero</option>
+            <option value="Não Responder">Transexual</option>
+            <option value="Outro">Outro</option>
           </select>
         </div>
 
@@ -257,14 +257,14 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="escolaridade" class="form-label">Escolaridade</label>
           <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select" required>
             <option value="">Selecione uma opção</option>
-            <option value="analfabeto">Analfabeto</option>
-            <option value="fundamentalIncompleto">Fundamental Incompleto</option>
-            <option value="fundamentalCompleto">Fundamental Completo</option>
-            <option value="medioIncompleto">Médio Incompleto</option>
-            <option value="medioCompleto">Médio Completo</option>
-            <option value="superiorIncompleto">Superior Incompleto</option>
-            <option value="superiorCompleto">Superior Completo</option>
-            <option value="posGraduacao">Pós Graduação</option>
+            <option value="Analfabeto">Analfabeto</option>
+            <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+            <option value="Fundamental Completo">Fundamental Completo</option>
+            <option value="Médio Incompleto">Médio Incompleto</option>
+            <option value="Médio Completo">Médio Completo</option>
+            <option value="Superior Incompleto">Superior Incompleto</option>
+            <option value="Superior Completo">Superior Completo</option>
+            <option value="Pós Graduação">Pós Graduação</option>
           </select>
         </div>
         <div class="mb-3">
@@ -335,12 +335,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <div class="mb-3">
             <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
             <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="sim" value="sim" class="form-check-input" required/>
+              <input type="radio" name="aceitaWhatsapp" id="sim" value="Sim" class="form-check-input" required/>
               <label for="sim">Sim</label>
             </div>
                    
             <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="nao" value="não" class="form-check-input" />
+              <input type="radio" name="aceitaWhatsapp" id="nao" value="Não" class="form-check-input" />
               <label for="nao">Não</label>
             </div>
           </div>
@@ -354,34 +354,34 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="" class="form-label">Tipo de Residência:</label>
         <br>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="propria" value="própria" class="form-check-input" required/>
+          <input type="radio" name="tipoResidencia" id="propria" value="Própria" class="form-check-input" required/>
           <label for="propria" class="form-check-label">Própria</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="alugada" value="alugada" class="form-check-input" />
+          <input type="radio" name="tipoResidencia" id="alugada" value="Alugada" class="form-check-input" />
           <label for="alugada">Alugada</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="cedida" value="cedida" class="form-check-input" />
+          <input type="radio" name="tipoResidencia" id="cedida" value="Cedida" class="form-check-input" />
           <label for="cedida">Cedida</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="ocupada" value="ocupada" class="form-check-input" />
+          <input type="radio" name="tipoResidencia" id="ocupada" value="Ocupada" class="form-check-input" />
           <label for="ocupada" class="form-check-label">Ocupada</label>
         </div>
         <br>
         <label for="" class="form-label">Tipo de Estrutura:</label>
         <br>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoEstrutura" id="alvenaria" value="alvenaria" class="form-check-input" required/>
+          <input type="radio" name="tipoEstrutura" id="alvenaria" value="Alvenaria" class="form-check-input" required/>
           <label for="alvenaria">Alvenaria</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoEstrutura" id="madeira" value="madeira" class="form-check-input" />
+          <input type="radio" name="tipoEstrutura" id="madeira" value="Madeira" class="form-check-input" />
           <label for="madeira">Madeira</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoEstrutura" id="mista" value="mista" class="form-check-input" />
+          <input type="radio" name="tipoEstrutura" id="mista" value="Mista" class="form-check-input" />
           <label for="mista">Mista</label>
         </div>
         <br>
@@ -393,19 +393,19 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="" class="form-label">Energia Elétrica:</label>
         <br>
         <div class="form-check">
-          <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="COM MEDIDOR PRÓPRIO" class="form-check-input" required/>
+          <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="Com Medidor Próprio" class="form-check-input" required/>
           <label for="comMedidorProprio">Sim, com medidor próprio</label>
         </div>
         <div class="form-check">
-          <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado" value="COM MEDIDOR COMPARTILHADO" class="form-check-input" />
+          <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado" value="Com Medidor Compartilhado" class="form-check-input" />
           <label for="comMedidorCompartilhado">Sim, com medidor compartilhado</label>
         </div>
         <div class="form-check">
-          <input type="radio" name="energiaEletrica" id="semMedidor" value="SEM MEDIDOR" class="form-check-input" />
+          <input type="radio" name="energiaEletrica" id="semMedidor" value="Sem Medidor" class="form-check-input" />
           <label for="semMedidor">Sim, sem medidor</label>
         </div>
         <div class="form-check">
-          <input type="radio" name="energiaEletrica" id="semEnergiaEletrica" value="SEM ENERGIA ELÉTRICA" class="form-check-input" />
+          <input type="radio" name="energiaEletrica" id="semEnergiaEletrica" value="Sem Energia Elétrica" class="form-check-input" />
           <label for="semEnergiaEletrica">Não possui energia elétrica</label>
         </div>
         <label for="" class="form-label">Abastecimento de Água:</label>
@@ -483,46 +483,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
         </div>
         <br>
-        <!-- <div class="mb-3">
-          <h5 class="sub-title">Necessidades de Documentação Civil</h5>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" required/>
-            <label for="cni">SEM NECESSIDADE</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="cni" value="CNI/RG" class="form-check-input" />
-            <label for="cni">CNI/RG</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="cpf" value="CPF" class="form-check-input" />
-            <label for="cpf">CPF</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="rcn" value="RCN" class="form-check-input" />
-            <label for="rcn">RCN</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="cpcd" value="CARTEIRA PCD" class="form-check-input" />
-            <label for="cpcd">CARTEIRA PCD</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="cptea" value="CARTEIRA CPTEA" class="form-check-input" />
-            <label for="cptea">CARTEIRA CIPTEA</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="rnm" value="REGISTRO NACIONAL DOS MIGRANTES" class="form-check-input" />
-            <label for="rnm">REGISTRO NACIONAL DOS MIGRANTES (RNM)</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="documentacaocivil" id="carteiraIdoso" value="CARTEIRA DO IDOSO" class="form-check-input" />
-            <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
-          </div>
-        </div> -->
+        
 
         <div class="mb-3">
           <h5 class="sub-title">Necessidades de Documentação Civil</h5>
           <div class="form-check">
-            <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="SEM NECESSIDADE" class="form-check-input" />
+            <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input"/>
             <label for="cni">SEM NECESSIDADE</label>
           </div>
           <div class="form-check">
@@ -538,19 +504,19 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <label for="rcn">RCN</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" name="documentacaocivil[]" id="cpcd" value="CARTEIRA PCD" class="form-check-input" />
+            <input type="checkbox" name="documentacaocivil[]" id="cpcd" value="Carteira PCD" class="form-check-input" />
             <label for="cpcd">CARTEIRA PCD</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" name="documentacaocivil[]" id="cptea" value="CARTEIRA CPTEA" class="form-check-input" />
+            <input type="checkbox" name="documentacaocivil[]" id="cptea" value="Carteira CPTEA" class="form-check-input" />
             <label for="cptea">CARTEIRA CIPTEA</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" name="documentacaocivil[]" id="rnm" value="REGISTRO NACIONAL DOS MIGRANTES" class="form-check-input" />
+            <input type="checkbox" name="documentacaocivil[]" id="rnm" value="Registro Nacional dos Migrantes" class="form-check-input" />
             <label for="rnm">REGISTRO NACIONAL DOS MIGRANTES (RNM)</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" name="documentacaocivil[]" id="carteiraIdoso" value="CARTEIRA DO IDOSO" class="form-check-input" />
+            <input type="checkbox" name="documentacaocivil[]" id="carteiraIdoso" value="Carteira do Idoso" class="form-check-input" />
             <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
           </div>
         </div>
@@ -579,46 +545,46 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
             <label for="" class="form-label">Escolaridade:</label>        
-<select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select">
-<option value="" selected disabled>Selecione uma opção</option>
-    <option value="Não Alfabetizado">Não Alfabetizado</option>
-    <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
-    <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
-    <option value="Ens. Médio Completo">Ens. Médio Completo</option>
-    <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
-    <option value="Ens. Superior Completo">Ens. Superior Completo</option>
-    <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
-</select>
+          <select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select">
+          <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Não Alfabetizado">Não Alfabetizado</option>
+              <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+              <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+              <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+              <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+              <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+              <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+          </select>
 
 
-<label for="" class="form-label">Tipo de PCD:</label>        
-<select id="deficiencia1" name="deficiencia[]" class="form-select">
-<option value="" selected disabled>Selecione uma opção</option>
-    <option value="Sem Deficiência">Sem Deficiência</option>
-    <option value="Visual">Visual</option>
-    <option value="Auditiva">Auditiva</option>
-    <option value="Mental">Mental</option>
-    <option value="Física">Física</option>
-    <option value="Múltipla">Múltipla</option>
-</select>
+              <label for="" class="form-label">Tipo de PCD:</label>        
+              <select id="deficiencia1" name="deficiencia[]" class="form-select">
+              <option value="" selected disabled>Selecione uma opção</option>
+                  <option value="Sem Deficiência">Sem Deficiência</option>
+                  <option value="Visual">Visual</option>
+                  <option value="Auditiva">Auditiva</option>
+                  <option value="Mental">Mental</option>
+                  <option value="Física">Física</option>
+                  <option value="Múltipla">Múltipla</option>
+              </select>
 
-<label for="" class="form-label">Necessidade de Documentação:</label>        
-<select id="documentacao1" name="documentacao[]" class="form-select">
-<option value="" selected disabled>Selecione uma opção</option>
-    <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
-    <option value="CIN/RG">CIN/RG</option>
-    <option value="CPF">CPF</option>
-    <option value="CARTEIRA PCD">CARTEIRA PCD</option>
-    <option value="RCN">RCN</option>
-    <option value="CARTEIRA CIPTEA">CARTEIRA CIPTEA</option>
-    <option value="CARTEIRA IDOSO">CARTEIRA IDOSO</option>
-    <option value="RNM">RNM</option>
-    <option value="OUTRA">OUTRA</option>
-</select>
-<br>       
+                  <label for="" class="form-label">Necessidade de Documentação:</label>        
+                  <select id="documentacao1" name="documentacao[]" class="form-select">
+                  <option value="" selected disabled>Selecione uma opção</option>
+                      <option value="Sem Necessidade">SEM NECESSIDADE</option>
+                      <option value="CIN/RG">CIN/RG</option>
+                      <option value="CPF">CPF</option>
+                      <option value="Carteira PCD">CARTEIRA PCD</option>
+                      <option value="RCN">RCN</option>
+                      <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
+                      <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
+                      <option value="RNM">RNM</option>
+                      <option value="Outra">OUTRA</option>
+                  </select>
+                          <br>       
 
-  </div>
-  <button class="btn-cad" type="button" onclick="adicionarLinha()" style="font-size:15px;  ">Adicionar Novo Cadastro</button>
+                            </div>
+                            <button class="btn-cad" type="button" onclick="adicionarLinha()" style="font-size:15px;  ">Adicionar Novo Cadastro</button>
 
 
 <script>
@@ -676,15 +642,15 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
       <select id="documentacao${contador}" name="documentacao[]" class="form-select">
         <option value="" selected disabled>Selecione uma opção</option>
-        <option value="SEM NECESSIDADE">SEM NECESSIDADE</option>
+        <option value="Sem Necessidade">SEM NECESSIDADE</option>
         <option value="CIN/RG">CIN/RG</option>
         <option value="CPF">CPF</option>
-        <option value="CARTEIRA PCD">CARTEIRA PCD</option>
+        <option value="Carteira PCD">CARTEIRA PCD</option>
         <option value="RCN">RCN</option>
-        <option value="CARTEIRA CIPTEA">CARTEIRA CIPTEA</option>
-        <option value="CARTEIRA IDOSO">CARTEIRA IDOSO</option>
+        <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
+        <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
         <option value="RNM">RNM</option>
-        <option value="OUTRA">OUTRA</option>
+        <option value="Outra">OUTRA</option>
       </select>
       <br>
       <button type="button" onclick="removerLinha(this)" style="font-size:15px;" >Remover Cadastro</button>
@@ -698,61 +664,18 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
     rowToRemove.parentNode.removeChild(rowToRemove);
   }
 </script>
-
         
-    
-  <!--
-        <div class="mb-3"> 
-            <h5 class="sub-title">Encaminhamentos</h5>
-          <div class="form-check">
-            <input type="radio" name="encaminhamentosAgendados" id="semNecessidade" value="SEM NECESSIDADE DE ENCAMINHAMENTO" class="form-check-input" required/>
-            <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
-          </div>
-          <div class="">
-          <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCNI" value="CPF"  class="form-check-input"/>
-          <label for="encaminhamentoCNI">CPF</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoRCN" value="RCN" class="form-check-input" />
-            <label for="encaminhamentoRCN">RCN</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraCIPTEA" value="Carteira CIPTEA" class="form-check-input" />
-            <label for="encaminhamentoCarteiraCIPTEA">Carteira CIPTEA</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="encaminhamentoCarteiraPCD" value="Carteira do Idoso" class="form-check-input"/>
-            <label for="encaminhamentoCarteiraPCD">Carteira Do Idoso</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="insercaoAtualizacaoCADUNICO" value="Inserção/Atualização CADÚNICO" class="form-check-input" />
-            <label for="insercaoAtualizacaoCADUNICO">Inserção/Atualização CADÚNICO</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="projetoPermanecerSEDUC" value="Projeto Permanecer - SEDUC (em casos de evasão escolar)" class="form-check-input" />
-            <label for="projetoPermanecerSEDUC">Projeto Permanecer - SEDUC (em casos de evasão escolar)</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Cursos de Defesa Pessoal Para Mulheres" class="form-check-input" />
-            <label for="cursosCapacitacaoProfissional">Cursos de Defesa Pessoal Para Mulheres</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Programa Empreender no Envelhecer (em casos de microcrédito para idoso)" class="form-check-input" />
-            <label for="cursosCapacitacaoProfissional">Programa Empreender no Envelhecer (em casos de microcrédito para idoso)</label>
-          </div>
-          <div>
-            <input type="radio" name="encaminhamentosAgendados" id="cursosCapacitacaoProfissional" value="Idoso em Movimento(em caso de atividade físicas em grupos de idosos)" class="form-check-input" />
-            <label for="cursosCapacitacaoProfissional">Idoso em Movimento(em caso de atividade físicas em grupos de idosos)</label>
-          </div>
-          <br>
-        -->
           
         </div> 
-
+    <form>
         <div class="mb-3"> 
     <h5 class="sub-title">Encaminhamentos/Agendamentos</h5>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC CIDADANIA (CPF,RCN)" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input"/>
+        <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
         <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
     </div>
     <div class="form-check">
@@ -760,35 +683,38 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <label for="encaminhamento2">SEJUSC PCD</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
         <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
         <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="ESCRITÓRIO SOCIAL - SEAP" class="form-check-input"/>
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input"/>
         <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="CURSO DE CAPACITAÇÃO PROFISSIONAL" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
         <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
     </div>
-            <div class="mb-3">
-                <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
-                <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
-            </div>   
+
+    <div class="mb-3">
+        <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
+        <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
+    </div>   
 
     </div>
 
         <button type="submit" name="submit" id="submit">Enviar</button>
-        <!-- <input type="submit" name="submit" id="submit"> -->
-      <!-- <button><a href="cadastro.php">Avançar</a></button> -->
+        
       
       </div>
-      <!-- <input type="submit" name="submit" id="submit"> -->
+      
     </div>
+
+    
+
     <!-- Bibliteca de máscaras -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -821,6 +747,42 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
   </form>
+
+  <script>
+    function validarFormulario() {
+        var checkboxesEncaminhamentos = document.querySelectorAll('input[name="encaminhamentosAgendados[]"]');
+        var isCheckedEncaminhamentos = false;
+
+        for (var i = 0; i < checkboxesEncaminhamentos.length; i++) {
+            if (checkboxesEncaminhamentos[i].checked) {
+                isCheckedEncaminhamentos = true;
+                break;
+            }
+        }
+
+        var checkboxesDocumentacaoCivil = document.querySelectorAll('input[name="documentacaocivil[]"]');
+        var isCheckedDocumentacaoCivil = false;
+
+        for (var i = 0; i < checkboxesDocumentacaoCivil.length; i++) {
+            if (checkboxesDocumentacaoCivil[i].checked) {
+                isCheckedDocumentacaoCivil = true;
+                break;
+            }
+        }
+
+        if (!isCheckedEncaminhamentos) {
+            alert("Selecione pelo menos um encaminhamento/agendamento.");
+            return false; // Impede o envio do formulário
+        }
+
+        if (!isCheckedDocumentacaoCivil) {
+            alert("Selecione pelo menos uma necessidade de documentação civil.");
+            return false; // Impede o envio do formulário
+        }
+
+        return true; // Permite o envio do formulário
+    }
+</script>
  
 </body>
 

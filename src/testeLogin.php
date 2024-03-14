@@ -32,7 +32,7 @@ session_start();
         {
             $_SESSION['cpf'] = $cpf;
             $_SESSION['senha'] = $senha;
-            header('Location: listar.php');
+            header('Location: tiposConsultas.html');
 
         }
     

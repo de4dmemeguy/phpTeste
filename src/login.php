@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon" />
   <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/login.css" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <title>Cidadania e Segurança- Login</title>
 
   <style>
@@ -20,6 +21,8 @@
         cursor: pointer;
         border: none;
      }
+     
+     
      </style>
 
 </head>
@@ -42,20 +45,34 @@
         <form action="" method="post">
           <i class="bx bxs-user"></i>
           <label for="" class="label-form">CPF:</label>
-          <input type="text" name="cpf" class="input-form" placeholder="Digite seu CPF" />
+          <input type="text" id="cpf" name="cpf" class="input-form" placeholder="000.000.000.-00" />
           <i class="bx bxs-key"></i>
           <label for="" class="label-form">Senha:</label>
           <input type="password" name="senha" class="input-form" placeholder="Digite sua senha" />
           <br>
           <input class="inputSubmit" type="submit" name="submit" value="Entrar">
+          
+          
+          <!-- Bibliteca de máscaras -->
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+          
+          <script>
+            $(document).ready(function() {
+              // Máscara para CPF
+              $('#cpf').mask('000.000.000-00', {reverse: true});
+            });
+          </script>
         </form>
 
+        <a href="home.php" class="btn btn-warning" style="position: absolute; top: 20px; right: 20px; font-size: 20px; padding: 12px 20px;">Voltar para a HOME</a>
       </div>
     
     </form>
 
     
   </main>
+ 
 
 </body>
 
