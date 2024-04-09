@@ -143,7 +143,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   <link rel="shortcut icon" href="/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
   <link rel="import" href="cadastro.html">
 
-  <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/styles.css" />
+  <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/styles.css" />
   <script src="./services/form.js" defer></script>
   <title>Cidadania e Segurança</title>
 
