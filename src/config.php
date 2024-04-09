@@ -6,7 +6,7 @@
     $dbName = 'cidadania_seguranca';
 
     // $dbHost = 'Localhost';
-    // $dbUsername = 'ssp';
+    // $dbUsername = 'cidadania_seg';
     // $dbPassword = '@SSP2019ra';
     // $dbName = 'cidadania_seguranca';
 

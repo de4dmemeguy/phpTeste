@@ -47,13 +47,13 @@ if (!empty($_GET['data'])) {
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATE_FORMAT(DATA_NASC, '%d/%m/%Y')) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
                       WHERE DATE(data_hora_cadastro) = '$data_formatada' 
                       GROUP BY NOME 
                       LIMIT $inicio, $qnt_result_pg";
 } else {
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATE_FORMAT(DATA_NASC, '%d/%m/%Y')) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
                       GROUP BY NOME 
                       LIMIT $inicio, $qnt_result_pg";
@@ -111,7 +111,7 @@ if (!empty($_GET['data'])) {
             
             echo "<th scope='col'>NOME</th>";
             echo "<th scope='col'>CPF</th>";
-            echo "<th scope='col'>DATA NASCIMENTO</th>";
+            echo "<th scope='col'>NASCIMENTO</th>";
             echo "<th scope='col'>NOME RUA</th>";
             echo "<th scope='col'>NUM</th>";
             echo "<th scope='col'>BAIRRO</th>";

@@ -16,12 +16,12 @@ if (!isset($_SESSION['cpf']) || !isset($_SESSION['senha'])) {
 $data = isset($_POST['data']) ? $_POST['data'] : null;
 if ($data) {
     $data_formatada = date('Y-m-d', strtotime($data));
-    $query = "SELECT DISTINCT NOME, CPF, DATE_FORMAT(DATA_NASC, '%d/%m/%Y') AS DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
+    $query = "SELECT DISTINCT NOME, CPF, DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
 
     // Contar o total de pessoas da busca
     $total_pessoas_query = "SELECT COUNT(DISTINCT NOME) AS total_pessoas FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
 } else {
-    $query = "SELECT DISTINCT NOME, CPF, DATE_FORMAT(DATA_NASC, '%d/%m/%Y') AS DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa";
+    $query = "SELECT DISTINCT NOME, CPF, DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa";
 
     // Contar o total de pessoas
     $total_pessoas_query = "SELECT COUNT(DISTINCT NOME) AS total_pessoas FROM pessoa";

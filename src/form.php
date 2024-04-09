@@ -170,9 +170,15 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <input type="text" id="nome" name="nome" class="form-control" required/>
         </div>
         <div class="mb-3">
+            <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
+            <input type="text" id="dataNascimento" name="dataNascimento" class="form-control" placeholder="DD/MM/YYYY" required pattern="\d{2}/\d{2}/\d{4}" />
+            <small class="form-text text-muted">Formato: DD/MM/YYYY</small>
+        </div>
+
+        <!-- <div class="mb-3">
           <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
           <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" required/>
-        </div>
+        </div> -->
         <div class="mb-3">
           <label for="cpf" class="form-label">CPF:</label>
           <input type="text" id="cpf" name="cpf" class="form-control " placeholder="000.000.000-00" required/>
@@ -739,6 +745,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
               // Máscara para Idade Familiar
               $('#idadesocio1').mask('000');
+              
+               // Máscara para a Data
+               $('#dataNascimento').mask('00/00/0000');
+              
 
               
 
