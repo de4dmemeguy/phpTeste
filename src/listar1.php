@@ -73,31 +73,47 @@ if (!empty($_GET['data'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>Listar</title>
   </head>
 
   <body>
-  <div class="d-flex">
-      <a href="tiposConsultas.html" class="btn btn-primary" style="position: absolute; top: 20px; left: 20px; background-color: #218838;"><i class="bi bi-arrow-left"></i>Tipos de Listagens</a>
-  </div>
-  <div class="d-flex">
-      <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 20px; right: 20px;">Sair</a>
-  </div>
+  
+  <nav class="navbar bg-body-tertiary">
+    <form class="container-fluid justify-content-between">
+        <a href="tiposConsultas.html" class="btn btn-success"><i class="bi bi-arrow-left"></i>Tipos de Listagens</a>
+        <a href="sair.php" class="btn btn-danger float-left">Sair</a>
+  </form>
+</nav>
+
     <br>
     <h1 class="text-center">Listagem de Pessoas</h1>
     <br>
-    <h4 class="" style="position: absolute; left: 20px;">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
-            <div>
                 <!-- Adicione o formulário de pesquisa por data -->
-                <form method="GET" action="listar1.php">
-                    <label for="data"; style="position: absolute; right:265px;">Pesquisar por Data:</label>
-                    <input type="date" id="data" name="data" style="position: absolute; right:120px;">
-                    <button type="submit" class="btn btn-outline-primary" style="position: absolute; top: 100px; right: 20px;">Pesquisar</button>
-                </form>
-            </div>
+                <div class="container">
+                    <div class="row">
+                       <form method="GET" action="listar1.php">
+                            <div class="input-group w-auto float-end">
+                                <input type="date" id="data" name="data" class="form-control">
+                                <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                            </div>  
+                        </form>  
+                    </div>
+                </div>
+               
     <br>
-    <br>
-    <?php
+    <div class="container">
+    <div class="row">
+        <div class="row">
+            <h4 class="text-start d-none d-xl-block">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
+            <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="col">
+            <div class="text-sm overflow-auto">
+            <?php
         if (isset ($_SESSION['msg'])){
             echo $_SESSION['msg'];
             unset ($_SESSION ['msg']);
@@ -177,11 +193,16 @@ if (!empty($_GET['data'])) {
         echo "<a href='listar1.php?".(!empty($_GET['data']) ? "data=".$_GET['data']."&" : "")."pagina=$quantidade_pg' class='btn btn-outline-primary'> Ultima</a>";
 
     ?>
-    
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <!-- Adicionar botão para gerar PDF -->
     <form method="post" action="pdf_listar1.php">
         <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
-        <button type="submit" class="btn btn-primary" style="position: absolute; top: 20px; right: 80px;">Gerar PDF</button>
+        <button type="submit" class="btn btn-primary" style="position: absolute; top: 10px; right: 80px;">Gerar PDF</button>
     </form>
 </div>
         

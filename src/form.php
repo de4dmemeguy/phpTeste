@@ -490,7 +490,6 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <br>
         
-
         <div class="mb-3">
           <h5 class="sub-title">Necessidades de Documentação Civil</h5>
           <div class="form-check">
@@ -528,6 +527,9 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
 
         <div class="mb-3"  id="dynamic-content">
+
+          <!-- SOCIOECONOMICO -->
+
           <h5>Socioêconomico</h5>
           <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
           <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control" />
@@ -590,7 +592,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                           <br>       
 
                             </div>
-                            <button class="btn-cad" type="button" onclick="adicionarLinha()" style="font-size:15px;  ">Adicionar Novo Cadastro</button>
+                            <!-- BTN Adicionar Cadastro -->
+                            <div class="d-flex">
+                            <div class="justify-content-center">
+                              <button class="btn-cad" type="button" onclick="adicionarLinha()" style="font-size:15px; ">Adicionar Novo Cadastro</button>
+                            </div>
+                            </div>
 
 
 <script>

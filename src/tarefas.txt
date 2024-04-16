@@ -1,0 +1,6 @@
+Responsividade da página form.php
+botoes -> adicionar novo cadastro e enviar
+
+Responsividade da página listar.php
+tabela pesquisa por data
+btn pesquisar
