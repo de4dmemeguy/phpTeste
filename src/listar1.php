@@ -89,17 +89,28 @@ if (!empty($_GET['data'])) {
     <br>
     <h1 class="text-center">Listagem de Pessoas</h1>
     <br>
-                <!-- Adicione o formulário de pesquisa por data -->
-                <div class="container">
-                    <div class="row">
-                       <form method="GET" action="listar1.php">
-                            <div class="input-group w-auto float-end">
-                                <input type="date" id="data" name="data" class="form-control">
-                                <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
-                            </div>  
-                        </form>  
-                    </div>
-                </div>
+    <!-- Adicione o formulário de pesquisa por data -->
+    <div class="container">
+        <div class="row">
+            <form method="GET" action="listar1.php">
+                <div class="input-group w-auto float-end">
+                    <input type="date" id="data" name="data" class="form-control">
+                    <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                </div>  
+            </form>  
+        </div>
+    </div>
+    <!-- formulário de pesquisa por nome -->
+    <div class="container">
+        <div class="row">
+            <form action="">
+            <div class="input-group w-auto float-end">
+                <input type="text" class="form-control" placeholder="Pesquise pelo nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2">Pesquisar</button>
+            </div>
+            </form>
+        </div>
+    </div>
                
     <br>
     <div class="container">
@@ -133,6 +144,9 @@ if (!empty($_GET['data'])) {
             echo "<th scope='col'>BAIRRO</th>";
             echo "<th scope='col'>TELEFONE</th>";
             echo "<th scope='col'>ESCOLARIDADE</th>";
+            echo "<th scope='col'>EDITAR</th>";
+            echo "<th scope='col'>EXCLUIR</th>";
+
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -148,6 +162,9 @@ if (!empty($_GET['data'])) {
             echo "<td>" . $row_pessoa['END_BAIRRO'] . "</td>";
             echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
             echo "<td>" . $row_pessoa['ESCOLARIDADE'] . "</td>";
+            echo "<td class='d-flex justify-content-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
+            echo "<td><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+
             echo "</tr>";
         }
 
