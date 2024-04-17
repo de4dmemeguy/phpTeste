@@ -67,6 +67,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 </head>
 
 <body>
+
     <nav class="navbar">
         <form class="container-fluid justify-content-between">
             <a href="tiposConsultas.html" class="btn btn-success"><i class="bi bi-arrow-left"></i> Tipos de Listagens</a>
@@ -74,91 +75,137 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
         </form>
     </nav>
 
-    <br>
-    <h1 class="text-center">Listagem de Pessoas</h1>
-    <br>
-    <h4 class="" style="position: absolute; left: 20px;">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
-    <div>
-        <!-- Adicione o formulário de pesquisa por data -->
-        <form method="GET" action="listar3.php">
-            <label for="data" ; style="position: absolute; right:265px;">Pesquisar por Data:</label>
-            <input type="date" id="data" name="data" style="position: absolute; right:120px;">
-            <button type="submit" class="btn btn-outline-primary" style="position: absolute; top: 100px; right: 20px;">Pesquisar</button>
-        </form>
+
+    <h1 class="text-center mt-4 mb-5">Listagem de Pessoas</h1>
+
+    <!-- Adicione o formulário de pesquisa por data -->
+    <div class="container w-75">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form method="GET" action="listar3.php">
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Pesquise por data</label>
+                        <div class="input-group mb-1">
+                            <input type="date" class="form-control" id="data" name="data">
+                            <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Formulário de pesquisa por nome -->
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Pesquise por nome</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Digite o nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Pesquisar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
     <br>
     <br>
-    <?php
-    if (isset($_SESSION['msg'])) {
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
+
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <h4 class="text-start d-none d-xl-block">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
+                <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
+            </div>
+            <div class="col">
+                <div class="overflow-auto">
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
 
 
-    echo "<div class='table-responsive'>";
-    echo "<table class='table table-bordered table-striped table-hover'>";
-    echo "<thead class='thead-dark'>";
-    echo "<tr>";
+                    echo "<div class='table-responsive'>";
+                    echo "<table class='table table-bordered table-striped table-hover'>";
+                    echo "<thead class='thead-dark'>";
+                    echo "<tr>";
 
-    echo "<th scope='col'>NOME</th>";
-    echo "<th scope='col'>CPF</th>";
-    echo "<th scope='col'>TELEFONE</th>";
-    echo "<th scope='col'>NOME FAMILIAR</th>";
-    echo "<th scope='col'>VINCULO FAMILIAR</th>";
-    echo "<th scope='col'>DOCUMENTACAO FAMILIAR</th>";
-    echo "<th scope='col'>DATA / HORA</th>";
-    echo "</tr>";
-    echo "</thead>";
-    echo "<tbody>";
+                    echo "<th scope='col'>NOME</th>";
+                    echo "<th scope='col'>CPF</th>";
+                    echo "<th scope='col'>TELEFONE</th>";
+                    echo "<th scope='col'>NOME FAMILIAR</th>";
+                    echo "<th scope='col'>VINCULO FAMILIAR</th>";
+                    echo "<th scope='col'>DOCUMENTACAO FAMILIAR</th>";
+                    echo "<th scope='col'>DATA / HORA</th>";
+                    echo "<th scope='col'>EDITAR</th>";
+                    echo "<th scope='col'>EXCLUIR</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
 
-    while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)) {
-        echo "<tr>";
+                    while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)) {
+                        echo "<tr>";
 
-        echo "<td>" . $row_pessoa['NOME'] . "</td>";
-        echo "<td>" . $row_pessoa['CPF'] . "</td>";
-        echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
-        echo "<td>" . $row_pessoa['NOME_FAMILIAR'] . "</td>";
-        echo "<td>" . $row_pessoa['VINCULO_FAMILIAR'] . "</td>";
-        echo "<td>" . $row_pessoa['NECES_DOC_FAMILIAR'] . "</td>";
-        echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
-        echo "</tr>";
-    }
+                        echo "<td>" . $row_pessoa['NOME'] . "</td>";
+                        echo "<td>" . $row_pessoa['CPF'] . "</td>";
+                        echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
+                        echo "<td>" . $row_pessoa['NOME_FAMILIAR'] . "</td>";
+                        echo "<td>" . $row_pessoa['VINCULO_FAMILIAR'] . "</td>";
+                        echo "<td>" . $row_pessoa['NECES_DOC_FAMILIAR'] . "</td>";
+                        echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
+                        echo "<td class='text-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
+                        echo "<td class='text-center'><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+                        echo "</tr>";
+                    }
 
-    echo "</tbody>";
-    echo "</table>";
-    echo "</div>";
+                    echo "</tbody>";
+                    echo "</table>";
+                    echo "</div>";
 
 
-    // Paginação para os resultados da busca
-    if (!empty($_GET['data'])) {
-        $quantidade_pg = ceil($total_pessoas / $qnt_result_pg);
-    } else {
-        $quantidade_pg = ceil($total_geral / $qnt_result_pg);
-    }
+                    // Paginação para os resultados da busca
+                    if (!empty($_GET['data'])) {
+                        $quantidade_pg = ceil($total_pessoas / $qnt_result_pg);
+                    } else {
+                        $quantidade_pg = ceil($total_geral / $qnt_result_pg);
+                    }
 
-    //Limitar os Links antes e depois
-    $max_links = 2;
+                    //Limitar os Links antes e depois
+                    $max_links = 2;
 
-    ?>
-    <div class="d-flex justify-content-center">
-        <a href='listar3.php?<?php echo (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=1"; ?>' class='btn btn-outline-primary'>Primeira </a>
-        <?php
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
-            if ($pag_ant >= 1) {
-                echo "<a href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_ant'>$pag_ant </a>";
-            }
-        }
-        echo "$pagina ";
 
-        for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
-            if ($pag_dep <= $quantidade_pg) {
-                echo "<a href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_dep'>$pag_dep </a>";
-            }
-        }
-        echo "<a href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$quantidade_pg' class='btn btn-outline-primary'> Ultima</a>";
+    <div class="d-flex justify-content-center mt-2">
+        <nav aria-label="navegação da página">
+            <ul class="pagination">
+                <li class="page-item"><a href='listar3.php?<?php echo (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=1"; ?>' class='page-link'>Primeira </a></li>
+                <?php
 
-        ?>
+                for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
+                    if ($pag_ant >= 1) {
+                        echo "<li class='page-item'><a class='page-link' href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_ant'>$pag_ant </a></li>";
+                    }
+                }
+                echo "<li class='page-item active'> <a class='page-link' href='#'>$pagina</a></li>";
+
+                for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
+                    if ($pag_dep <= $quantidade_pg) {
+                        echo "<li class='page-item'><a class='page-link' href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_dep'>$pag_dep </a></li>";
+                    }
+                }
+                echo "<li class='page-item'><a href='listar3.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$quantidade_pg' class='page-link'> Ultima</a></li>";
+
+                ?>
+            </ul>
+        </nav>
 
         <!-- Adicionar botão para gerar PDF -->
         <form method="post" action="pdf_listar3.php">
@@ -166,7 +213,6 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
             <button type="submit" class="btn btn-primary" style="position: absolute; top: 8px; right: 80px;">Gerar PDF</button>
         </form>
     </div>
-
     <br><br>
 </body>
 

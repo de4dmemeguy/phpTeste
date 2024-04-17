@@ -107,7 +107,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <form action="">
-                    <div class="">
+                    <div class="mb-3">
                         <label for="data" class="form-label">Pesquise por nome</label>
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Digite o nome" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -161,7 +161,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                         echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
                         echo "<td>" . $row_pessoa['DOCUM_CIVIL'] . "</td>";
                         echo "<td>" . $row_pessoa['ENCAMINHAMENTOS'] . "</td>";
-                        echo "<td class='text-center'><a href='edit2.php'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+                        echo "<td class='text-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
                         echo "<td class='text-center'><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
                         echo "</tr>";
                     }
@@ -201,7 +201,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                         echo "<li class='page-item'><a class='page-link' href='listar2.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_ant'>$pag_ant </a></li>";
                     }
                 }
-                echo "<li class='page-item active'> <a class='page-link' href='#'>$pagina</a>  </li>";
+                echo "<li class='page-item active'> <a class='page-link' href='#'>$pagina</a></li>";
 
                 for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
                     if ($pag_dep <= $quantidade_pg) {
