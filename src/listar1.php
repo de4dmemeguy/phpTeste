@@ -47,15 +47,15 @@ if (!empty($_GET['data'])) {
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
                       WHERE DATE(data_hora_cadastro) = '$data_formatada' 
-                      GROUP BY NOME 
+                      GROUP BY IDPESSOA, NOME 
                       LIMIT $inicio, $qnt_result_pg";
 } else {
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
-                      GROUP BY NOME 
+                      GROUP BY IDPESSOA, NOME 
                       LIMIT $inicio, $qnt_result_pg";
 }
 
@@ -63,7 +63,6 @@ if (!empty($_GET['data'])) {
     $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 
     // Definir o total de pessoas de acordo com os resultados da busca
-    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -120,7 +119,13 @@ if (!empty($_GET['data'])) {
             <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
         </div>
         <div class="row">
-
+            <?php
+                if (isset($_GET['delete']) && $_GET['delete']) {
+                    ?>
+                    <h3 class="text-success">Apagado com sucesso</h3>
+                    <?php
+                } 
+            ?>
         </div>
         <div class="col">
             <div class="text-sm overflow-auto">
@@ -162,8 +167,8 @@ if (!empty($_GET['data'])) {
             echo "<td>" . $row_pessoa['END_BAIRRO'] . "</td>";
             echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
             echo "<td>" . $row_pessoa['ESCOLARIDADE'] . "</td>";
-            echo "<td class='d-flex justify-content-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
-            echo "<td><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+            echo "<td class='d-flex justify-content-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+            echo "<td><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
 
             echo "</tr>";
         }
@@ -224,6 +229,13 @@ if (!empty($_GET['data'])) {
 </div>
         
         <br><br>
+        <script>
+            function alertDelete(id) {
+                if (confirm("Confirma a exclusão?") == true) {
+                    window.location.href = "delete.php?idpessoa=" + id;
+                }
+            }
+        </script>
   </body>
 
 </html>
