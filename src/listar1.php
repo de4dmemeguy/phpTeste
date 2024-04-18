@@ -47,22 +47,24 @@ if (!empty($_GET['data'])) {
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
                       WHERE DATE(data_hora_cadastro) = '$data_formatada' 
-                      GROUP BY NOME 
+                      GROUP BY IDPESSOA, NOME 
                       LIMIT $inicio, $qnt_result_pg";
 } else {
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
+    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
                       FROM pessoa 
-                      GROUP BY NOME 
+                      GROUP BY IDPESSOA, NOME 
                       LIMIT $inicio, $qnt_result_pg";
 }
+
 
 
 $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 
 // Definir o total de pessoas de acordo com os resultados da busca
+
 
 ?>
 <!DOCTYPE html>
@@ -124,26 +126,30 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     <br>
     <div class="container">
         <div class="row">
-            <div class="row">
-                <h4 class="text-start d-none d-xl-block">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
-                <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
-            </div>
-            <div class="row">
 
-            </div>
-            <div class="col">
-                <div class="text-sm overflow-auto">
+            <?php
+                if (isset($_GET['delete']) && $_GET['delete']) {
+                    ?>
+                    <h3 class="text-success">Apagado com sucesso</h3>
                     <?php
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
+                } 
+            ?>
+        </div>
+        <div class="col">
+            <div class="text-sm overflow-auto">
+            <?php
+        if (isset ($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset ($_SESSION ['msg']);
+        }
+
 
 
                     echo "<div class='table-responsive'>";
                     echo "<table class='table table-bordered table-striped table-hover'>";
                     echo "<thead class='thead-dark'>";
                     echo "<tr>";
+
 
                     echo "<th scope='col'>NOME</th>";
                     echo "<th scope='col'>CPF</th>";
@@ -160,25 +166,26 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                     echo "</thead>";
                     echo "<tbody>";
 
-                    while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)) {
-                        echo "<tr>";
+        while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)){
+            echo "<tr>";
+            
+            echo "<td>" . $row_pessoa['NOME'] . "</td>";
+            echo "<td>" . $row_pessoa['CPF'] . "</td>";
+            echo "<td>" . $row_pessoa['DATA_NASC'] . "</td>";
+            echo "<td>" . $row_pessoa['END_RUA'] . "</td>";
+            echo "<td>" . $row_pessoa['END_NUM'] . "</td>";
+            echo "<td>" . $row_pessoa['END_BAIRRO'] . "</td>";
+            echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
+            echo "<td>" . $row_pessoa['ESCOLARIDADE'] . "</td>";
+            echo "<td class='d-flex justify-content-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+            echo "<td><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
 
-                        echo "<td>" . $row_pessoa['NOME'] . "</td>";
-                        echo "<td>" . $row_pessoa['CPF'] . "</td>";
-                        echo "<td>" . $row_pessoa['DATA_NASC'] . "</td>";
-                        echo "<td>" . $row_pessoa['END_RUA'] . "</td>";
-                        echo "<td>" . $row_pessoa['END_NUM'] . "</td>";
-                        echo "<td>" . $row_pessoa['END_BAIRRO'] . "</td>";
-                        echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
-                        echo "<td>" . $row_pessoa['ESCOLARIDADE'] . "</td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+                    
+            echo "</tr>";
 
-                        echo "</tr>";
-                    }
-
-                    echo "</tbody>";
-                    echo "</table>";
+        }
+            echo "</table>";
+                  
                     echo "</div>";
 
 
@@ -223,15 +230,22 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
             </div>
         </div>
 
-        <!-- Adicionar botão para gerar PDF -->
-        <form method="post" action="pdf_listar1.php">
-            <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
-            <button type="submit" class="btn btn-primary" style="position: absolute; top: 10px; right: 80px;">Gerar PDF</button>
-        </form>
-    </div>
-
-    <br><br>
-
-</body>
+        
+    <!-- Adicionar botão para gerar PDF -->
+    <form method="post" action="pdf_listar1.php">
+        <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
+        <button type="submit" class="btn btn-primary" style="position: absolute; top: 10px; right: 80px;">Gerar PDF</button>
+    </form>
+</div>
+        
+        <br><br>
+        <script>
+            function alertDelete(id) {
+                if (confirm("Confirma a exclusão?") == true) {
+                    window.location.href = "delete.php?idpessoa=" + id;
+                }
+            }
+        </script>
+  </body>
 
 </html>

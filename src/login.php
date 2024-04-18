@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon" />
-  <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/login.css" />
+  <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/login.css" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -29,10 +29,12 @@
 <body>
 
   <main class="login">
+
     <div class="logo">
       <img src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp">
     </div>
     <form action="/CidadaniaEseguranca/CidadaniaEseguranca/src/testeLogin.php" method="post" class="container-login">
+
 
       <h1 class="login-title">Bem-vindo(a)</h1>
       <h2 class="login-subtitle">Insira seu dados de acesso</h2>
