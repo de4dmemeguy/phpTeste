@@ -28,16 +28,14 @@
 
 if(isset($_POST['submit']))
 {
-    // Prepare a query SQL para inserção de dados
-    $sql = "UPDATE pessoa (nome, data_nasc, cpf, numero_nis, genero, estado_civil, outro_estado_civil, 
-cor_raca, nacionalidade, naturalidade, escolaridade, profissao, renda, ocupacao_profissional, outra_ocupacao, 
-end_cep, end_rua, end_num, end_bairro, end_p_referencia, telefone, oferta_whatsapp, tipo_residencia, 
-estrutura_residencia, outros_materiais, energia_eletrica, abast_agua, outra_forma_agua, escoa_sanitario, 
-outra_forma_esgoto, beneficios_sociais, outros_beneficios, sit_cad_unico, docum_civil, 
-nome_familiar, idade_familiar, vinculo_familiar, escolaridade_familiar, tipo_pcd, 
-neces_doc_familiar, encaminhamentos, tecnico_responsavel, data_hora_cadastro) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // Prepare a query SQL para atualização de dados
+    $sql = "UPDATE 'pessoa' SET IDPESSOA = '$idpessoa', nome = '$nome', data_nasc = '$data_nasc', cpf = '$cpf', numero_nis = '$numero_nis', genero = '$genero', estado_civil = '$estado_civil', outro_estado_civil = '$outro_estado_civil', 
+    cor_raca = '$cor_raca', nacionalidade = '$nacionalidade', naturalidade = '$naturalidade', escolaridade = '$escolaridade', profissao = '$profissao', renda = '$renda', ocupacao_profissional = '$ocupacao_profisional', outra_ocupacao = '$outra_ocupacao', 
+    end_cep = '$end_cep', end_rua = '$end_rua', end_num = '$end_num', end_bairro = '$end_bairro', end_p_referencia = '$end_p_referencia', telefone = '$telefone', oferta_whatsapp = '$oferta_whatsapp', tipo_residencia = '$tipo_residencia', 
+    estrutura_residencia = '$estrutura_residencia', outros_materiais = '$outros_materiais', energia_eletrica = '$energia_eletrica', abast_agua = '$abast_agua', outra_forma_agua = '$outra_forma_agua', escoa_sanitario = '$escoa_sanitario', 
+    outra_forma_esgoto = '$outra_forma_esgoto', beneficios_sociais = '$beneficios_sociais', outros_beneficios = '$outros_beneficios', sit_cad_unico = '$sit_cad_unico', docum_civil = '$docum_civil', 
+    nome_familiar = '$nome_familiar', idade_familiar = '$idade_familiar', vinculo_familiar = '$vinculo_familiar', escolaridade_familiar = '$escolaridade_familiar', tipo_pcd = '$tipo_pcd', 
+    neces_doc_familiar = '$neces_doc_familiar', encaminhamentos = '$encaminhamentos', tecnico_responsavel = '$tecnico_responsavel', data_hora_cadastro = '$data_hora_cadastro' ";
 
     // Preparar a instrução SQL
     $stmt = $conexao->prepare($sql);
@@ -165,7 +163,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   </div>
   
   <br>
-  <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()">
+  <form action="form_edit.php" method="post" id="myForm" onsubmit="return validarFormulario()">
     <div class="container">
       <div>
         <br>
@@ -689,42 +687,43 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <div class="mb-3"> 
     <h5 class="sub-title">Encaminhamentos/Agendamentos</h5>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input"/>
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'SEM NECESSIDADE' ? 'checked' : '') ?>
+ />
         <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'SEJUSC Cidadania (CPF,RCN)' ? 'checked' : '') ?> />
         <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input"/>
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'SEJUSC PCD' ? 'checked' : '') ?> />
         <label for="encaminhamento2">SEJUSC PCD</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'Inserção/Atualização CADÚNICO-SEMASC' ? 'checked' : '') ?> />
         <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'Curso de Defesa Pessoal Para Mulheres - SEDEL' ? 'checked' : '') ?> />
         <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input"/>
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'Escritório Social - SEAP' ? 'checked' : '') ?> />
         <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
     </div>
     <div class="form-check">
-        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
+        <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" <?php echo ($pessoa['NECES_DOC_FAMILIAR'] == 'Curso de Capacitação Profissional' ? 'checked' : '') ?> />
         <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
     </div>
 
     <div class="mb-3">
         <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
-        <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" required/>
+        <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control" value="<?php echo $pessoa['TECNICO_RESPONSAVEL']; ?>" required/>
     </div>   
 
     </div>
 
-        <button type="submit" name="submit" id="submit">Enviar</button>
+        <button type="submit" name="submit" id="submit">Atualizar</button>
         
       
       </div>

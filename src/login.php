@@ -31,9 +31,9 @@
   <main class="login">
 
     <div class="logo">
-      <img src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp">
+      <img src="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp">
     </div>
-    <form action="/CidadaniaEseguranca/CidadaniaEseguranca/src/testeLogin.php" method="post" class="container-login">
+    <form action="/CidadaniaEseguranca/src/testeLogin.php" method="post" class="container-login">
 
 
       <h1 class="login-title">Bem-vindo(a)</h1>

@@ -45,9 +45,9 @@ if (!empty($_GET['data'])) {
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT NOME, CPF, TELEFONE, NOME_FAMILIAR, VINCULO_FAMILIAR, NECES_DOC_FAMILIAR, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada' LIMIT $inicio, $qnt_result_pg";
+    $result_pessoa = "SELECT IDPESSOA, NOME, CPF, TELEFONE, NOME_FAMILIAR, VINCULO_FAMILIAR, NECES_DOC_FAMILIAR, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada' LIMIT $inicio, $qnt_result_pg";
 } else {
-    $result_pessoa = "SELECT NOME, CPF, TELEFONE, NOME_FAMILIAR, VINCULO_FAMILIAR, NECES_DOC_FAMILIAR, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa LIMIT $inicio, $qnt_result_pg";
+    $result_pessoa = "SELECT IDPESSOA, NOME, CPF, TELEFONE, NOME_FAMILIAR, VINCULO_FAMILIAR, NECES_DOC_FAMILIAR, DATE_FORMAT(data_hora_cadastro, '%d/%m/%Y %H:%i:%s') AS data_hora_cadastro FROM pessoa LIMIT $inicio, $qnt_result_pg";
 }
 
 $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
@@ -119,6 +119,16 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                 <h4 class="text-start d-none d-xl-block">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
                 <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
             </div>
+
+            <?php
+                    if (isset($_GET['delete']) && $_GET['delete']) {
+                        ?>
+                        <h3 class="text-success">Apagado com sucesso</h3>
+                        <?php
+                    } 
+                ?>
+            </div>
+
             <div class="col">
                 <div class="overflow-auto">
                     <?php
@@ -156,8 +166,8 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                         echo "<td>" . $row_pessoa['VINCULO_FAMILIAR'] . "</td>";
                         echo "<td>" . $row_pessoa['NECES_DOC_FAMILIAR'] . "</td>";
                         echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+                        echo "<td class='text-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+                        echo "<td class='text-center'><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
                         echo "</tr>";
                     }
 
@@ -214,6 +224,13 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
         </form>
     </div>
     <br><br>
+    <script>
+            function alertDelete(id) {
+                if (confirm("Confirma a exclusão?") == true) {
+                    window.location.href = "delete.php?idpessoa=" + id;
+                }
+            }
+    </script>
 </body>
 
 </html>

@@ -9,6 +9,10 @@
 
     if (mysqli_query($conexao, 'DELETE FROM pessoa WHERE IDPESSOA = ' . $_GET['idpessoa'])) {
         header('Location: listar1.php?delete=1');
+        header('Location: listar2.php?delete=1');
+        header('Location: listar3.php?delete=1');
     } else {
         header('Location: listar1.php?delete=0');
+        header('Location: listar2.php?delete=0');
+        header('Location: listar3.php?delete=0');
     }

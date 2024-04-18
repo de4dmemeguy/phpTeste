@@ -47,15 +47,15 @@ if (!empty($_GET['data'])) {
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(TELEFONE) AS TELEFONE, MIN(DOCUM_CIVIL) AS DOCUM_CIVIL, MIN(ENCAMINHAMENTOS) AS ENCAMINHAMENTOS 
+    $result_pessoa = "SELECT IDPESSOA NOME, MIN(CPF) AS CPF, MIN(TELEFONE) AS TELEFONE, MIN(DOCUM_CIVIL) AS DOCUM_CIVIL, MIN(ENCAMINHAMENTOS) AS ENCAMINHAMENTOS 
                             FROM pessoa 
                             WHERE DATE(data_hora_cadastro) = '$data_formatada' 
-                            GROUP BY NOME 
+                            GROUP BY IDPESSOA, NOME 
                             LIMIT $inicio, $qnt_result_pg";
 } else {
-    $result_pessoa = "SELECT NOME, MIN(CPF) AS CPF, MIN(TELEFONE) AS TELEFONE, MIN(DOCUM_CIVIL) AS DOCUM_CIVIL, MIN(ENCAMINHAMENTOS) AS ENCAMINHAMENTOS 
+    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(TELEFONE) AS TELEFONE, MIN(DOCUM_CIVIL) AS DOCUM_CIVIL, MIN(ENCAMINHAMENTOS) AS ENCAMINHAMENTOS 
                             FROM pessoa 
-                            GROUP BY NOME 
+                            GROUP BY IDPESSOA, NOME 
                             LIMIT $inicio, $qnt_result_pg";
 }
 
@@ -128,6 +128,18 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                 <h4 class="text-start d-none d-xl-block">Total de Pessoas: <?php echo $total_pessoas; ?></h4>
                 <h5 class="text-start d-block d-xl-none">Total de Pessoas: <?php echo $total_pessoas; ?></h5>
             </div>
+
+            <div class="row">
+
+                <?php
+                    if (isset($_GET['delete']) && $_GET['delete']) {
+                        ?>
+                        <h3 class="text-success">Apagado com sucesso</h3>
+                        <?php
+                    } 
+                ?>
+            </div>
+
             <div class="col">
                 <div class="overflow-auto">
                     <?php
@@ -161,8 +173,8 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
                         echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
                         echo "<td>" . $row_pessoa['DOCUM_CIVIL'] . "</td>";
                         echo "<td>" . $row_pessoa['ENCAMINHAMENTOS'] . "</td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-pencil-square text-primary'></a></i></td>";
-                        echo "<td class='text-center'><a href=''><i class='bi bi-trash text-danger'></a></i></td>";
+                        echo "<td class='text-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+                        echo "<td class='text-center'><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
                         echo "</tr>";
                     }
 
@@ -221,6 +233,15 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 
 
     <br><br>
+
+    <script>
+            function alertDelete(id) {
+                if (confirm("Confirma a exclusão?") == true) {
+                    window.location.href = "delete.php?idpessoa=" + id;
+                }
+            }
+    </script>
+
 </body>
 
 </html>
