@@ -2,7 +2,7 @@
 
     $dbHost = 'Localhost';
     $dbUsername = 'root';
-    $dbPassword = 'be$$@2604A';
+    $dbPassword = '68012736Juju';
     $dbName = 'cidadania_seguranca';
 
     // $dbHost = 'Localhost';

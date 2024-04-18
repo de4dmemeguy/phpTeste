@@ -18,7 +18,7 @@
     //Definir o fuso horário para o de Manaus
     date_default_timezone_set('America/Manaus');
 
-    $idpessoa = $_GET['idpessoa'];
+    $idpessoa = $_GET['updateidpessoa'];
 
     $resultado_pessoa = mysqli_query($conexao, "SELECT * FROM pessoa WHERE IDPESSOA = $idpessoa");
 
@@ -29,7 +29,7 @@
 if(isset($_POST['submit']))
 {
     // Prepare a query SQL para atualização de dados
-    $sql = "UPDATE 'pessoa' SET IDPESSOA = '$idpessoa', nome = '$nome', data_nasc = '$data_nasc', cpf = '$cpf', numero_nis = '$numero_nis', genero = '$genero', estado_civil = '$estado_civil', outro_estado_civil = '$outro_estado_civil', 
+    $sql = "UPDATE 'pessoa' SET IDPESSOA = '$idpessoa', nome = '$nome', data_nasc = $data_nasc, cpf = '$cpf', numero_nis = '$numero_nis', genero = '$genero', estado_civil = '$estado_civil', outro_estado_civil = '$outro_estado_civil', 
     cor_raca = '$cor_raca', nacionalidade = '$nacionalidade', naturalidade = '$naturalidade', escolaridade = '$escolaridade', profissao = '$profissao', renda = '$renda', ocupacao_profissional = '$ocupacao_profisional', outra_ocupacao = '$outra_ocupacao', 
     end_cep = '$end_cep', end_rua = '$end_rua', end_num = '$end_num', end_bairro = '$end_bairro', end_p_referencia = '$end_p_referencia', telefone = '$telefone', oferta_whatsapp = '$oferta_whatsapp', tipo_residencia = '$tipo_residencia', 
     estrutura_residencia = '$estrutura_residencia', outros_materiais = '$outros_materiais', energia_eletrica = '$energia_eletrica', abast_agua = '$abast_agua', outra_forma_agua = '$outra_forma_agua', escoa_sanitario = '$escoa_sanitario', 

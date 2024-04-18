@@ -184,52 +184,53 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
   <link rel="import" href="cadastro.html">
   <!-- <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/styles.css"/> -->
-
-
   <script src="./services/form.js" defer></script>
   <title>Cidadania e Segurança</title>
 
 </head>
 
-<body>
+<body style="background-color: #1E3357;">
 
   <div class="d-flex">
     <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 15px; right: 15px;">Sair</a>
   </div>
-
   <br>
+  <div class="container">
+    <h3 class="text-center mt-5 mb-5 text-light">Formulário - Cidadania e Segurança</h3>
+  </div>
 
-  <h3 class="text-center mt-5">Formulário - Cidadania e Segurança</h3>
+  <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()" class="mb-4 mx-2">
 
-  <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()">
-    <div class="container">
-      <div class="col-md-6 mx-auto">
-        <h5 class="text-center mt-5 mb-3">Identificação</h5>
+    <div class="container border rounded-4 col-md-6 col-xl-4 shadow-lg" style="background-color: white;">
+      <div class="mx-auto">
+        <h5 class="text-center mt-4 mb-3">Identificação</h5>
 
-        <div class="mb-3"> <!-- Nome Completo -->
+        <div class="mb-3"> 
           <label for="nomeCompleto" class="form-label">Nome Completo:</label>
-          <input type="text" id="nome" name="nome" class="form-control shadow-sm bg-body-tertiary" required />
+          <input type="text" id="nome" name="nome" class="form-control bg-body-tertiary" required />
         </div>
-        <div class="mb-3"><!-- Dt Nascimento -->
-          <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
-          <input type="text" id="dataNascimento" name="dataNascimento" class="form-control shadow-sm bg-body-tertiary" placeholder="DD/MM/YYYY" required pattern="\d{2}/\d{2}/\d{4}" />
-          <small class="form-text text-muted">Formato: DD/MM/YYYY</small>
-        </div>
-        <!-- <div class="mb-3">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
+            <input type="text" id="dataNascimento" name="dataNascimento" class="form-control bg-body-tertiary" placeholder="DD/MM/YYYY" required pattern="\d{2}/\d{2}/\d{4}" />
+            <small class="form-text text-muted">Formato: DD/MM/YYYY</small>
+          </div>
+          <!-- <div class="mb-3">
           <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
           <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" required/>
         </div> -->
-        <div class="mb-3"><!-- Dt Nascimento -->
-          <label for="cpf" class="form-label">CPF:</label>
-          <input type="text" id="cpf" name="cpf" class="form-control shadow-sm bg-body-tertiary" placeholder="000.000.000-00" required />
+          <div class="col-md-6">
+            <label for="cpf" class="form-label">CPF:</label>
+            <input type="text" id="cpf" name="cpf" class="form-control bg-body-tertiary" placeholder="000.000.000-00" required />
+          </div>
         </div>
-        <div class="mb-3"> <!-- Dt Nascimento -->
+        <div class="mb-3"> 
           <label for="numNIS" class="form-label">Número do NIS:</label>
-          <input type="text" id="numNIS" name="numNIS" class="form-control shadow-sm bg-body-tertiary" placeholder="Digite somente números" />
+          <input type="text" id="numNIS" name="numNIS" class="form-control bg-body-tertiary" placeholder="Digite somente números" />
         </div>
-        <div class="mb-3"> <!-- GÊNERO -->
+        <div class="mb-3"> 
           <label for="genero" class="form-label">Gênero:</label>
-          <select name="genero" id="genero" class="form-select shadow-sm bg-body-tertiary" required>
+          <select name="genero" id="genero" class="form-select bg-body-tertiary" required>
             <option value="">Selecione uma opção</option>
             <option value="Feminino">Mulher Cisgênero</option>
             <option value="Masculino">Homem Cisgênero</option>
@@ -237,7 +238,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <option value="Outro">Outro</option>
           </select>
         </div>
-        <div class="mb-3"> <!-- Estado Civil -->
+        <div class="mb-3">
           <label class="form-label">Estado Civil:</label>
           <br>
           <div class="form-check form-check-inline">
@@ -253,10 +254,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <input type="radio" name="estadoCivil" id="uniaoEstavel" value="uniaoEstavel" class="form-check-input" /><label for="uniaoEstavel">União Estável</label>
           </div>
           <div class="">
-            <label for="outro" class="form-label">Outro: </label> <input type="text" name="outroEstadoCivil" id="outro" class="form-control shadow-sm bg-body-tertiary" />
+            <label for="outro" class="form-label">Outro: </label> <input type="text" name="outroEstadoCivil" id="outro" class="form-control bg-body-tertiary" />
           </div>
         </div>
-        <div class="mb-3"> <!-- Cor/Raça -->
+        <div class="mb-3"> 
           <label class="form-label">Cor/Raça:</label>
           <br>
           <div class="form-check form-check-inline">
@@ -278,17 +279,17 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <input type="radio" name="cor" id="outra" value="outra" class="form-check-input" /><label for="outra">Outra</label>
           </div>
         </div>
-        <div class="mb-3"> <!-- Nacionalidade -->
+        <div class="mb-3"> 
           <label for="nacionalidade" class="form-label">Nacionalidade:</label>
-          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control shadow-sm bg-body-tertiary" required />
+          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control bg-body-tertiary" required />
         </div>
-        <div class="mb-3"> <!-- Naturalidade -->
+        <div class="mb-3"> 
           <label for="naturalidade" class="form-label">Naturalidade:</label>
-          <input type="text" id="naturalidade" name="naturalidade" class="form-control shadow-sm bg-body-tertiary" required />
+          <input type="text" id="naturalidade" name="naturalidade" class="form-control bg-body-tertiary" required />
         </div>
-        <div class="mb-3"> <!-- Escolaridade -->
+        <div class="mb-3"> 
           <label for="escolaridade" class="form-label">Escolaridade</label>
-          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select shadow-sm bg-body-tertiary" required>
+          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select bg-body-tertiary" required>
             <option value="">Selecione uma opção</option>
             <option value="Analfabeto">Analfabeto</option>
             <option value="Fundamental Incompleto">Fundamental Incompleto</option>
@@ -300,15 +301,15 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <option value="Pós Graduação">Pós Graduação</option>
           </select>
         </div>
-        <div class="mb-3"> <!-- Profissão -->
+        <div class="mb-3"> 
           <label for="profissao" class="form-label">Profissão</label>
-          <input type="text" id="profissao" name="profissao" class="form-control shadow-sm bg-body-tertiary" />
+          <input type="text" id="profissao" name="profissao" class="form-control bg-body-tertiary" />
         </div>
-        <div class="mb-3"> <!-- Renda -->
+        <div class="mb-3"> 
           <label for="renda" class="form-label">Renda</label>
-          <input type="text" id="renda" name="renda" class="form-control shadow-sm bg-body-tertiary" placeholder="000.000.000.000,00" />
+          <input type="text" id="renda" name="renda" class="form-control bg-body-tertiary" placeholder="000.000.000.000,00" />
         </div>
-        <div class="mb-3"> <!-- Ocupação Profissional -->
+        <div class="mb-3"> 
           <label class="form-label">Ocupação Profissional:</label>
           <br>
           <div class="form-check form-check-inline">
@@ -320,12 +321,12 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <div class="form-check form-check-inline">
             <input type="radio" name="ocupacao" id="autonomo" value="autonomo" class="form-check-input" /><label for="autonomo">Autônomo</label>
           </div>
-          <div class="form-check form-check-inline">
+          <div class="form-check form-check-inline mb-2">
             <input type="radio" name="ocupacao" id="desempregado" value="desempregado" class="form-check-input" /><label for="desempregado">Desempregado</label>
           </div>
           <div>
             <label for="outraOcupacao" class="form-label">Outra:</label>
-            <input type="text" id="outraOcupacao" name="outraOcupacao" class="form-control shadow-sm bg-body-tertiary" />
+            <input type="text" id="outraOcupacao" name="outraOcupacao" class="form-control bg-body-tertiary" />
           </div>
         </div>
       </div>
@@ -334,32 +335,32 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         <!-- Endereço/Contato -->
         <h5 class="sub-title text-center">Endereço/Contato</h5>
 
-        <div class="col-md-6 mx-auto">
+        <div class="mx-auto">
           <div class="mb-3">
             <label for="cep" class="form-label">CEP</label>
-            <input type="text" class="form-control shadow-sm bg-body-tertiary" id="cep" name="cep" placeholder="00000-000">
+            <input type="text" class="form-control bg-body-tertiary" id="cep" name="cep" placeholder="00000-000">
           </div>
-          <div class="row">
-            <div class="col">
+          <div class="row mb-3">
+            <div class="col-md-8">
               <label for="rua" class="form-label">Rua/Avenida</label>
-              <input type="text" class="form-control shadow-sm bg-body-tertiary" style="width: 25rem;" id="rua" name="rua" required>
+              <input type="text" class="form-control bg-body-tertiary" required>
             </div>
-            <div class="col">
+            <div class="col-md-4">
               <label for="numero" class="form-label">Número:</label>
-              <input type="text" class="form-control shadow-sm bg-body-tertiary" id="numero" name="numero" required>
+              <input type="text" class="form-control bg-body-tertiary" id="numero" name="numero" required>
             </div>
           </div>
           <div class="mb-3">
             <label for="bairro" class="form-label">Bairro</label>
-            <input type="text" class="form-control shadow-sm bg-body-tertiary" id="bairro" name="bairro" required>
+            <input type="text" class="form-control bg-body-tertiary" id="bairro" name="bairro" required>
           </div>
           <div class="mb-3">
             <label for="referencia" class="form-label">Ponto de Referência</label>
-            <input type="text" class="form-control shadow-sm bg-body-tertiary" id="referencia" name="referencia">
+            <input type="text" class="form-control bg-body-tertiary" id="referencia" name="referencia">
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone para contato</label>
-            <input type="text" class="form-control shadow-sm bg-body-tertiary" id="telefone" name="telefone" placeholder="(DD) 00000-0000" required>
+            <input type="text" class="form-control bg-body-tertiary" id="telefone" name="telefone" placeholder="(DD) 00000-0000" required>
           </div>
           <div class="mb-3">
             <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
@@ -376,7 +377,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
 
       <!--        Condições de Moradia            -->
-      <div class="col-md-6 mx-auto mb-3">
+      <div class="mx-auto mb-3">
         <h5 class="text-center mb-3 mt-5">Condições de Moradia</h5>
 
         <div class="mb-3">
@@ -413,7 +414,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <br>
           <div class="mt-2"><!--Outros Materiais-->
             <label for="outrosMateriais">Outros Materiais:</label>
-            <input type="text" id="outrosMateriais" name="outrosMateriais" class="form-control shadow-sm bg-body-tertiary" />
+            <input type="text" id="outrosMateriais" name="outrosMateriais" class="form-control bg-body-tertiary" />
           </div>
         </div>
         <div class="mb-3"><!--Energia Elétrica-->
@@ -452,7 +453,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="mt-2">
             <label for="outraFormaAgua">Outra forma:</label>
-            <input type="text" id="outraFormaAgua" name="outraFormaAgua" class="form-control shadow-sm bg-body-tertiary" />
+            <input type="text" id="outraFormaAgua" name="outraFormaAgua" class="form-control bg-body-tertiary" />
           </div>
         </div>
         <div class="mb-3"><!--Escoamento Sanitário-->
@@ -471,7 +472,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           </div>
           <div class="mt-2">
             <label for="outraFormaEsgoto">Outra forma:</label>
-            <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto" class="form-control shadow-sm bg-body-tertiary" />
+            <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto" class="form-control bg-body-tertiary" />
           </div>
         </div>
 
@@ -495,7 +496,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mt-2">
           <label for="outroBeneficio">Outro:</label>
-          <input type="text" id="outroBeneficio" name="outroBeneficio" class="form-control shadow-sm bg-body-tertiary" />
+          <input type="text" id="outroBeneficio" name="outroBeneficio" class="form-control bg-body-tertiary" />
         </div>
         <div class="mb-3 mt-3">
           <label for="" class="form-label"> Situação do Cadastro Único:</label>
@@ -515,7 +516,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
       </div>
       <!--        Necessidades de Documentação Civil           -->
-      <div class="col-md-6 mx-auto mb-3">
+      <div class="mx-auto mb-3">
         <h5 class="text-center mb-3 mt-3">Necessidades de Documentação Civil</h5>
         <div class="form-check">
           <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
@@ -552,19 +553,19 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
 
       <!--            SOCIOECONOMICO                -->
-      <div class="col-md-6 mx-auto mb-3" id="dynamic-content">
+      <div class="mx-auto mb-3" id="dynamic-content">
         <h5 class="text-center">Socioêconomico</h5>
         <div class="mb-2">
           <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-          <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control shadow-sm bg-body-tertiary" />
+          <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control bg-body-tertiary" />
         </div>
         <div class="mb-2">
           <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
-          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control shadow-sm bg-body-tertiary" placeholder="Digite apenas números" />
+          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números" />
         </div>
         <div class="mb-2">
           <label for="" class="form-label">Vinculo Familiar:</label>
-          <select id="relacao1" name="relacao[]" class="form-select shadow-sm bg-body-tertiary">
+          <select id="relacao1" name="relacao[]" class="form-select bg-body-tertiary">
             <option value="" selected disabled>Selecione uma opção</option>
             <option value="Pessoa de referência">Pessoa de referência</option>
             <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
@@ -581,7 +582,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-2">
           <label for="" class="form-label">Escolaridade:</label>
-          <select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select shadow-sm bg-body-tertiary">
+          <select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
             <option value="" selected disabled>Selecione uma opção</option>
             <option value="Não Alfabetizado">Não Alfabetizado</option>
             <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -594,7 +595,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-2">
           <label for="" class="form-label">Tipo de PCD:</label>
-          <select id="deficiencia1" name="deficiencia[]" class="form-select shadow-sm bg-body-tertiary">
+          <select id="deficiencia1" name="deficiencia[]" class="form-select bg-body-tertiary">
             <option value="" selected disabled>Selecione uma opção</option>
             <option value="Sem Deficiência">Sem Deficiência</option>
             <option value="Visual">Visual</option>
@@ -606,7 +607,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
         </div>
         <div class="mb-2">
           <label for="" class="form-label">Necessidade de Documentação:</label>
-          <select id="documentacao1" name="documentacao[]" class="form-select shadow-sm bg-body-tertiary">
+          <select id="documentacao1" name="documentacao[]" class="form-select bg-body-tertiary">
             <option value="" selected disabled>Selecione uma opção</option>
             <option value="Sem Necessidade">SEM NECESSIDADE</option>
             <option value="CIN/RG">CIN/RG</option>
@@ -619,20 +620,13 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
             <option value="Outra">OUTRA</option>
           </select>
         </div>
-
-        <br>
       </div>
 
       <!-- BTN Adicionar Cadastro -->
 
-      <div class="d-grid gap-2 col-6 mx-auto mb-5">
-        <button class="btn btn-success mx-auto" type="button" onclick="adicionarLinha()"><i class="bi bi-plus-circle"></i> Adicionar Novo Cadastro</button>
+      <div class="d-grid gap-2 col-6 float-end mb-5">
+        <button class="btn btn-success btn-sm" type="button" onclick="adicionarLinha()"><i class="bi bi-plus-circle"></i> Adicionar Novo Cadastro</button>
       </div>
-
-
-
-
-
 
       <script>
         let contador = 1;
@@ -645,18 +639,18 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           const newRow = document.createElement("div");
           newRow.classList.add("mb-3");
           newRow.innerHTML = `
-      <h5>Socioêconomico</h5>
+      <h5 class="mt-3 text-center">Socioêconomico</h5>
       <div class="mb-2">
       <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control shadow-sm bg-body-tertiary"/>
+      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control bg-body-tertiary"/>
       </div>
       <div class="mb-2">
         <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
-        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control shadow-sm bg-body-tertiary" placeholder="Digite apenas números"/>
+        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números"/>
         </div>
         <div class="mb-2">
         <label for="relacao" class="form-label">Vínculo Familiar:</label>
-        <select id="relacao${contador}" name="relacao[]" class="form-select shadow-sm bg-body-tertiary">
+        <select id="relacao${contador}" name="relacao[]" class="form-select bg-body-tertiary">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Pessoa de referência">Pessoa de referência</option>
         <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
@@ -674,7 +668,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       
       <div class="mb-2">
       <label for="escolaridade" class="form-label">Escolaridade:</label>
-      <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select shadow-sm bg-body-tertiary">
+      <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Não Alfabetizado">Não Alfabetizado</option>
         <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
@@ -687,7 +681,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
       <div class="mb-2">
       <label for="deficiencia" class="form-label">Tipo de PCD:</label>
-      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select shadow-sm bg-body-tertiary">
+      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select bg-body-tertiary">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Sem Deficiência">Sem Deficiência</option>
         <option value="Visual">Visual</option>
@@ -699,7 +693,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
       <div class="mb-2">
       <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
-      <select id="documentacao${contador}" name="documentacao[]" class="form-select shadow-sm bg-body-tertiary">
+      <select id="documentacao${contador}" name="documentacao[]" class="form-select bg-body-tertiary">
         <option value="" selected disabled>Selecione uma opção</option>
         <option value="Sem Necessidade">SEM NECESSIDADE</option>
         <option value="CIN/RG">CIN/RG</option>
@@ -713,7 +707,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </select>
       </div>
       <br>
-      <button type="button" onclick="removerLinha(this)" class="btn btn-danger"><i class="bi bi-x-circle"></i> Remover Cadastro</button>
+      <button type="button" onclick="removerLinha(this)" class="btn btn-danger btn-sm mb-3"><i class="bi bi-x-circle"></i> Remover Cadastro</button>
 
       
     `;
@@ -727,130 +721,130 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </script>
 
 
-    </div>
-    <form>
-      <!--        Encaminhamentos/Agendamentos            -->
-      <div class="container">
-        <div class="col-md-6 mx-auto mb-3">
-          <h5 class="text-center">Encaminhamentos/Agendamentos</h5>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
-            <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
-            <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input" />
-            <label for="encaminhamento2">SEJUSC PCD</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
-            <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
-            <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input" />
-            <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
-            <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
-          </div>
 
-          <div class="mb-3">
-            <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
-            <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control shadow-sm bg-body-tertiary" required />
-          </div>
+      <form>
+        <!--        Encaminhamentos/Agendamentos            -->
+        <div class="container">
+          <div class="mx-auto mb-3">
+            <h5 class="text-center">Encaminhamentos/Agendamentos</h5>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
+              <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
+              <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input" />
+              <label for="encaminhamento2">SEJUSC PCD</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
+              <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
+              <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input" />
+              <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
+            </div>
+            <div class="form-check mb-2">
+              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
+              <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
+            </div>
 
+            <div class="mb-3">
+              <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
+              <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control bg-body-tertiary" required />
+            </div>
+
+          </div>
         </div>
-      </div>
 
-      <div class="d-grid gap-2 col-4 mx-auto mb-5 mt-5">
-        <button type="submit" name="submit" id="submit" class="btn btn-primary">Enviar</button>
-      </div>
+        <div class="d-grid gap-2 col-4 mx-auto mb-3 mt-5">
+          <button type="submit" name="submit" id="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
 
+    <!-- Bibliteca de máscaras -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-      <!-- Bibliteca de máscaras -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
-      <!-- Mascara do CPF e NIS -->
-      <script>
-        $(document).ready(function() {
-          // Máscara para CPF
-          $('#cpf').mask('000.000.000-00', {
-            reverse: true
-          });
-
-          // Máscara para NIS
-          $('#numNIS').mask('00000000000');
-
-          // Máscara para a Renda
-          $('#renda').mask('000.000.000.000,00', {
-            reverse: true
-          });
-
-          // Máscara para o CEP
-          $('#cep').mask('00000-000');
-
-          // Máscara para o Telefone
-          $('#telefone').mask('(00) 00000-0009');
-
-          // Máscara para Idade Familiar
-          $('#idadesocio1').mask('000');
-
-          // Máscara para a Data
-          $('#dataNascimento').mask('00/00/0000');
-
-
-
-
-        });
-      </script>
-
-
-    </form>
-
+    <!-- Mascara do CPF e NIS -->
     <script>
-      function validarFormulario() {
-        var checkboxesEncaminhamentos = document.querySelectorAll('input[name="encaminhamentosAgendados[]"]');
-        var isCheckedEncaminhamentos = false;
+      $(document).ready(function() {
+        // Máscara para CPF
+        $('#cpf').mask('000.000.000-00', {
+          reverse: true
+        });
 
-        for (var i = 0; i < checkboxesEncaminhamentos.length; i++) {
-          if (checkboxesEncaminhamentos[i].checked) {
-            isCheckedEncaminhamentos = true;
-            break;
-          }
-        }
+        // Máscara para NIS
+        $('#numNIS').mask('00000000000');
 
-        var checkboxesDocumentacaoCivil = document.querySelectorAll('input[name="documentacaocivil[]"]');
-        var isCheckedDocumentacaoCivil = false;
+        // Máscara para a Renda
+        $('#renda').mask('000.000.000.000,00', {
+          reverse: true
+        });
 
-        for (var i = 0; i < checkboxesDocumentacaoCivil.length; i++) {
-          if (checkboxesDocumentacaoCivil[i].checked) {
-            isCheckedDocumentacaoCivil = true;
-            break;
-          }
-        }
+        // Máscara para o CEP
+        $('#cep').mask('00000-000');
 
-        if (!isCheckedEncaminhamentos) {
-          alert("Selecione pelo menos um encaminhamento/agendamento.");
-          return false; // Impede o envio do formulário
-        }
+        // Máscara para o Telefone
+        $('#telefone').mask('(00) 00000-0009');
 
-        if (!isCheckedDocumentacaoCivil) {
-          alert("Selecione pelo menos uma necessidade de documentação civil.");
-          return false; // Impede o envio do formulário
-        }
+        // Máscara para Idade Familiar
+        $('#idadesocio1').mask('000');
 
-        return true; // Permite o envio do formulário
-      }
+        // Máscara para a Data
+        $('#dataNascimento').mask('00/00/0000');
+
+
+
+
+      });
     </script>
+
+
+  </form>
+
+  <script>
+    function validarFormulario() {
+      var checkboxesEncaminhamentos = document.querySelectorAll('input[name="encaminhamentosAgendados[]"]');
+      var isCheckedEncaminhamentos = false;
+
+      for (var i = 0; i < checkboxesEncaminhamentos.length; i++) {
+        if (checkboxesEncaminhamentos[i].checked) {
+          isCheckedEncaminhamentos = true;
+          break;
+        }
+      }
+
+      var checkboxesDocumentacaoCivil = document.querySelectorAll('input[name="documentacaocivil[]"]');
+      var isCheckedDocumentacaoCivil = false;
+
+      for (var i = 0; i < checkboxesDocumentacaoCivil.length; i++) {
+        if (checkboxesDocumentacaoCivil[i].checked) {
+          isCheckedDocumentacaoCivil = true;
+          break;
+        }
+      }
+
+      if (!isCheckedEncaminhamentos) {
+        alert("Selecione pelo menos um encaminhamento/agendamento.");
+        return false; // Impede o envio do formulário
+      }
+
+      if (!isCheckedDocumentacaoCivil) {
+        alert("Selecione pelo menos uma necessidade de documentação civil.");
+        return false; // Impede o envio do formulário
+      }
+
+      return true; // Permite o envio do formulário
+    }
+  </script>
 
 </body>
 
