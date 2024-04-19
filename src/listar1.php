@@ -236,7 +236,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     <!-- Adicionar botão para gerar PDF -->
     <form method="post" action="pdf_listar1.php">
         <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
-        <button type="submit" class="btn btn-primary" style="position: absolute; top: 10px; right: 80px;">Gerar PDF</button>
+        <button type="submit" class="btn btn-primary" style="position: absolute; top: 8px; right: 80px;">Gerar PDF</button>
     </form>
     </div>
 
