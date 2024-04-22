@@ -4,17 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
+
   <link rel="shortcut icon" href="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon" />
-  <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/login.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-=======
-  <link rel="shortcut icon" href="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon" />
-  <!-- <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/login.css" /> -->
+  <!-- <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/login.css" />  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
->>>>>>> 5312823230343abce08701dde022f15d517a02c5
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <title>Cidadania e Segurança - Login</title>
 
@@ -49,12 +44,12 @@
 
   <main class="container">
 
-    <form action="/CidadaniaEseguranca/CidadaniaEseguranca/src/testeLogin.php" method="post" class="mx-3 mb-5 mt-5">
+    <form action="/CidadaniaEseguranca/src/testeLogin.php" method="post" class="mx-3 mb-5 mt-5">
 
       <div class="container mx-auto border rounded-4 col-12 col-md-8 col-xl-4 shadow-lg" style="background-color: white;">
 
       <div class="text-center mb-3 mt-4">
-      <img src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp" style="width: 90px;">
+      <img src="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp" style="width: 90px;">
     </div>
         <h1 class="text-center mt-4 verdEsc">Bem-vindo(a)</h1>
         <p class="text-center mb-4 verdEsc">Insira seu dados de acesso</p>

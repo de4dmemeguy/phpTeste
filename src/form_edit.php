@@ -301,11 +301,11 @@
         </div>
         <div class="mb-3">
           <label for="naturalidade" class="form-label">Naturalidade:</label>
-          <input type="text" id="naturalidade" name="naturalidade" class="form-control" value="<?php echo $pessoa['NATURALIDADE']; ?>" required/>
+          <input type="text" id="naturalidade" name="naturalidade" class="form-control" value="<?php echo $pessoa['NATURALIDADE']; ?>" />
         </div>
         <div class="mb-3">
           <label for="escolaridade" class="form-label">Escolaridade</label>
-          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select" required>
+          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select" >
             <option value="">Selecione uma opção</option>
             <option value="Analfabeto" <?php echo ($pessoa['ESCOLARIDADE'] == 'analfabeto' ? 'selected' : '') ?>>Analfabeto</option>
             <option value="Fundamental Incompleto" <?php echo ($pessoa['ESCOLARIDADE'] == 'fundamentalIncompleto' ? 'selected' : '') ?>>Fundamental Incompleto</option>
@@ -329,7 +329,7 @@
           <label class="form-label">Ocupação Profissional:</label>
           <br>
           <div class="form-check form-check-inline">
-            <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" <?php echo ($pessoa['OCUPACAO_PROFISSIONAL'] == 'clt') ? 'checked' : '' ?> required/><label
+            <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" <?php echo ($pessoa['OCUPACAO_PROFISSIONAL'] == 'clt') ? 'checked' : '' ?> /><label
               for="clt">CLT</label>
           </div>
           <div class="form-check form-check-inline">
@@ -385,7 +385,7 @@
           <div class="mb-3">
             <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
             <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="sim" value="Sim" class="form-check-input" <?php echo ($pessoa['OFERTA_WHATSAPP'] == 'sim' ? 'checked' : '') ?> required/>
+              <input type="radio" name="aceitaWhatsapp" id="sim" value="Sim" class="form-check-input" <?php echo ($pessoa['OFERTA_WHATSAPP'] == 'sim' ? 'checked' : '') ?> />
               <label for="sim">Sim</label>
             </div>
                    
@@ -404,7 +404,7 @@
         <label for="" class="form-label">Tipo de Residência:</label>
         <br>
         <div class="form-check form-check-inline">
-          <input type="radio" name="tipoResidencia" id="propria" value="Própria" class="form-check-input" <?php echo ($pessoa['TIPO_RESIDENCIA'] == 'propia' ? 'checked' : '') ?> required/>
+          <input type="radio" name="tipoResidencia" id="propria" value="Própria" class="form-check-input" <?php echo ($pessoa['TIPO_RESIDENCIA'] == 'propia' ? 'checked' : '') ?> />
           <label for="propria" class="form-check-label">Própria</label>
         </div>
         <div class="form-check form-check-inline">
@@ -460,7 +460,7 @@
         </div>
         <label for="" class="form-label">Abastecimento de Água:</label>
         <div class="form-check">
-          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" <?php echo ($pessoa['ABAST_AGUA'] == 'Rede geral de distribuição' ? 'checked' : '') ?> required/>
+          <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" <?php echo ($pessoa['ABAST_AGUA'] == 'Rede geral de distribuição' ? 'checked' : '') ?> />
           <label for="redeGeralDistribuicao">Rede geral de distribuição</label>
         </div>
         <div class="form-check">
