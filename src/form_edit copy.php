@@ -1,252 +1,143 @@
 
 <?php
-  session_start();
-  //print_r($_SESSION);
-  // if((!isset($_SESSION['cpf']) == true) and (!isset($_SESSION['senha']) == true))
-  // {
-  //       unset($_SESSION['cpf']);
-  //       unset($_SESSION['senha']);
-  //       header('Location: login.php');
+    session_start();
+    //print_r($_SESSION);
+    // if((!isset($_SESSION['cpf']) == true) and (!isset($_SESSION['senha']) == true))
+    // {
+    //       unset($_SESSION['cpf']);
+    //       unset($_SESSION['senha']);
+    //       header('Location: login.php');
 
-  // }
+    // }
 
-  // $logado = $_SESSION['cpf'];
+    // $logado = $_SESSION['cpf'];
 
-  // Inclua o arquivo de configuração do banco de dados
-  include_once('config.php');
+    // Inclua o arquivo de configuração do banco de dados
+    include_once('config.php');
 
-  //Definir o fuso horário para o de Manaus
-  date_default_timezone_set('America/Manaus');
+    //Definir o fuso horário para o de Manaus
+    date_default_timezone_set('America/Manaus');
 
-  $idpessoa = null;
+    $idpessoa = null;
 
-  if (isset($_GET['idpessoa']) || isset($_POST['idpessoa'])) {
+    if (isset($_GET['idpessoa'])){
 
-    $idpessoa = $_GET['idpessoa'] ?? $_POST['idpessoa'];
+      $idpessoa = $_GET['idpessoa'];
 
-    $resultado_pessoa = mysqli_query($conexao, "SELECT * FROM pessoa WHERE IDPESSOA = $idpessoa");
+      $resultado_pessoa = mysqli_query($conexao, "SELECT * FROM pessoa WHERE IDPESSOA = $idpessoa");
 
-    $pessoa = $resultado_pessoa->fetch_assoc();
+      $pessoa = $resultado_pessoa->fetch_assoc();
 
-    // var_dump($pessoa);
-  }
-
-  if(isset($_POST['submit']))
-  {
-    var_dump($_POST);
-     for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
-       if ($i == 0 || $_POST['nomesocio'][$i]) {
-        // echo "<br><br>Vai inserir o socio: " . ($i + 1) . "<br><br>";
-        // Prepare a query SQL para atualização de dados
-        $sql = "UPDATE pessoa SET 
-        nome = ?,
-        data_nasc = ?,
-        cpf = ?,
-        numero_nis = ?,
-        genero = ?,
-        estado_civil = ?,
-        outro_estado_civil = ?,
-        cor_raca = ?,
-        nacionalidade = ?,
-        naturalidade = ?,
-        escolaridade = ?,
-        profissao = ?,
-        renda = ?,
-        ocupacao_profissional = ?,
-        outra_ocupacao = ?,
-        end_cep = ?,
-        end_rua = ?,
-        end_num = ?,
-        end_bairro = ?,
-        end_p_referencia = ?,
-        telefone = ?,
-        oferta_whatsapp = ?,
-        tipo_residencia = ?,
-        estrutura_residencia = ?,
-        outros_materiais = ?,
-        energia_eletrica = ?,
-        abast_agua = ?,
-        outra_forma_agua = ?,
-        escoa_sanitario = ?,
-        outra_forma_esgoto = ?,
-        beneficios_sociais = ?,
-        outros_beneficios = ?,
-        sit_cad_unico = ?,
-        docum_civil = ?,
-        nome_familiar = ?,
-        idade_familiar = ?,
-        vinculo_familiar = ?,
-        escolaridade_familiar = ?,
-        tipo_pcd = ?,
-        neces_doc_familiar = ?,
-        encaminhamentos = ?,
-        tecnico_responsavel = ?,
-        data_hora_cadastro = ? 
-        WHERE IDPESSOA = ?";
-
-// nome_familiar = ?,
-// idade_familiar = ?,
-// vinculo_familiar = ?,
-// escolaridade_familiar = ?,
-// tipo_pcd = ?,
-// neces_doc_familiar = ?,
-
-        // Preparar a instrução SQL
-        $stmt = $conexao->prepare($sql);
-
-        // Obtém a data e hora atual
-        $data_hora_cadastro = $pessoa['data_hora_cadastro'] ?? date('Y-m-d H:i:s');
-        $documentacao_civil = implode(',', $_POST['documentacaocivil']);
-        $encaminhamentos = implode(',', $_POST['encaminhamentosAgendados']);
-
-        // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
-        $stmt->bind_param(
-          "ssssssssssssssssssssssssssssssssssssssssssss",
-          $_POST['nome'],
-          $_POST['dataNascimento'],
-          $_POST['cpf'],
-          $_POST['numNIS'],
-          $_POST['genero'],
-          $_POST['estadoCivil'],
-          $_POST['outroEstadoCivil'],
-          $_POST['cor'],
-          $_POST['nacionalidade'],
-          $_POST['naturalidade'],
-          $_POST['escolaridadepessoa'],
-          $_POST['profissao'],
-          $_POST['renda'],
-          $_POST['ocupacao'],
-          $_POST['outraOcupacao'],
-          $_POST['cep'],
-          $_POST['rua'],
-          $_POST['numero'],
-          $_POST['bairro'],
-          $_POST['referencia'],
-          $_POST['telefone'],
-          $_POST['aceitaWhatsapp'],
-          $_POST['tipoResidencia'],
-          $_POST['tipoEstrutura'],
-          $_POST['outrosMateriais'],
-          $_POST['energiaEletrica'],
-          $_POST['abastecimentoAgua'],
-          $_POST['outraFormaAgua'],
-          $_POST['escoamentoSanitario'],
-          $_POST['outraFormaEsgoto'],
-          $_POST['beneficiosSociais'],
-          $_POST['outroBeneficio'],
-          $_POST['situacaoCadastroUnico'],
-          $documentacao_civil,
-          $_POST['nomesocio'][$i],
-          $_POST['idadesocio'][$i],
-          $_POST['relacao'][$i],
-          $_POST['escolaridadeFam'][$i],
-          $_POST['deficiencia'][$i],
-          $_POST['documentacao'][$i],
-          $encaminhamentos,
-          $_POST['nomeCompletoTec'],
-          $data_hora_cadastro,
-          $_POST['idpessoa']
-        );
-
-        // $_POST['nomesocio'][$i],
-          // $_POST['idadesocio'][$i],
-          // $_POST['relacao'][$i],
-          // $_POST['escolaridadeFam'][$i],
-          // $_POST['deficiencia'][$i],
-          // $_POST['documentacao'][$i],
-          // $documentacao_civil,
-          // $documentacao_civil,
-          // $documentacao_civil,
-          // $documentacao_civil,
-          // $documentacao_civil,
-          // $documentacao_civil,
-
-        $stmt->execute();
-        // $stmt->close();
-
-        var_dump('Passou aqui');
-       }
-     }
-
-    /*
-    // Itera sobre os valores recebidos dos campos do formulário
-    for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
-      // Atribui os valores dos campos do formulário às variáveis correspondentes
-      
-      $nome = $_POST['nome'];
-      $data_nasc = $_POST['dataNascimento'];
-      $cpf = $_POST['cpf'];
-      $nis = $_POST['numNIS'];
-      $genero = $_POST['genero'];
-      $estado_civil = $_POST['estadoCivil'];
-      $outro_Estado_civil = $_POST['outroEstadoCivil'];
-      $cor_raca = $_POST['cor'];
-      $nacionalidade = $_POST['nacionalidade'];
-      $naturalidade = $_POST['naturalidade'];
-      $escolaridade = $_POST['escolaridadepessoa'];
-      $profissao = $_POST['profissao'];
-      $renda = $_POST['renda'];
-      $ocupacao_profissional = $_POST['ocupacao'];
-      $outra_ocupacao = $_POST['outraOcupacao'];
-      $cep = $_POST['cep'];
-      $rua = $_POST['rua'];
-      $numero = $_POST['numero'];
-      $bairro = $_POST['bairro'];
-      $referencia = $_POST['referencia'];
-      $telefone = $_POST['telefone'];
-      $whatsapp = $_POST['aceitaWhatsapp'];
-      $tipo_reside = $_POST['tipoResidencia'];
-      $tipo_estrut = $_POST['tipoEstrutura'];
-      $outras_estrut = $_POST['outrosMateriais'];
-      $energia_eletrica = $_POST['energiaEletrica'];
-      $abastece_agua = $_POST['abastecimentoAgua'];
-      $outro_abastecimento = $_POST['outraFormaAgua'];
-      $escoa_sanitario = $_POST['escoamentoSanitario'];
-      $outra_sanitario = $_POST['outraFormaEsgoto'];
-      $benef_sociais = $_POST['beneficiosSociais'];
-      $outros_beneficios = $_POST['outroBeneficio'];
-      $cad_unico = $_POST['situacaoCadastroUnico'];
-      $doc_civil = $_POST['documentacaocivil'];
-      
-      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
-      if (is_array($doc_civil)) {
-        // Se for uma matriz, use implode() para concatenar os valores
-        $doc_civil = implode(',', $doc_civil);
-      }
-      
-      // Campos relacionados ao familiar
-      $nome_familiar = $_POST['nomesocio'][$i];
-      $idade_familiar = $_POST['idadesocio'][$i];
-      $vinculo_familiar = $_POST['relacao'][$i];
-      $escolaridade_familiar = $_POST['escolaridadeFam'][$i];
-      $tipo_pcd = $_POST['deficiencia'][$i];
-      $neces_docum_familiar = $_POST['documentacao'][$i];
-      
-      // Campos relacionados aos Encaminhamentos
-      $encaminhamentos = $_POST['encaminhamentosAgendados'];
-      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
-      if (is_array($encaminhamentos)) {
-        // Se for uma matriz, use implode() para concatenar os valores
-        $encaminhamentos = implode(',', $encaminhamentos);
-      }
-
-      $tecnico_responsavel = $_POST['nomeCompletoTec'];
-
-      // Executa a instrução SQL
-      $stmt->execute();
+      var_dump($pessoa);
     }
-    */
 
-      // Fecha a instrução SQL
-      // $stmt->close();
+if(isset($_POST['submit']))
+{
+    // Prepare a query SQL para atualização de dados
+    $sql = "UPDATE pessoa SET IDPESSOA = '$idpessoa', nome = '$nome', data_nasc = '$data_nasc', cpf = '$cpf', numero_nis = '$numero_nis', genero = '$genero', estado_civil = '$estado_civil', outro_estado_civil = '$outro_estado_civil',
+    cor_raca = '$cor_raca', nacionalidade = '$nacionalidade', naturalidade = '$naturalidade', escolaridade = '$escolaridade', profissao = '$profissao', renda = '$renda', ocupacao_profissional = '$ocupacao_profisional', outra_ocupacao = '$outra_ocupacao', 
+    end_cep = '$end_cep', end_rua = '$end_rua', end_num = '$end_num', end_bairro = '$end_bairro', end_p_referencia = '$end_p_referencia', telefone = '$telefone', oferta_whatsapp = '$oferta_whatsapp', tipo_residencia = '$tipo_residencia', 
+    estrutura_residencia = '$estrutura_residencia', outros_materiais = '$outros_materiais', energia_eletrica = '$energia_eletrica', abast_agua = '$abast_agua', outra_forma_agua = '$outra_forma_agua', escoa_sanitario = '$escoa_sanitario', 
+    outra_forma_esgoto = '$outra_forma_esgoto', beneficios_sociais = '$beneficios_sociais', outros_beneficios = '$outros_beneficios', sit_cad_unico = '$sit_cad_unico', docum_civil = '$docum_civil', 
+    nome_familiar = '$nome_familiar', idade_familiar = '$idade_familiar', vinculo_familiar = '$vinculo_familiar', escolaridade_familiar = '$escolaridade_familiar', tipo_pcd = '$tipo_pcd', 
+    neces_doc_familiar = '$neces_doc_familiar', encaminhamentos = '$encaminhamentos', tecnico_responsavel = '$tecnico_responsavel', data_hora_cadastro = '$data_hora_cadastro' WHERE IDPESSOA = $idpessoa";
 
-      // Fecha a conexão com o banco de dados
-      // $conexao->close();
+    // Preparar a instrução SQL
+    $stmt = $conexao->prepare($sql);
 
-      // Redireciona para a página de confirmação após o envio do formulário
-      // header("Location: formulario_enviado.php");
-      exit;      
-  }
+    // Verifica se a preparação da instrução SQL foi bem-sucedida
+    if ($stmt) {
+
+            // Obtém a data e hora atual
+            $data_hora_cadastro = date('Y-m-d H:i:s');
+
+            // Liga os parâmetros da instrução SQL aos valores dos campos do formulário
+            $stmt->bind_param("sssssssssssssssssssssssssssssssssssssssssss", $nome, $data_nasc, $cpf, $nis, $genero, 
+            $estado_civil, $outro_Estado_civil, $cor_raca, $nacionalidade, $naturalidade, $escolaridade, $profissao, 
+            $renda, $ocupacao_profissional, $outra_ocupacao, $cep, $rua, $numero, $bairro, $referencia, $telefone, 
+            $whatsapp, $tipo_reside, $tipo_estrut, $outras_estrut, $energia_eletrica, $abastece_agua, 
+            $outro_abastecimento, $escoa_sanitario, $outra_sanitario, $benef_sociais, $outros_beneficios, 
+            $cad_unico, $doc_civil, $nome_familiar, $idade_familiar, $vinculo_familiar, $escolaridade_familiar, 
+            $tipo_pcd, $neces_docum_familiar, $encaminhamentos, $tecnico_responsavel, $data_hora_cadastro);
+
+                  // Itera sobre os valores recebidos dos campos do formulário
+                  for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
+                      // Atribui os valores dos campos do formulário às variáveis correspondentes
+                      $nome = $_POST['nome'];
+                      $data_nasc = $_POST['dataNascimento'];
+                      $cpf = $_POST['cpf'];
+                      $nis = $_POST['numNIS'];
+                      $genero = $_POST['genero'];
+                      $estado_civil = $_POST['estadoCivil'];
+                      $outro_Estado_civil = $_POST['outroEstadoCivil'];
+                      $cor_raca = $_POST['cor'];
+                      $nacionalidade = $_POST['nacionalidade'];
+                      $naturalidade = $_POST['naturalidade'];
+                      $escolaridade = $_POST['escolaridadepessoa'];
+                      $profissao = $_POST['profissao'];
+                      $renda = $_POST['renda'];
+                      $ocupacao_profissional = $_POST['ocupacao'];
+                      $outra_ocupacao = $_POST['outraOcupacao'];
+                      $cep = $_POST['cep'];
+                      $rua = $_POST['rua'];
+                      $numero = $_POST['numero'];
+                      $bairro = $_POST['bairro'];
+                      $referencia = $_POST['referencia'];
+                      $telefone = $_POST['telefone'];
+                      $whatsapp = $_POST['aceitaWhatsapp'];
+                      $tipo_reside = $_POST['tipoResidencia'];
+                      $tipo_estrut = $_POST['tipoEstrutura'];
+                      $outras_estrut = $_POST['outrosMateriais'];
+                      $energia_eletrica = $_POST['energiaEletrica'];
+                      $abastece_agua = $_POST['abastecimentoAgua'];
+                      $outro_abastecimento = $_POST['outraFormaAgua'];
+                      $escoa_sanitario = $_POST['escoamentoSanitario'];
+                      $outra_sanitario = $_POST['outraFormaEsgoto'];
+                      $benef_sociais = $_POST['beneficiosSociais'];
+                      $outros_beneficios = $_POST['outroBeneficio'];
+                      $cad_unico = $_POST['situacaoCadastroUnico'];
+                      $doc_civil = $_POST['documentacaocivil'];
+                      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
+                      if (is_array($doc_civil)) {
+                        // Se for uma matriz, use implode() para concatenar os valores
+                        $doc_civil = implode(',', $doc_civil);
+                      }
+                      
+                      // Campos relacionados ao familiar
+                      $nome_familiar = $_POST['nomesocio'][$i];
+                      $idade_familiar = $_POST['idadesocio'][$i];
+                      $vinculo_familiar = $_POST['relacao'][$i];
+                      $escolaridade_familiar = $_POST['escolaridadeFam'][$i];
+                      $tipo_pcd = $_POST['deficiencia'][$i];
+                      $neces_docum_familiar = $_POST['documentacao'][$i];
+                      
+                      // Campos relacionados aos Encaminhamentos
+                      $encaminhamentos = $_POST['encaminhamentosAgendados'];
+                      // Verificar se $encaminhamentos é uma matriz antes de usar implode()
+                      if (is_array($encaminhamentos)) {
+                        // Se for uma matriz, use implode() para concatenar os valores
+                        $encaminhamentos = implode(',', $encaminhamentos);
+                      }
+
+                      $tecnico_responsavel = $_POST['nomeCompletoTec'];
+
+            // Executa a instrução SQL
+            $stmt->execute();
+        }
+
+        // Fecha a instrução SQL
+            $stmt->close();
+          } else {
+        echo "Erro na preparação da instrução SQL: " . $conexao->error;
+    }
+
+    // Fecha a conexão com o banco de dados
+    $conexao->close();
+
+    // Redireciona para a página de confirmação após o envio do formulário
+    header("Location: formulario_enviado.php");
+    exit;      
+}
 ?>
 
 <!DOCTYPE html>
@@ -283,7 +174,7 @@
         <br>
         <h5 class="sub-title">Identificação</h5>
         <div>
-          <input type="hidden" name="idpessoa" value="<?php echo $pessoa['IDPESSOA']; ?>">
+          <input type="hidden" name="hidden_id" value="<?php echo $pessoa['IDPESSOA']; ?>">
         </div>
         <div class="mb-3">
           <label for="nomeCompleto" class="form-label">Nome Completo:</label>
