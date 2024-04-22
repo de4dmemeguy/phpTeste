@@ -175,35 +175,31 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="shortcut icon" href="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/styles.css"/> -->
+  <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/styles.css">
   <link rel="import" href="cadastro.html">
-
   <script src="./services/form.js" defer></script>
-  <title>Cidadania e Segurança</title>
-
+  <title>Cidadania e Segurança - Formulário</title>
 </head>
 
-<body style="background-color: rgba(79, 149, 161, 0.2863);;">
+<body>
 
   <div class="d-flex">
-    <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 15px; right: 15px;">Sair</a>
+    <a href="sair.php" class="btn btn-danger btn-sair">Sair</a>
   </div>
   <br>
 
   <div class="container">
-
-    <h3 class="text-center mt-5 mb-5" style="color: #135763;">
-      <img class="mb-3" src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp" style="width: 80px;"><br>Formulário - Cidadania e Segurança
+    <h3 class="text-center mt-5 mb-5 text-green">
+      <img class="mb-3 logo" src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp"><br>Formulário - Cidadania e Segurança
     </h3>
   </div>
 
   <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()" class="mb-4 mx-2">
 
-    <div class="container border rounded-4 col-md-8 col-xl-4 shadow-lg" style="background-color: white;">
+    <div class="container border rounded-4 col-md-8 col-xl-4 shadow-lg bg-white">
       <div class="mx-auto">
         <div class="border-bottom mb-3 mt-4">
           <h5>Identificação</h5>
@@ -221,7 +217,7 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <!-- <div class="mb-3">
           <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
           <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" required/>
-        </div> -->
+          </div> -->
           <div class="mb-3 col-6 col-md-4">
             <label for="cpf" class="form-label">CPF:</label>
             <input type="text" id="cpf" name="cpf" class="form-control bg-body-tertiary" placeholder="000.000.000-00" required />
@@ -667,72 +663,72 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       </div>
       <div class="mx-3">
         <div class="mb-2">
-        <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-        <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control bg-body-tertiary"/>
+          <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
+          <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control bg-body-tertiary"/>
         </div>
         <div class="mb-2">
           <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
           <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números"/>
-          </div>
-          <div class="mb-2">
+        </div>
+        <div class="mb-2">
           <label for="relacao" class="form-label">Vínculo Familiar:</label>
           <select id="relacao${contador}" name="relacao[]" class="form-select bg-body-tertiary">
-          <option value="" selected disabled>Selecione uma opção</option>
-          <option value="Pessoa de referência">Pessoa de referência</option>
-          <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
-          <option value="Filho(a)">Filho(a)</option>
-          <option value="Enteado(a)">Enteado(a)</option>
-          <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
-          <option value="Pai/Mãe">Pai/Mãe</option>
-          <option value="Sogro(a)">Sogro(a)</option>
-          <option value="Irmão/Irmã">Irmão/Irmã</option>
-          <option value="Genro/Nora">Genro/Nora</option>
-          <option value="Outro Parente">Outro Parente</option>
-          <option value="Não Parente">Não Parente</option>
-        </select>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="Pessoa de referência">Pessoa de referência</option>
+            <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+            <option value="Filho(a)">Filho(a)</option>
+            <option value="Enteado(a)">Enteado(a)</option>
+            <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
+            <option value="Pai/Mãe">Pai/Mãe</option>
+            <option value="Sogro(a)">Sogro(a)</option>
+            <option value="Irmão/Irmã">Irmão/Irmã</option>
+            <option value="Genro/Nora">Genro/Nora</option>
+            <option value="Outro Parente">Outro Parente</option>
+            <option value="Não Parente">Não Parente</option>
+          </select>
         </div>
         
         <div class="mb-2">
-        <label for="escolaridade" class="form-label">Escolaridade:</label>
-        <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
-          <option value="" selected disabled>Selecione uma opção</option>
-          <option value="Não Alfabetizado">Não Alfabetizado</option>
-          <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
-          <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
-          <option value="Ens. Médio Completo">Ens. Médio Completo</option>
-          <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
-          <option value="Ens. Superior Completo">Ens. Superior Completo</option>
-          <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
-        </select>
+          <label for="escolaridade" class="form-label">Escolaridade:</label>
+          <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="Não Alfabetizado">Não Alfabetizado</option>
+            <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+            <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+            <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+            <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+            <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+            <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+          </select>
         </div>
         <div class="mb-2">
-        <label for="deficiencia" class="form-label">Tipo de PCD:</label>
-        <select id="deficiencia${contador}" name="deficiencia[]" class="form-select bg-body-tertiary">
-          <option value="" selected disabled>Selecione uma opção</option>
-          <option value="Sem Deficiência">Sem Deficiência</option>
-          <option value="Visual">Visual</option>
-          <option value="Auditiva">Auditiva</option>
-          <option value="Mental">Mental</option>
-          <option value="Física">Física</option>
-          <option value="Múltipla">Múltipla</option>
-        </select>
+          <label for="deficiencia" class="form-label">Tipo de PCD:</label>
+          <select id="deficiencia${contador}" name="deficiencia[]" class="form-select bg-body-tertiary">
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="Sem Deficiência">Sem Deficiência</option>
+            <option value="Visual">Visual</option>
+            <option value="Auditiva">Auditiva</option>
+            <option value="Mental">Mental</option>
+            <option value="Física">Física</option>
+            <option value="Múltipla">Múltipla</option>
+          </select>
         </div>
         <div class="mb-3">
-        <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
-        <select id="documentacao${contador}" name="documentacao[]" class="form-select bg-body-tertiary">
-          <option value="" selected disabled>Selecione uma opção</option>
-          <option value="Sem Necessidade">SEM NECESSIDADE</option>
-          <option value="CIN/RG">CIN/RG</option>
-          <option value="CPF">CPF</option>
-          <option value="Carteira PCD">CARTEIRA PCD</option>
-          <option value="RCN">RCN</option>
-          <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
-          <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
-          <option value="RNM">RNM</option>
-          <option value="Outra">OUTRA</option>
-        </select>
+          <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
+          <select id="documentacao${contador}" name="documentacao[]" class="form-select bg-body-tertiary">
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option value="Sem Necessidade">SEM NECESSIDADE</option>
+            <option value="CIN/RG">CIN/RG</option>
+            <option value="CPF">CPF</option>
+            <option value="Carteira PCD">CARTEIRA PCD</option>
+            <option value="RCN">RCN</option>
+            <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
+            <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
+            <option value="RNM">RNM</option>
+            <option value="Outra">OUTRA</option>
+          </select>
         </div>
-        </div>
+      </div>
      
         <button type="button" onclick="removerLinha(this)" class="btn btn-danger btn-sm mb-3 ms-3"><i class="bi bi-x-circle"></i> Remover Cadastro</button>
       
@@ -749,92 +745,92 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
 
 
 
-      <form>
-        <!--        Encaminhamentos/Agendamentos            -->
-        <div class="container">
-          <div class="mb-3">
-            <div class="border-bottom mb-3">
-              <h5>Encaminhamentos/Agendamentos</h5>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
-              <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
-              <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input" />
-              <label for="encaminhamento2">SEJUSC PCD</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
-              <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
-              <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input" />
-              <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
-            </div>
-            <div class="form-check mb-2">
-              <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
-              <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
-            </div>
 
-            <div class="mb-3">
-              <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
-              <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control bg-body-tertiary" required />
-            </div>
-
+      <!--        Encaminhamentos/Agendamentos            -->
+      <div class="container">
+        <div class="mb-3">
+          <div class="border-bottom mb-3">
+            <h5>Encaminhamentos/Agendamentos</h5>
           </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
+            <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento1" value="SEJUSC Cidadania (CPF,RCN)" class="form-check-input" />
+            <label for="encaminhamento1">SEJUSC CIDADANIA (CPF,RCN)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento2" value="SEJUSC PCD" class="form-check-input" />
+            <label for="encaminhamento2">SEJUSC PCD</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento3" value="Inserção/Atualização CADÚNICO-SEMASC" class="form-check-input" />
+            <label for="encaminhamento3">INSERÇÃO/ATUALIZAÇÃO CADÚNICO-SEMASC</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento4" value="Curso de Defesa Pessoal Para Mulheres - SEDEL" class="form-check-input" />
+            <label for="encaminhamento4">CURSO DE DEFESA PESSOAL PARA MULHERES - SEDEL</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento5" value="Escritório Social - SEAP" class="form-check-input" />
+            <label for="encaminhamento5">ESCRITÓRIO SOCIAL - SEAP</label>
+          </div>
+          <div class="form-check mb-2">
+            <input type="checkbox" name="encaminhamentosAgendados[]" id="encaminhamento6" value="Curso de Capacitação Profissional" class="form-check-input" />
+            <label for="encaminhamento6">CURSO DE CAPACITAÇÃO PROFISSIONAL</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="nomeCompletoTec" class="form-label">Nome completo do Técnico:</label>
+            <input type="text" id="nomeCompletoTec" name="nomeCompletoTec" class="form-control bg-body-tertiary" required />
+          </div>
+
         </div>
+      </div>
 
-        <div class="d-grid gap-2 col-4 mx-auto mb-3 mt-5">
-          <button type="submit" name="submit" id="submit" class="btn btn-primary">Enviar</button>
-        </div>
-    </div>
+      <div class="d-grid gap-2 col-4 mx-auto mb-3 mt-5">
+        <button type="submit" name="submit" id="submit" class="btn btn-primary">Enviar</button>
+      </div>
 
-    <!-- Bibliteca de máscaras -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-    <!-- Mascara do CPF e NIS -->
-    <script>
-      $(document).ready(function() {
-        // Máscara para CPF
-        $('#cpf').mask('000.000.000-00', {
-          reverse: true
+      <!-- Bibliteca de máscaras -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+      <!-- Mascara do CPF e NIS -->
+      <script>
+        $(document).ready(function() {
+          // Máscara para CPF
+          $('#cpf').mask('000.000.000-00', {
+            reverse: true
+          });
+
+          // Máscara para NIS
+          $('#numNIS').mask('00000000000');
+
+          // Máscara para a Renda
+          $('#renda').mask('000.000.000.000,00', {
+            reverse: true
+          });
+
+          // Máscara para o CEP
+          $('#cep').mask('00000-000');
+
+          // Máscara para o Telefone
+          $('#telefone').mask('(00) 00000-0009');
+
+          // Máscara para Idade Familiar
+          $('#idadesocio1').mask('000');
+
+          // Máscara para a Data
+          $('#dataNascimento').mask('00/00/0000');
+
+
+
+
         });
-
-        // Máscara para NIS
-        $('#numNIS').mask('00000000000');
-
-        // Máscara para a Renda
-        $('#renda').mask('000.000.000.000,00', {
-          reverse: true
-        });
-
-        // Máscara para o CEP
-        $('#cep').mask('00000-000');
-
-        // Máscara para o Telefone
-        $('#telefone').mask('(00) 00000-0009');
-
-        // Máscara para Idade Familiar
-        $('#idadesocio1').mask('000');
-
-        // Máscara para a Data
-        $('#dataNascimento').mask('00/00/0000');
-
-
-
-
-      });
-    </script>
+      </script>
 
 
   </form>

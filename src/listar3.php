@@ -194,7 +194,6 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     </div>
     </div>
 
-
     <div class="d-flex justify-content-center mt-2">
         <nav aria-label="navegação da página">
             <ul class="pagination">
