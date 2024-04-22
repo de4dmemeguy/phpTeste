@@ -132,11 +132,13 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
             <div class="row">
 
                 <?php
-                    if (isset($_GET['delete']) && $_GET['delete']) {
-                        ?>
-                        <h3 class="text-success">Apagado com sucesso</h3>
-                        <?php
-                    } 
+                if (isset($_GET['delete']) && $_GET['delete']) {
+                ?>
+                    <div class="alert alert-success w-75 mx-auto" role="alert">
+                        <i class="bi bi-check-circle-fill"></i> Apagado com sucesso
+                    </div>
+                <?php
+                }
                 ?>
             </div>
 
@@ -235,11 +237,11 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     <br><br>
 
     <script>
-            function alertDelete(id) {
-                if (confirm("Confirma a exclusão?") == true) {
-                    window.location.href = "delete.php?idpessoa=" + id;
-                }
+        function alertDelete(id) {
+            if (confirm("Confirma a exclusão?") == true) {
+                window.location.href = "delete.php?idpessoa=" + id;
             }
+        }
     </script>
 
 </body>

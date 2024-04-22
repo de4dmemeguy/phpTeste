@@ -121,75 +121,77 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
             </div>
 
             <?php
-                    if (isset($_GET['delete']) && $_GET['delete']) {
-                        ?>
-                        <h3 class="text-success">Apagado com sucesso</h3>
-                        <?php
-                    } 
-                ?>
-            </div>
+            if (isset($_GET['delete']) && $_GET['delete']) {
+            ?>
+                <div class="alert alert-success w-75 mx-auto" role="alert">
+                    <i class="bi bi-check-circle-fill"></i> Apagado com sucesso
+                </div>
+            <?php
+            }
+            ?>
+        </div>
 
-            <div class="col">
-                <div class="overflow-auto">
-                    <?php
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                        unset($_SESSION['msg']);
-                    }
+        <div class="col">
+            <div class="overflow-auto">
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
 
 
-                    echo "<div class='table-responsive'>";
-                    echo "<table class='table table-bordered table-striped table-hover'>";
-                    echo "<thead class='thead-dark'>";
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-bordered table-striped table-hover'>";
+                echo "<thead class='thead-dark'>";
+                echo "<tr>";
+
+                echo "<th scope='col'>NOME</th>";
+                echo "<th scope='col'>CPF</th>";
+                echo "<th scope='col'>TELEFONE</th>";
+                echo "<th scope='col'>NOME FAMILIAR</th>";
+                echo "<th scope='col'>VINCULO FAMILIAR</th>";
+                echo "<th scope='col'>DOCUMENTACAO FAMILIAR</th>";
+                echo "<th scope='col'>DATA / HORA</th>";
+                echo "<th scope='col'>EDITAR</th>";
+                echo "<th scope='col'>EXCLUIR</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+
+                while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)) {
                     echo "<tr>";
 
-                    echo "<th scope='col'>NOME</th>";
-                    echo "<th scope='col'>CPF</th>";
-                    echo "<th scope='col'>TELEFONE</th>";
-                    echo "<th scope='col'>NOME FAMILIAR</th>";
-                    echo "<th scope='col'>VINCULO FAMILIAR</th>";
-                    echo "<th scope='col'>DOCUMENTACAO FAMILIAR</th>";
-                    echo "<th scope='col'>DATA / HORA</th>";
-                    echo "<th scope='col'>EDITAR</th>";
-                    echo "<th scope='col'>EXCLUIR</th>";
+                    echo "<td>" . $row_pessoa['NOME'] . "</td>";
+                    echo "<td>" . $row_pessoa['CPF'] . "</td>";
+                    echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
+                    echo "<td>" . $row_pessoa['NOME_FAMILIAR'] . "</td>";
+                    echo "<td>" . $row_pessoa['VINCULO_FAMILIAR'] . "</td>";
+                    echo "<td>" . $row_pessoa['NECES_DOC_FAMILIAR'] . "</td>";
+                    echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
+                    echo "<td class='text-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
+                    echo "<td class='text-center'><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
                     echo "</tr>";
-                    echo "</thead>";
-                    echo "<tbody>";
+                }
 
-                    while ($row_pessoa = mysqli_fetch_assoc($resultado_pessoa)) {
-                        echo "<tr>";
-
-                        echo "<td>" . $row_pessoa['NOME'] . "</td>";
-                        echo "<td>" . $row_pessoa['CPF'] . "</td>";
-                        echo "<td>" . $row_pessoa['TELEFONE'] . "</td>";
-                        echo "<td>" . $row_pessoa['NOME_FAMILIAR'] . "</td>";
-                        echo "<td>" . $row_pessoa['VINCULO_FAMILIAR'] . "</td>";
-                        echo "<td>" . $row_pessoa['NECES_DOC_FAMILIAR'] . "</td>";
-                        echo "<td>" . $row_pessoa['data_hora_cadastro'] . "</td>";
-                        echo "<td class='text-center'><a href='form_edit.php?idpessoa=" . $row_pessoa['IDPESSOA'] . "'><i class='bi bi-pencil-square text-primary'></a></i></td>";
-                        echo "<td class='text-center'><a href='javascript:alertDelete(" . $row_pessoa['IDPESSOA'] . ")'><i class='bi bi-trash text-danger'></a></i></td>";
-                        echo "</tr>";
-                    }
-
-                    echo "</tbody>";
-                    echo "</table>";
-                    echo "</div>";
+                echo "</tbody>";
+                echo "</table>";
+                echo "</div>";
 
 
-                    // Paginação para os resultados da busca
-                    if (!empty($_GET['data'])) {
-                        $quantidade_pg = ceil($total_pessoas / $qnt_result_pg);
-                    } else {
-                        $quantidade_pg = ceil($total_geral / $qnt_result_pg);
-                    }
+                // Paginação para os resultados da busca
+                if (!empty($_GET['data'])) {
+                    $quantidade_pg = ceil($total_pessoas / $qnt_result_pg);
+                } else {
+                    $quantidade_pg = ceil($total_geral / $qnt_result_pg);
+                }
 
-                    //Limitar os Links antes e depois
-                    $max_links = 2;
+                //Limitar os Links antes e depois
+                $max_links = 2;
 
-                    ?>
-                </div>
+                ?>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -225,11 +227,11 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     </div>
     <br><br>
     <script>
-            function alertDelete(id) {
-                if (confirm("Confirma a exclusão?") == true) {
-                    window.location.href = "delete.php?idpessoa=" + id;
-                }
+        function alertDelete(id) {
+            if (confirm("Confirma a exclusão?") == true) {
+                window.location.href = "delete.php?idpessoa=" + id;
             }
+        }
     </script>
 </body>
 

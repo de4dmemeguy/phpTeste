@@ -177,40 +177,43 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="shortcut icon" href="/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-  <link rel="stylesheet" href="/CidadaniaEseguranca/src/css/styles.css" />
-
-  <link rel="import" href="cadastro.html">
   <!-- <link rel="stylesheet" href="/CidadaniaEseguranca/CidadaniaEseguranca/src/css/styles.css"/> -->
+  <link rel="import" href="cadastro.html">
+
   <script src="./services/form.js" defer></script>
   <title>Cidadania e Segurança</title>
 
 </head>
 
-<body style="background-color: #1E3357;">
+<body style="background-color: rgba(79, 149, 161, 0.2863);;">
 
   <div class="d-flex">
     <a href="sair.php" class="btn btn-danger" style="position: absolute; top: 15px; right: 15px;">Sair</a>
   </div>
   <br>
+
   <div class="container">
-    <h3 class="text-center mt-5 mb-5 text-light">Formulário - Cidadania e Segurança</h3>
+
+    <h3 class="text-center mt-5 mb-5" style="color: #135763;">
+      <img class="mb-3" src="/CidadaniaEseguranca/CidadaniaEseguranca/img/Logo-SSP-Am-novo-300x298.png" alt="logo-ssp" style="width: 80px;"><br>Formulário - Cidadania e Segurança
+    </h3>
   </div>
 
   <form action="form.php" method="post" id="myForm" onsubmit="return validarFormulario()" class="mb-4 mx-2">
 
-    <div class="container border rounded-4 col-md-6 col-xl-4 shadow-lg" style="background-color: white;">
+    <div class="container border rounded-4 col-md-8 col-xl-4 shadow-lg" style="background-color: white;">
       <div class="mx-auto">
-        <h5 class="text-center mt-4 mb-3">Identificação</h5>
-
-        <div class="mb-3"> 
-          <label for="nomeCompleto" class="form-label">Nome Completo:</label>
-          <input type="text" id="nome" name="nome" class="form-control bg-body-tertiary" required />
+        <div class="border-bottom mb-3 mt-4">
+          <h5>Identificação</h5>
         </div>
-        <div class="row mb-3">
-          <div class="col-md-6">
+        <div class="mx-3"><!-- espacamento dos campos -->
+          <div class="mb-3">
+            <label for="nomeCompleto" class="form-label">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" class="form-control bg-body-tertiary" required />
+          </div>
+          <div class="mb-3 col-6 col-md-4">
             <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
             <input type="text" id="dataNascimento" name="dataNascimento" class="form-control bg-body-tertiary" placeholder="DD/MM/YYYY" required pattern="\d{2}/\d{2}/\d{4}" />
             <small class="form-text text-muted">Formato: DD/MM/YYYY</small>
@@ -219,412 +222,432 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
           <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" required/>
         </div> -->
-          <div class="col-md-6">
+          <div class="mb-3 col-6 col-md-4">
             <label for="cpf" class="form-label">CPF:</label>
             <input type="text" id="cpf" name="cpf" class="form-control bg-body-tertiary" placeholder="000.000.000-00" required />
           </div>
+          <div class="mb-3">
+            <label for="numNIS" class="form-label">Número do NIS:</label>
+            <input type="text" id="numNIS" name="numNIS" class="form-control bg-body-tertiary" placeholder="Digite somente números" />
+          </div>
+          <div class="mb-3">
+            <label for="genero" class="form-label">Gênero:</label>
+            <select name="genero" id="genero" class="form-select bg-body-tertiary" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Feminino">Mulher Cisgênero</option>
+              <option value="Masculino">Homem Cisgênero</option>
+              <option value="Não Responder">Transexual</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Estado Civil:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="estadoCivil" id="solteiro" value="solteiro" class="form-check-input" required /><label for="solteiro" class="form-check-label">Solteiro</label>
+            </div>
+            <div class="form-check form-check-inline ">
+              <input type="radio" name="estadoCivil" id="casado" value="casado" class="form-check-input" /><label for="casado">Casado</label>
+            </div>
+            <div class="form-check form-check-inline ">
+              <input type="radio" name="estadoCivil" id="divorciado" value="divorciado" class="form-check-input" /><label for="divorciado">Divorciado</label>
+            </div>
+            <div class="form-check  form-check-inline">
+              <input type="radio" name="estadoCivil" id="uniaoEstavel" value="uniaoEstavel" class="form-check-input" /><label for="uniaoEstavel">União Estável</label>
+            </div>
+            <div class="">
+              <label for="outro" class="form-label">Outro: </label> <input type="text" name="outroEstadoCivil" id="outro" class="form-control bg-body-tertiary" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Cor/Raça:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="cor" id="branca" value="branca" class="form-check-input" required /><label for="branca">Branca</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="cor" id="preta" value="preta" class="form-check-input" /><label for="preta">Preta</label>
+            </div>
+            <div class="form-check  form-check-inline">
+              <input type="radio" name="cor" id="parda" value="parda" class="form-check-input" /><label for="parda">Parda</label>
+            </div>
+            <div class="form-check  form-check-inline">
+              <input type="radio" name="cor" id="indigena" value="indigena" class="form-check-input" /><label for="indigena">Indígena</label>
+            </div>
+            <div class="form-check form-check-inline ">
+              <input type="radio" name="cor" id="naoDeclarado" value="naoDeclarado" class="form-check-input" /><label for="naoDeclarado">Não Declarado</label>
+            </div>
+            <div class="form-check  form-check-inline">
+              <input type="radio" name="cor" id="outra" value="outra" class="form-check-input" /><label for="outra">Outra</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nacionalidade" class="form-label">Nacionalidade:</label>
+            <input type="text" id="nacionalidade" name="nacionalidade" class="form-control bg-body-tertiary" required />
+          </div>
+          <div class="mb-3">
+            <label for="naturalidade" class="form-label">Naturalidade:</label>
+            <input type="text" id="naturalidade" name="naturalidade" class="form-control bg-body-tertiary" required />
+          </div>
+          <div class="mb-3">
+            <label for="escolaridade" class="form-label">Escolaridade</label>
+            <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select bg-body-tertiary" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Analfabeto">Analfabeto</option>
+              <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+              <option value="Fundamental Completo">Fundamental Completo</option>
+              <option value="Médio Incompleto">Médio Incompleto</option>
+              <option value="Médio Completo">Médio Completo</option>
+              <option value="Superior Incompleto">Superior Incompleto</option>
+              <option value="Superior Completo">Superior Completo</option>
+              <option value="Pós Graduação">Pós Graduação</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="profissao" class="form-label">Profissão</label>
+            <input type="text" id="profissao" name="profissao" class="form-control bg-body-tertiary" />
+          </div>
+          <div class="mb-3">
+            <label for="renda" class="form-label">Renda</label>
+            <input type="text" id="renda" name="renda" class="form-control bg-body-tertiary" placeholder="000.000.000.000,00" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ocupação Profissional:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" required /><label for="clt">CLT</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="ocupacao" id="contrato" value="contrato" class="form-check-input" /><label for="contrato">Contrato</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="ocupacao" id="autonomo" value="autonomo" class="form-check-input" /><label for="autonomo">Autônomo</label>
+            </div>
+            <div class="form-check form-check-inline mb-2">
+              <input type="radio" name="ocupacao" id="desempregado" value="desempregado" class="form-check-input" /><label for="desempregado">Desempregado</label>
+            </div>
+            <div>
+              <label for="outraOcupacao" class="form-label">Outra:</label>
+              <input type="text" id="outraOcupacao" name="outraOcupacao" class="form-control bg-body-tertiary" />
+            </div>
+          </div>
         </div>
-        <div class="mb-3"> 
-          <label for="numNIS" class="form-label">Número do NIS:</label>
-          <input type="text" id="numNIS" name="numNIS" class="form-control bg-body-tertiary" placeholder="Digite somente números" />
-        </div>
-        <div class="mb-3"> 
-          <label for="genero" class="form-label">Gênero:</label>
-          <select name="genero" id="genero" class="form-select bg-body-tertiary" required>
-            <option value="">Selecione uma opção</option>
-            <option value="Feminino">Mulher Cisgênero</option>
-            <option value="Masculino">Homem Cisgênero</option>
-            <option value="Não Responder">Transexual</option>
-            <option value="Outro">Outro</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Estado Civil:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="estadoCivil" id="solteiro" value="solteiro" class="form-check-input" required /><label for="solteiro" class="form-check-label">Solteiro</label>
-          </div>
-          <div class="form-check form-check-inline ">
-            <input type="radio" name="estadoCivil" id="casado" value="casado" class="form-check-input" /><label for="casado">Casado</label>
-          </div>
-          <div class="form-check form-check-inline ">
-            <input type="radio" name="estadoCivil" id="divorciado" value="divorciado" class="form-check-input" /><label for="divorciado">Divorciado</label>
-          </div>
-          <div class="form-check  form-check-inline">
-            <input type="radio" name="estadoCivil" id="uniaoEstavel" value="uniaoEstavel" class="form-check-input" /><label for="uniaoEstavel">União Estável</label>
-          </div>
-          <div class="">
-            <label for="outro" class="form-label">Outro: </label> <input type="text" name="outroEstadoCivil" id="outro" class="form-control bg-body-tertiary" />
-          </div>
-        </div>
-        <div class="mb-3"> 
-          <label class="form-label">Cor/Raça:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="cor" id="branca" value="branca" class="form-check-input" required /><label for="branca">Branca</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="cor" id="preta" value="preta" class="form-check-input" /><label for="preta">Preta</label>
-          </div>
-          <div class="form-check  form-check-inline">
-            <input type="radio" name="cor" id="parda" value="parda" class="form-check-input" /><label for="parda">Parda</label>
-          </div>
-          <div class="form-check  form-check-inline">
-            <input type="radio" name="cor" id="indigena" value="indigena" class="form-check-input" /><label for="indigena">Indígena</label>
-          </div>
-          <div class="form-check form-check-inline ">
-            <input type="radio" name="cor" id="naoDeclarado" value="naoDeclarado" class="form-check-input" /><label for="naoDeclarado">Não Declarado</label>
-          </div>
-          <div class="form-check  form-check-inline">
-            <input type="radio" name="cor" id="outra" value="outra" class="form-check-input" /><label for="outra">Outra</label>
-          </div>
-        </div>
-        <div class="mb-3"> 
-          <label for="nacionalidade" class="form-label">Nacionalidade:</label>
-          <input type="text" id="nacionalidade" name="nacionalidade" class="form-control bg-body-tertiary" required />
-        </div>
-        <div class="mb-3"> 
-          <label for="naturalidade" class="form-label">Naturalidade:</label>
-          <input type="text" id="naturalidade" name="naturalidade" class="form-control bg-body-tertiary" required />
-        </div>
-        <div class="mb-3"> 
-          <label for="escolaridade" class="form-label">Escolaridade</label>
-          <select name="escolaridadepessoa" id="escolaridadepessoa" class="form-select bg-body-tertiary" required>
-            <option value="">Selecione uma opção</option>
-            <option value="Analfabeto">Analfabeto</option>
-            <option value="Fundamental Incompleto">Fundamental Incompleto</option>
-            <option value="Fundamental Completo">Fundamental Completo</option>
-            <option value="Médio Incompleto">Médio Incompleto</option>
-            <option value="Médio Completo">Médio Completo</option>
-            <option value="Superior Incompleto">Superior Incompleto</option>
-            <option value="Superior Completo">Superior Completo</option>
-            <option value="Pós Graduação">Pós Graduação</option>
-          </select>
-        </div>
-        <div class="mb-3"> 
-          <label for="profissao" class="form-label">Profissão</label>
-          <input type="text" id="profissao" name="profissao" class="form-control bg-body-tertiary" />
-        </div>
-        <div class="mb-3"> 
-          <label for="renda" class="form-label">Renda</label>
-          <input type="text" id="renda" name="renda" class="form-control bg-body-tertiary" placeholder="000.000.000.000,00" />
-        </div>
-        <div class="mb-3"> 
-          <label class="form-label">Ocupação Profissional:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="ocupacao" id="clt" value="clt" class="form-check-input" required /><label for="clt">CLT</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="ocupacao" id="contrato" value="contrato" class="form-check-input" /><label for="contrato">Contrato</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="ocupacao" id="autonomo" value="autonomo" class="form-check-input" /><label for="autonomo">Autônomo</label>
-          </div>
-          <div class="form-check form-check-inline mb-2">
-            <input type="radio" name="ocupacao" id="desempregado" value="desempregado" class="form-check-input" /><label for="desempregado">Desempregado</label>
-          </div>
-          <div>
-            <label for="outraOcupacao" class="form-label">Outra:</label>
-            <input type="text" id="outraOcupacao" name="outraOcupacao" class="form-control bg-body-tertiary" />
-          </div>
-        </div>
+
       </div>
 
-      <div class="mb-3 mt-3">
+      <div class="mb-3 mt-5">
         <!-- Endereço/Contato -->
-        <h5 class="sub-title text-center">Endereço/Contato</h5>
-
-        <div class="mx-auto">
-          <div class="mb-3">
-            <label for="cep" class="form-label">CEP</label>
-            <input type="text" class="form-control bg-body-tertiary" id="cep" name="cep" placeholder="00000-000">
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-8">
-              <label for="rua" class="form-label">Rua/Avenida</label>
-              <input type="text" class="form-control bg-body-tertiary" required>
+        <div class="border-bottom mb-3">
+          <h5>Endereço/Contato</h5>
+        </div>
+        <div class="mx-3"><!-- espacamento dos campos -->
+          <div class="mx-auto">
+            <div class="mb-3 col-4">
+              <label for="cep" class="form-label">CEP</label>
+              <input type="text" class="form-control bg-body-tertiary" id="cep" name="cep" placeholder="00000-000">
             </div>
-            <div class="col-md-4">
-              <label for="numero" class="form-label">Número:</label>
-              <input type="text" class="form-control bg-body-tertiary" id="numero" name="numero" required>
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <label for="rua" class="form-label">Rua/Avenida</label>
+                <input type="text" class="form-control bg-body-tertiary" required>
+              </div>
+              <div class="col-md-4">
+                <label for="numero" class="form-label">Número:</label>
+                <input type="text" class="form-control bg-body-tertiary" id="numero" name="numero" required>
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="bairro" class="form-label">Bairro</label>
-            <input type="text" class="form-control bg-body-tertiary" id="bairro" name="bairro" required>
-          </div>
-          <div class="mb-3">
-            <label for="referencia" class="form-label">Ponto de Referência</label>
-            <input type="text" class="form-control bg-body-tertiary" id="referencia" name="referencia">
-          </div>
-          <div class="mb-3">
-            <label for="telefone" class="form-label">Telefone para contato</label>
-            <input type="text" class="form-control bg-body-tertiary" id="telefone" name="telefone" placeholder="(DD) 00000-0000" required>
-          </div>
-          <div class="mb-3">
-            <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
-            <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="sim" value="Sim" class="form-check-input" required />
-              <label for="sim">Sim</label>
+            <div class="mb-3">
+              <label for="bairro" class="form-label">Bairro</label>
+              <input type="text" class="form-control bg-body-tertiary" id="bairro" name="bairro" required>
             </div>
-            <div class="form-check form-check-inline">
-              <input type="radio" name="aceitaWhatsapp" id="nao" value="Não" class="form-check-input" />
-              <label for="nao">Não</label>
+            <div class="mb-3">
+              <label for="referencia" class="form-label">Ponto de Referência</label>
+              <input type="text" class="form-control bg-body-tertiary" id="referencia" name="referencia">
+            </div>
+            <div class="mb-3 col-6 col-md-4">
+              <label for="telefone" class="form-label">Telefone para contato</label>
+              <input type="text" class="form-control bg-body-tertiary" id="telefone" name="telefone" placeholder="(DD) 00000-0000" required>
+            </div>
+            <div>
+              <label for="whatsapp">Aceita ser inserido em grupo de oferta de serviços no WhatsApp?</label>
+              <div class="form-check form-check-inline">
+                <input type="radio" name="aceitaWhatsapp" id="sim" value="Sim" class="form-check-input" required />
+                <label for="sim">Sim</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" name="aceitaWhatsapp" id="nao" value="Não" class="form-check-input" />
+                <label for="nao">Não</label>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <!--        Condições de Moradia            -->
       <div class="mx-auto mb-3">
-        <h5 class="text-center mb-3 mt-5">Condições de Moradia</h5>
-
-        <div class="mb-3">
-          <label for="" class="form-label">Tipo de Residência:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoResidencia" id="propria" value="Própria" class="form-check-input" required /> <label for="propria" class="form-check-label">Própria</label>
+        <div class="border-bottom mb-3 mt-5">
+          <h5>Condições de Moradia</h5>
+        </div>
+        <div class="mx-3">
+          <div class="mb-3">
+            <label for="" class="form-label">Tipo de Residência:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoResidencia" id="propria" value="Própria" class="form-check-input" required /> <label for="propria" class="form-check-label">Própria</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoResidencia" id="alugada" value="Alugada" class="form-check-input" /> <label for="alugada">Alugada</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoResidencia" id="cedida" value="Cedida" class="form-check-input" /> <label for="cedida">Cedida</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoResidencia" id="ocupada" value="Ocupada" class="form-check-input" /> <label for="ocupada" class="form-check-label">Ocupada</label>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoResidencia" id="alugada" value="Alugada" class="form-check-input" /> <label for="alugada">Alugada</label>
+          <div class="mb-3"><!--Tipo de Estrutura-->
+            <label for="" class="form-label">Tipo de Estrutura:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoEstrutura" id="alvenaria" value="Alvenaria" class="form-check-input" required />
+              <label for="alvenaria">Alvenaria</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoEstrutura" id="madeira" value="Madeira" class="form-check-input" />
+              <label for="madeira">Madeira</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="tipoEstrutura" id="mista" value="Mista" class="form-check-input" />
+              <label for="mista">Mista</label>
+            </div>
+            <br>
+            <div class="mt-2"><!--Outros Materiais-->
+              <label for="outrosMateriais">Outros Materiais:</label>
+              <input type="text" id="outrosMateriais" name="outrosMateriais" class="form-control bg-body-tertiary" />
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoResidencia" id="cedida" value="Cedida" class="form-check-input" /> <label for="cedida">Cedida</label>
+          <div class="mb-3"><!--Energia Elétrica-->
+            <label for="" class="form-label">Energia Elétrica:</label>
+            <br>
+            <div class="form-check">
+              <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="Com Medidor Próprio" class="form-check-input" required />
+              <label for="comMedidorProprio">Sim, com medidor próprio</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado" value="Com Medidor Compartilhado" class="form-check-input" />
+              <label for="comMedidorCompartilhado">Sim, com medidor compartilhado</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="energiaEletrica" id="semMedidor" value="Sem Medidor" class="form-check-input" />
+              <label for="semMedidor">Sim, sem medidor</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="energiaEletrica" id="semEnergiaEletrica" value="Sem Energia Elétrica" class="form-check-input" />
+              <label for="semEnergiaEletrica">Não possui energia elétrica</label>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoResidencia" id="ocupada" value="Ocupada" class="form-check-input" /> <label for="ocupada" class="form-check-label">Ocupada</label>
+          <div class="mb-3"><!--Abastecimento de Água-->
+            <label for="" class="form-label">Abastecimento de Água:</label>
+            <div class="form-check">
+              <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" required />
+              <label for="redeGeralDistribuicao">Rede geral de distribuição</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="abastecimentoAgua" id="pocoArtesiano" value="Poço artesiano" class="form-check-input" />
+              <label for="pocoArtesiano">Poço artesiano</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="abastecimentoAgua" id="semAguaEncanada" value="Sem Água Encanada" class="form-check-input" />
+              <label for="semAguaEncanada">Não possui água encanada</label>
+            </div>
+            <div class="mt-2">
+              <label for="outraFormaAgua">Outra forma:</label>
+              <input type="text" id="outraFormaAgua" name="outraFormaAgua" class="form-control bg-body-tertiary" />
+            </div>
+          </div>
+          <div class="mb-3"><!--Escoamento Sanitário-->
+            <label for="" class="form-label">Escoamento Sanitário:</label>
+            <div>
+              <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Tratamento de Esgoto" class="form-check-input" required />
+              <label for="redeGeralDistribuicaoSanitario">Rede Geral de Tratamento de Esgoto</label>
+            </div>
+            <div>
+              <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario" value="Esgoto Sanitário" class="form-check-input" />
+              <label for="pocoArtesianoSanitario">Esgoto Sanitário</label>
+            </div>
+            <div>
+              <input type="radio" name="escoamentoSanitario" id="semEsgoto" value="Não Possui Esgoto" class="form-check-input" />
+              <label for="semEsgoto">Não possui esgoto</label>
+            </div>
+            <div class="mt-2">
+              <label for="outraFormaEsgoto">Outra forma:</label>
+              <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto" class="form-control bg-body-tertiary" />
+            </div>
           </div>
         </div>
-        <div class="mb-3"><!--Tipo de Estrutura-->
-          <label for="" class="form-label">Tipo de Estrutura:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoEstrutura" id="alvenaria" value="Alvenaria" class="form-check-input" required />
-            <label for="alvenaria">Alvenaria</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoEstrutura" id="madeira" value="Madeira" class="form-check-input" />
-            <label for="madeira">Madeira</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="tipoEstrutura" id="mista" value="Mista" class="form-check-input" />
-            <label for="mista">Mista</label>
-          </div>
-          <br>
-          <div class="mt-2"><!--Outros Materiais-->
-            <label for="outrosMateriais">Outros Materiais:</label>
-            <input type="text" id="outrosMateriais" name="outrosMateriais" class="form-control bg-body-tertiary" />
-          </div>
-        </div>
-        <div class="mb-3"><!--Energia Elétrica-->
-          <label for="" class="form-label">Energia Elétrica:</label>
-          <br>
-          <div class="form-check">
-            <input type="radio" name="energiaEletrica" id="comMedidorProprio" value="Com Medidor Próprio" class="form-check-input" required />
-            <label for="comMedidorProprio">Sim, com medidor próprio</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="energiaEletrica" id="comMedidorCompartilhado" value="Com Medidor Compartilhado" class="form-check-input" />
-            <label for="comMedidorCompartilhado">Sim, com medidor compartilhado</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="energiaEletrica" id="semMedidor" value="Sem Medidor" class="form-check-input" />
-            <label for="semMedidor">Sim, sem medidor</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="energiaEletrica" id="semEnergiaEletrica" value="Sem Energia Elétrica" class="form-check-input" />
-            <label for="semEnergiaEletrica">Não possui energia elétrica</label>
-          </div>
-        </div>
-        <div class="mb-3"><!--Abastecimento de Água-->
-          <label for="" class="form-label">Abastecimento de Água:</label>
-          <div class="form-check">
-            <input type="radio" name="abastecimentoAgua" id="redeGeralDistribuicao" value="Rede geral de distribuição" class="form-check-input" required />
-            <label for="redeGeralDistribuicao">Rede geral de distribuição</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="abastecimentoAgua" id="pocoArtesiano" value="Poço artesiano" class="form-check-input" />
-            <label for="pocoArtesiano">Poço artesiano</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="abastecimentoAgua" id="semAguaEncanada" value="Sem Água Encanada" class="form-check-input" />
-            <label for="semAguaEncanada">Não possui água encanada</label>
-          </div>
-          <div class="mt-2">
-            <label for="outraFormaAgua">Outra forma:</label>
-            <input type="text" id="outraFormaAgua" name="outraFormaAgua" class="form-control bg-body-tertiary" />
-          </div>
-        </div>
-        <div class="mb-3"><!--Escoamento Sanitário-->
-          <label for="" class="form-label">Escoamento Sanitário:</label>
-          <div>
-            <input type="radio" name="escoamentoSanitario" id="redeGeralDistribuicaoSanitario" value="Rede Geral de Tratamento de Esgoto" class="form-check-input" required />
-            <label for="redeGeralDistribuicaoSanitario">Rede Geral de Tratamento de Esgoto</label>
-          </div>
-          <div>
-            <input type="radio" name="escoamentoSanitario" id="pocoArtesianoSanitario" value="Esgoto Sanitário" class="form-check-input" />
-            <label for="pocoArtesianoSanitario">Esgoto Sanitário</label>
-          </div>
-          <div>
-            <input type="radio" name="escoamentoSanitario" id="semEsgoto" value="Não Possui Esgoto" class="form-check-input" />
-            <label for="semEsgoto">Não possui esgoto</label>
-          </div>
-          <div class="mt-2">
-            <label for="outraFormaEsgoto">Outra forma:</label>
-            <input type="text" id="outraFormaEsgoto" name="outraFormaEsgoto" class="form-control bg-body-tertiary" />
-          </div>
-        </div>
-
         <!--               Benefícios Sociais               -->
-        <h5 class="text-center">Benefícios Sociais</h5>
-        <div class="form-check">
-          <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais" value="Não" class="form-check-input" required />
-          <label for="naoBeneficiosSociais">Não</label>
+        <div class="border-bottom mt-5 mb-3">
+          <h5>Benefícios Sociais</h5>
         </div>
-        <div>
-          <input type="radio" name="beneficiosSociais" id="bolsaFamilia" value="Bolsa Família" class="form-check-input" />
-          <label for="bolsaFamilia">Bolsa Família</label>
-        </div>
-        <div>
-          <input type="radio" name="beneficiosSociais" id="auxilioEstadual" value="Auxílio Estadual" class="form-check-input" />
-          <label for="auxilioEstadual">Auxílio Estadual</label>
-        </div>
-        <div>
-          <input type="radio" name="beneficiosSociais" id="bpc" value="Benefício de Prestação Continuada (BPC)" class="form-check-input" />
-          <label for="bpc">Benefício de Prestação Continuada (BPC)</label>
-        </div>
-        <div class="mt-2">
-          <label for="outroBeneficio">Outro:</label>
-          <input type="text" id="outroBeneficio" name="outroBeneficio" class="form-control bg-body-tertiary" />
-        </div>
-        <div class="mb-3 mt-3">
-          <label for="" class="form-label"> Situação do Cadastro Único:</label>
-          <br>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico" value="Não Possui CAD Único" class="form-check-input" required />
-            <label for="naoPossuiCadastroUnico">Não Possui</label>
+        <div class="mx-3">
+          <div class="form-check">
+            <input type="radio" name="beneficiosSociais" id="naoBeneficiosSociais" value="Não" class="form-check-input" required />
+            <label for="naoBeneficiosSociais">Não</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="situacaoCadastroUnico" id="atualizadoCadastroUnico" value="Atualizado" class="form-check-input" />
-            <label for="atualizadoCadastroUnico">Atualizado</label>
+          <div>
+            <input type="radio" name="beneficiosSociais" id="bolsaFamilia" value="Bolsa Família" class="form-check-input" />
+            <label for="bolsaFamilia">Bolsa Família</label>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" name="situacaoCadastroUnico" id="desatualizadoCadastroUnico" value="Desatualizado" class="form-check-input" />
-            <label for="desatualizadoCadastroUnico">Desatualizado</label>
+          <div>
+            <input type="radio" name="beneficiosSociais" id="auxilioEstadual" value="Auxílio Estadual" class="form-check-input" />
+            <label for="auxilioEstadual">Auxílio Estadual</label>
+          </div>
+          <div>
+            <input type="radio" name="beneficiosSociais" id="bpc" value="Benefício de Prestação Continuada (BPC)" class="form-check-input" />
+            <label for="bpc">Benefício de Prestação Continuada (BPC)</label>
+          </div>
+          <div class="mt-2">
+            <label for="outroBeneficio">Outro:</label>
+            <input type="text" id="outroBeneficio" name="outroBeneficio" class="form-control bg-body-tertiary" />
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="" class="form-label"> Situação do Cadastro Único:</label>
+            <br>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="situacaoCadastroUnico" id="naoPossuiCadastroUnico" value="Não Possui CAD Único" class="form-check-input" required />
+              <label for="naoPossuiCadastroUnico">Não Possui</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="situacaoCadastroUnico" id="atualizadoCadastroUnico" value="Atualizado" class="form-check-input" />
+              <label for="atualizadoCadastroUnico">Atualizado</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="situacaoCadastroUnico" id="desatualizadoCadastroUnico" value="Desatualizado" class="form-check-input" />
+              <label for="desatualizadoCadastroUnico">Desatualizado</label>
+            </div>
           </div>
         </div>
       </div>
       <!--        Necessidades de Documentação Civil           -->
-      <div class="mx-auto mb-3">
-        <h5 class="text-center mb-3 mt-3">Necessidades de Documentação Civil</h5>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
-          <label for="cni">SEM NECESSIDADE</label>
+      <div class="mt-5">
+        <div class="border-bottom mb-3 mt-3">
+          <h5>Necessidades de Documentação Civil</h5>
         </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="cni" value="CNI/RG" class="form-check-input" />
-          <label for="cni">CNI/RG</label>
+        <div class="mx-3">
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
+            <label for="cni">SEM NECESSIDADE</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cni" value="CNI/RG" class="form-check-input" />
+            <label for="cni">CNI/RG</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cpf" value="CPF" class="form-check-input" />
+            <label for="cpf">CPF</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="rcn" value="RCN" class="form-check-input" />
+            <label for="rcn">RCN</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cpcd" value="Carteira PCD" class="form-check-input" />
+            <label for="cpcd">CARTEIRA PCD</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="cptea" value="Carteira CPTEA" class="form-check-input" />
+            <label for="cptea">CARTEIRA CIPTEA</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="rnm" value="Registro Nacional dos Migrantes" class="form-check-input" />
+            <label for="rnm">REGISTRO NACIONAL DOS MIGRANTES (RNM)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" name="documentacaocivil[]" id="carteiraIdoso" value="Carteira do Idoso" class="form-check-input" />
+            <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
+          </div>
         </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="cpf" value="CPF" class="form-check-input" />
-          <label for="cpf">CPF</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="rcn" value="RCN" class="form-check-input" />
-          <label for="rcn">RCN</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="cpcd" value="Carteira PCD" class="form-check-input" />
-          <label for="cpcd">CARTEIRA PCD</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="cptea" value="Carteira CPTEA" class="form-check-input" />
-          <label for="cptea">CARTEIRA CIPTEA</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="rnm" value="Registro Nacional dos Migrantes" class="form-check-input" />
-          <label for="rnm">REGISTRO NACIONAL DOS MIGRANTES (RNM)</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="documentacaocivil[]" id="carteiraIdoso" value="Carteira do Idoso" class="form-check-input" />
-          <label for="carteiraIdoso">CARTEIRA DO IDOSO</label>
-        </div>
+
       </div>
 
       <!--            SOCIOECONOMICO                -->
-      <div class="mx-auto mb-3" id="dynamic-content">
-        <h5 class="text-center">Socioêconomico</h5>
-        <div class="mb-2">
-          <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-          <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control bg-body-tertiary" />
+      <div class="mx-auto mb-3 mt-5" id="dynamic-content">
+        <div class="border-bottom mb-3">
+          <h5>Socioêconomico</h5>
         </div>
-        <div class="mb-2">
-          <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
-          <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números" />
-        </div>
-        <div class="mb-2">
-          <label for="" class="form-label">Vinculo Familiar:</label>
-          <select id="relacao1" name="relacao[]" class="form-select bg-body-tertiary">
-            <option value="" selected disabled>Selecione uma opção</option>
-            <option value="Pessoa de referência">Pessoa de referência</option>
-            <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
-            <option value="Filho(a)">Filho(a)</option>
-            <option value="Enteado(a)">Enteado(a)</option>
-            <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
-            <option value="Pai/Mãe">Pai/Mãe</option>
-            <option value="Sogro(a)">Sogro(a)</option>
-            <option value="Irmão/Irmã">Irmão/Irmã</option>
-            <option value="Genro/Nora">Genro/Nora</option>
-            <option value="Outro Parente">Outro Parente</option>
-            <option value="Não Parente">Não Parente</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="" class="form-label">Escolaridade:</label>
-          <select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
-            <option value="" selected disabled>Selecione uma opção</option>
-            <option value="Não Alfabetizado">Não Alfabetizado</option>
-            <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
-            <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
-            <option value="Ens. Médio Completo">Ens. Médio Completo</option>
-            <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
-            <option value="Ens. Superior Completo">Ens. Superior Completo</option>
-            <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="" class="form-label">Tipo de PCD:</label>
-          <select id="deficiencia1" name="deficiencia[]" class="form-select bg-body-tertiary">
-            <option value="" selected disabled>Selecione uma opção</option>
-            <option value="Sem Deficiência">Sem Deficiência</option>
-            <option value="Visual">Visual</option>
-            <option value="Auditiva">Auditiva</option>
-            <option value="Mental">Mental</option>
-            <option value="Física">Física</option>
-            <option value="Múltipla">Múltipla</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="" class="form-label">Necessidade de Documentação:</label>
-          <select id="documentacao1" name="documentacao[]" class="form-select bg-body-tertiary">
-            <option value="" selected disabled>Selecione uma opção</option>
-            <option value="Sem Necessidade">SEM NECESSIDADE</option>
-            <option value="CIN/RG">CIN/RG</option>
-            <option value="CPF">CPF</option>
-            <option value="Carteira PCD">CARTEIRA PCD</option>
-            <option value="RCN">RCN</option>
-            <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
-            <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
-            <option value="RNM">RNM</option>
-            <option value="Outra">OUTRA</option>
-          </select>
+        <div class="mx-3">
+          <div class="mb-2">
+            <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
+            <input type="text" id="nomesocio1" name="nomesocio[]" class="form-control bg-body-tertiary" />
+          </div>
+          <div class="mb-2">
+            <label for="nomeCompletoSocio" class="form-label">Idade do Familiar:</label>
+            <input type="text" id="idadesocio1" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números" />
+          </div>
+          <div class="mb-2">
+            <label for="" class="form-label">Vinculo Familiar:</label>
+            <select id="relacao1" name="relacao[]" class="form-select bg-body-tertiary">
+              <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Pessoa de referência">Pessoa de referência</option>
+              <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+              <option value="Filho(a)">Filho(a)</option>
+              <option value="Enteado(a)">Enteado(a)</option>
+              <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
+              <option value="Pai/Mãe">Pai/Mãe</option>
+              <option value="Sogro(a)">Sogro(a)</option>
+              <option value="Irmão/Irmã">Irmão/Irmã</option>
+              <option value="Genro/Nora">Genro/Nora</option>
+              <option value="Outro Parente">Outro Parente</option>
+              <option value="Não Parente">Não Parente</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="" class="form-label">Escolaridade:</label>
+            <select id="escolaridadeFam1" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
+              <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Não Alfabetizado">Não Alfabetizado</option>
+              <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+              <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+              <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+              <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+              <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+              <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="" class="form-label">Tipo de PCD:</label>
+            <select id="deficiencia1" name="deficiencia[]" class="form-select bg-body-tertiary">
+              <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Sem Deficiência">Sem Deficiência</option>
+              <option value="Visual">Visual</option>
+              <option value="Auditiva">Auditiva</option>
+              <option value="Mental">Mental</option>
+              <option value="Física">Física</option>
+              <option value="Múltipla">Múltipla</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="" class="form-label">Necessidade de Documentação:</label>
+            <select id="documentacao1" name="documentacao[]" class="form-select bg-body-tertiary">
+              <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Sem Necessidade">SEM NECESSIDADE</option>
+              <option value="CIN/RG">CIN/RG</option>
+              <option value="CPF">CPF</option>
+              <option value="Carteira PCD">CARTEIRA PCD</option>
+              <option value="RCN">RCN</option>
+              <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
+              <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
+              <option value="RNM">RNM</option>
+              <option value="Outra">OUTRA</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <!-- BTN Adicionar Cadastro -->
 
-      <div class="d-grid gap-2 col-6 float-end mb-5">
+      <div class="d-grid gap-2 col-8 col-md-6 float-end mb-5 me-3">
         <button class="btn btn-success btn-sm" type="button" onclick="adicionarLinha()"><i class="bi bi-plus-circle"></i> Adicionar Novo Cadastro</button>
       </div>
 
@@ -639,76 +662,80 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
           const newRow = document.createElement("div");
           newRow.classList.add("mb-3");
           newRow.innerHTML = `
-      <h5 class="mt-3 text-center">Socioêconomico</h5>
-      <div class="mb-2">
-      <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
-      <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control bg-body-tertiary"/>
+      <div class="border-bottom mt-3 mb-3">
+        <h5>Socioêconomico</h5>
       </div>
-      <div class="mb-2">
-        <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
-        <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números"/>
+      <div class="mx-3">
+        <div class="mb-2">
+        <label for="nomeCompletoSocio" class="form-label">Nome Completo do Familiar:</label>
+        <input type="text" id="nomesocio${contador}" name="nomesocio[]" class="form-control bg-body-tertiary"/>
         </div>
         <div class="mb-2">
-        <label for="relacao" class="form-label">Vínculo Familiar:</label>
-        <select id="relacao${contador}" name="relacao[]" class="form-select bg-body-tertiary">
-        <option value="" selected disabled>Selecione uma opção</option>
-        <option value="Pessoa de referência">Pessoa de referência</option>
-        <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
-        <option value="Filho(a)">Filho(a)</option>
-        <option value="Enteado(a)">Enteado(a)</option>
-        <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
-        <option value="Pai/Mãe">Pai/Mãe</option>
-        <option value="Sogro(a)">Sogro(a)</option>
-        <option value="Irmão/Irmã">Irmão/Irmã</option>
-        <option value="Genro/Nora">Genro/Nora</option>
-        <option value="Outro Parente">Outro Parente</option>
-        <option value="Não Parente">Não Parente</option>
-      </select>
-      </div>
+          <label for="idadeSocio" class="form-label">Idade do Familiar:</label>
+          <input type="text" id="idadesocio${contador}" name="idadesocio[]" class="form-control bg-body-tertiary" placeholder="Digite apenas números"/>
+          </div>
+          <div class="mb-2">
+          <label for="relacao" class="form-label">Vínculo Familiar:</label>
+          <select id="relacao${contador}" name="relacao[]" class="form-select bg-body-tertiary">
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="Pessoa de referência">Pessoa de referência</option>
+          <option value="Cônjugue/Companheiro(a)">Cônjugue/Companheiro(a)</option>
+          <option value="Filho(a)">Filho(a)</option>
+          <option value="Enteado(a)">Enteado(a)</option>
+          <option value="Neto(a), Bisneto(a)">Neto(a), Bisneto(a)</option>
+          <option value="Pai/Mãe">Pai/Mãe</option>
+          <option value="Sogro(a)">Sogro(a)</option>
+          <option value="Irmão/Irmã">Irmão/Irmã</option>
+          <option value="Genro/Nora">Genro/Nora</option>
+          <option value="Outro Parente">Outro Parente</option>
+          <option value="Não Parente">Não Parente</option>
+        </select>
+        </div>
+        
+        <div class="mb-2">
+        <label for="escolaridade" class="form-label">Escolaridade:</label>
+        <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="Não Alfabetizado">Não Alfabetizado</option>
+          <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
+          <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
+          <option value="Ens. Médio Completo">Ens. Médio Completo</option>
+          <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
+          <option value="Ens. Superior Completo">Ens. Superior Completo</option>
+          <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
+        </select>
+        </div>
+        <div class="mb-2">
+        <label for="deficiencia" class="form-label">Tipo de PCD:</label>
+        <select id="deficiencia${contador}" name="deficiencia[]" class="form-select bg-body-tertiary">
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="Sem Deficiência">Sem Deficiência</option>
+          <option value="Visual">Visual</option>
+          <option value="Auditiva">Auditiva</option>
+          <option value="Mental">Mental</option>
+          <option value="Física">Física</option>
+          <option value="Múltipla">Múltipla</option>
+        </select>
+        </div>
+        <div class="mb-3">
+        <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
+        <select id="documentacao${contador}" name="documentacao[]" class="form-select bg-body-tertiary">
+          <option value="" selected disabled>Selecione uma opção</option>
+          <option value="Sem Necessidade">SEM NECESSIDADE</option>
+          <option value="CIN/RG">CIN/RG</option>
+          <option value="CPF">CPF</option>
+          <option value="Carteira PCD">CARTEIRA PCD</option>
+          <option value="RCN">RCN</option>
+          <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
+          <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
+          <option value="RNM">RNM</option>
+          <option value="Outra">OUTRA</option>
+        </select>
+        </div>
+        </div>
+     
+        <button type="button" onclick="removerLinha(this)" class="btn btn-danger btn-sm mb-3 ms-3"><i class="bi bi-x-circle"></i> Remover Cadastro</button>
       
-      <div class="mb-2">
-      <label for="escolaridade" class="form-label">Escolaridade:</label>
-      <select id="escolaridadeFam${contador}" name="escolaridadeFam[]" class="form-select bg-body-tertiary">
-        <option value="" selected disabled>Selecione uma opção</option>
-        <option value="Não Alfabetizado">Não Alfabetizado</option>
-        <option value="Ens. Fundamental Completo">Ens. Fundamental Completo</option>
-        <option value="Ens. Fundamental Incompleto">Ens. Fundamental Incompleto</option>
-        <option value="Ens. Médio Completo">Ens. Médio Completo</option>
-        <option value="Ens. Médio Incompleto">Ens. Médio Incompleto</option>
-        <option value="Ens. Superior Completo">Ens. Superior Completo</option>
-        <option value="Ens. Superior Incompleto">Ens. Superior Incompleto</option>
-      </select>
-      </div>
-      <div class="mb-2">
-      <label for="deficiencia" class="form-label">Tipo de PCD:</label>
-      <select id="deficiencia${contador}" name="deficiencia[]" class="form-select bg-body-tertiary">
-        <option value="" selected disabled>Selecione uma opção</option>
-        <option value="Sem Deficiência">Sem Deficiência</option>
-        <option value="Visual">Visual</option>
-        <option value="Auditiva">Auditiva</option>
-        <option value="Mental">Mental</option>
-        <option value="Física">Física</option>
-        <option value="Múltipla">Múltipla</option>
-      </select>
-      </div>
-      <div class="mb-2">
-      <label for="documentacao" class="form-label">Necessidade de Documentação:</label>
-      <select id="documentacao${contador}" name="documentacao[]" class="form-select bg-body-tertiary">
-        <option value="" selected disabled>Selecione uma opção</option>
-        <option value="Sem Necessidade">SEM NECESSIDADE</option>
-        <option value="CIN/RG">CIN/RG</option>
-        <option value="CPF">CPF</option>
-        <option value="Carteira PCD">CARTEIRA PCD</option>
-        <option value="RCN">RCN</option>
-        <option value="Carteira CIPTEA">CARTEIRA CIPTEA</option>
-        <option value="Carteira IDOSO">CARTEIRA IDOSO</option>
-        <option value="RNM">RNM</option>
-        <option value="Outra">OUTRA</option>
-      </select>
-      </div>
-      <br>
-      <button type="button" onclick="removerLinha(this)" class="btn btn-danger btn-sm mb-3"><i class="bi bi-x-circle"></i> Remover Cadastro</button>
-
       
     `;
           dynamicContent.appendChild(newRow);
@@ -725,8 +752,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
       <form>
         <!--        Encaminhamentos/Agendamentos            -->
         <div class="container">
-          <div class="mx-auto mb-3">
-            <h5 class="text-center">Encaminhamentos/Agendamentos</h5>
+          <div class="mb-3">
+            <div class="border-bottom mb-3">
+              <h5>Encaminhamentos/Agendamentos</h5>
+            </div>
             <div class="form-check">
               <input type="checkbox" name="encaminhamentosAgendados[]" id="semNecessidade" value="Sem Necessidade" class="form-check-input" />
               <label for="cni">SEM NECESSIDADE DE ENCAMINHAMENTO</label>
