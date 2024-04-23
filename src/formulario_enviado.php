@@ -7,7 +7,6 @@
     <meta http-equiv="refresh" content="3;url=form.php">
 
     <style>
-
         body, html {
             height: 100%;
             margin: 0;
