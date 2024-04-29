@@ -12,59 +12,74 @@ if (!isset($_SESSION['cpf']) || !isset($_SESSION['senha'])) {
 $logado = $_SESSION['cpf'];
 
 // Contar o total de pessoas
-$total_geral_query = "SELECT COUNT(distinct nome) AS total_geral FROM pessoa";
+$total_geral_query = "SELECT COUNT(*) AS total_geral FROM pessoa";
 $total_geral_result = mysqli_query($conexao, $total_geral_query);
 $total_geral_row = mysqli_fetch_assoc($total_geral_result);
 $total_geral = $total_geral_row['total_geral'];
 
 $total_pessoas = $total_geral;
 
-// Se o parâmetro de data estiver presente na URL, ajuste a consulta SQL do contador
-if (!empty($_GET['data'])) {
-    $data = mysqli_real_escape_string($conexao, $_GET['data']);
-    // Ajuste o formato da data, se necessário
-    $data_formatada = date('Y-m-d', strtotime($data));
-
-    $total_pessoas_query = "SELECT COUNT(DISTINCT NOME) AS total_geral FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
-    $total_pessoas_result = mysqli_query($conexao, $total_pessoas_query);
-    $total_pessoas_row = mysqli_fetch_assoc($total_pessoas_result);
-    $total_pessoas = $total_pessoas_row['total_geral'];
-}
-
+// Defina o número de resultados por página
+$qnt_result_pg = 30;
 
 // Paginação para os resultados da busca
 $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
 $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-$qnt_result_pg = 30;
 $inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
 
+// PAGINAÇÃO POR NOME
+if (!empty($_GET['nome'])) {
+    $nome = mysqli_real_escape_string($conexao, $_GET['nome']);
 
+    // Consulta SQL para contar o número total de pessoas com o nome buscado
+    $total_pessoas_query = "SELECT COUNT(*) AS total_pessoas FROM pessoa WHERE NOME LIKE '%$nome%'";
+    $total_pessoas_result = mysqli_query($conexao, $total_pessoas_query);
+    $total_pessoas_row = mysqli_fetch_assoc($total_pessoas_result);
+    $total_pessoas = $total_pessoas_row['total_pessoas'];
 
-// Consulta SQL para os resultados da busca com paginação
-$result_pessoa = "";
+    $quantidade_pg = ceil($total_pessoas / $qnt_result_pg);
+    $pagina_atual = filter_input(INPUT_GET, 'pagina', FILTER_SANITIZE_NUMBER_INT);
+    $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+    if ($pagina > $quantidade_pg) {
+        header("Location: listar3.php?" . (!empty($_GET['nome']) ? "nome=$nome&" : "") . "pagina=$quantidade_pg");
+        exit;
+    }
+} else {
+    $quantidade_pg = 0;
+}
+
+// PAGINAÇÃO POR DATA
 if (!empty($_GET['data'])) {
     $data = mysqli_real_escape_string($conexao, $_GET['data']);
     // Ajuste o formato da data, se necessário
     $data_formatada = date('Y-m-d', strtotime($data));
 
-    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
-                      FROM pessoa 
-                      WHERE DATE(data_hora_cadastro) = '$data_formatada' 
-                      GROUP BY IDPESSOA, NOME 
-                      LIMIT $inicio, $qnt_result_pg";
+    $total_pessoas_query = "SELECT COUNT(*) AS total_pessoas FROM pessoa WHERE DATE(data_hora_cadastro) = '$data_formatada'";
+    $total_pessoas_result = mysqli_query($conexao, $total_pessoas_query);
+    $total_pessoas_row = mysqli_fetch_assoc($total_pessoas_result);
+    $total_pessoas = $total_pessoas_row['total_pessoas'];
 } else {
-    $result_pessoa = "SELECT IDPESSOA, NOME, MIN(CPF) AS CPF, MIN(DATA_NASC) AS DATA_NASC, MIN(END_RUA) AS END_RUA, MIN(END_NUM) AS END_NUM, MIN(END_BAIRRO) AS END_BAIRRO, MIN(TELEFONE) AS TELEFONE, MIN(ESCOLARIDADE) AS ESCOLARIDADE
-                      FROM pessoa 
-                      GROUP BY IDPESSOA, NOME 
-                      LIMIT $inicio, $qnt_result_pg";
+    $quantidade_pg = 0;
 }
 
+// EXIBIR BUSCA
+$result_pessoa = "";
 
+if (!empty($_GET['nome'])) {
+    $nome = mysqli_real_escape_string($conexao, $_GET['nome']);
+    $result_pessoa = "SELECT IDPESSOA, NOME, CPF, DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE FROM pessoa WHERE NOME LIKE '%$nome%'";
+} elseif (!empty($_GET['data'])) {
+    $data = mysqli_real_escape_string($conexao, $_GET['data']);
+    $data_formatada = date('Y-m-d', strtotime($data));
+    $result_pessoa = "SELECT IDPESSOA, NOME, CPF, DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE FROM pessoa WHERE DATE(data_hora_cadastro) ";
+} else {
+    $result_pessoa = "SELECT IDPESSOA, NOME, CPF, DATA_NASC, END_RUA, END_NUM, END_BAIRRO, TELEFONE, ESCOLARIDADE FROM pessoa";
+}
+
+$result_pessoa .= " LIMIT $inicio, $qnt_result_pg";
 
 $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
-
-// Definir o total de pessoas de acordo com os resultados da busca
-
 
 ?>
 <!DOCTYPE html>
@@ -96,7 +111,7 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
     <div class="container w-75">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form method="GET" action="listar1.php">
+                <form method="GET" action="listar3.php">
                     <div class="mb-3">
                         <label for="data" class="form-label">Pesquise por data</label>
                         <div class="input-group mb-1">
@@ -110,12 +125,12 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
         <!-- formulário de pesquisa por nome -->
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <form action="">
+                <form method="GET" action="listar1.php">
                     <div class="mb-3">
                         <label for="data" class="form-label">Pesquise por nome</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Digite o nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Pesquisar</button>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome" aria-label="Recipient's username" aria-describedby="button-addon2" href='$result_pessoa_nome'>
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Pesquisar</button>
                         </div>
                     </div>
                 </form>
@@ -204,48 +219,51 @@ $resultado_pessoa = mysqli_query($conexao, $result_pessoa);
 
                 ?>
 
-                <div class="d-flex justify-content-center mt-2">
-                    <nav aria-label="navegação da página">
-                        <ul class="pagination">
-                            <li class="page-item"><a href='listar1.php?<?php echo (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=1"; ?>' class='page-link'>Primeira </a></i>
-                                <?php
 
-                                for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
-                                    if ($pag_ant >= 1) {
-                                        echo "<li class='page-item'><a class='page-link' href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_ant'>$pag_ant </a></i>";
-                                    }
-                                }
-                                echo "<li class='page-item active'> <a class='page-link' href='#'>$pagina</a></li>";
-
-                                for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
-                                    if ($pag_dep <= $quantidade_pg) {
-                                        echo "<li class='page-item'><a class='page-link' href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$pag_dep'>$pag_dep </a></i>";
-                                    }
-                                }
-                                echo "<li class='page-item'><a href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=$quantidade_pg' class='page-link'> Ultima</a>";
-
-                                ?>
-                        </ul>
-                    </nav>
                 </div>
 
             </div>
         </div>
     </div>
 
+    <div class="d-flex justify-content-center mt-2">
+        <nav aria-label="navegação da página">
+                <ul class="pagination">
+                    <li class="page-item"><a href='listar1.php?<?php echo (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . "pagina=1"; ?>' class='page-link'>Primeira </a></li>
+                    <?php
 
-    <!-- Adicionar botão para gerar PDF -->
-    <form method="post" action="pdf_listar1.php">
-        <input type="hidden" name="data" value="<?php echo isset($_GET['data']) ? $_GET['data'] : ''; ?>">
-        <button type="submit" class="btn btn-primary" style="position: absolute; top: 8px; right: 80px;">Gerar PDF</button>
-    </form>
+                    for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
+                        if ($pag_ant >= 1) {
+                            echo "<li class='page-item'><a class='page-link' href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . (!empty($_GET['nome']) ? "nome=" . $_GET['nome'] . "&" : "") ."pagina=$pag_ant'>$pag_ant </a></li>";
+                        }
+                    }
+                    echo "<li class='page-item active'> <a class='page-link' href='#'>$pagina</a></li>";
+
+                    for ($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++) {
+                        if ($pag_dep <= $quantidade_pg) {
+                            echo "<li class='page-item'><a class='page-link' href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . (!empty($_GET['nome']) ? "nome=" . $_GET['nome'] . "&" : "") . "pagina=$pag_dep'>$pag_dep </a></li>";
+                        }
+                    }
+                    echo "<li class='page-item'><a href='listar1.php?" . (!empty($_GET['data']) ? "data=" . $_GET['data'] . "&" : "") . (!empty($_GET['nome']) ? "nome=" . $_GET['nome'] . "&" : "") . "pagina=$quantidade_pg' class='page-link'> Ultima</a></li>";
+
+                    ?>
+                </ul>
+            </nav>
+
+
+        <!-- Adicionar botão para gerar PDF -->
+        <form method="post" action="pdf_listar1.php">
+            <input type="hidden" name="nome" value="<?php echo isset($_GET['nome']) ? $_GET['nome'] : ''; ?>">
+            <button type="submit" class="btn btn-primary" style="position: absolute; top: 8px; right: 80px;">Gerar PDF</button>
+        </form>
     </div>
 
     <br><br>
+
     <script>
         function alertDelete(id) {
             if (confirm("Confirma a exclusão?") == true) {
-                window.location.href = "delete.php?idpessoa=" + id;
+                window.location.href = "delete.php?nome=" + id;
             }
         }
     </script>

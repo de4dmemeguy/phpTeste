@@ -31,7 +31,7 @@ if (isset($_GET['idpessoa']) || isset($_POST['idpessoa'])) {
 }
 
 if (isset($_POST['submit'])) {
-  var_dump($_POST);
+  // var_dump($_POST);
   for ($i = 0; $i < count($_POST['nomesocio']); $i++) {
     if ($i == 0 || $_POST['nomesocio'][$i]) {
       // echo "<br><br>Vai inserir o socio: " . ($i + 1) . "<br><br>";
@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
       $stmt->execute();
       // $stmt->close();
 
-      var_dump('Passou aqui');
+      // var_dump('Passou aqui');
     }
   }
 
@@ -188,7 +188,7 @@ if (isset($_POST['submit'])) {
 <body>
   <br>
   <div class="d-flex">
-    <a href="sair.php" class="btn btn-danger btn-sair">Sair</a>
+    <a href="tiposConsultas.html" class="btn btn-danger btn-sair">Sair</a>
   </div>
   <br>
 
@@ -926,7 +926,7 @@ if (isset($_POST['submit'])) {
       </div>
 
       <div class="d-grid gap-2 col-4 mx-auto mb-3 mt-5">
-        <button type="submit" name="submit" id="submit" class="btn btn-primary">Atualizar<a href="listar1.php"></a></button>
+        <button type="submit" name="submit" id="submit" class="btn btn-primary">Atualizar</button>
       </div>
 
 
